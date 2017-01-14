@@ -45,6 +45,10 @@ MongoClient.connect(mdbUrl, function(err, database){
 		res.render('collection', { title: 'Collection' });
 	});
 
+	app.get('/collection/details', function(req, res, next){
+		res.render('details', { title: 'Collection'});
+	});
+
 	app.get('/add', function(req, res, next){
 		res.render('add', { title: 'Join'});
 	});
