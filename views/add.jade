@@ -14,37 +14,43 @@ block content
 				.row
 					.col-md-offset-3.col-md-6.animate-box
 						h3 Thesis Information
-						form(action='#', method='post')
+						form(action='/collection/new', method='post')
 							.row.form-group
 								.col-md-12
 									label(for='subject') Thesis Title
-									input.form-control(type='text', placeholder='Your thesis title', required='')
-									input.form-control(type='text', placeholder='Thesis subtitle')
+									input.form-control(type='text', name='thesis', placeholder='Your thesis title', required='')
+									input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle')
 							.row.form-group
 								.col-md-12
 									label(for='subject') Researchers
-									input.form-control(type='text', placeholder='Researcher 1', required='')
-									input.form-control(type='text', placeholder='Researcher 2')
-									input.form-control(type='text', placeholder='Researcher 3')
-									input.form-control(type='text', placeholder='Researcher 4')
-									input.form-control(type='text', placeholder='Researcher 5')
+									input.form-control(type='text', name='member1', placeholder='Researcher 1 (First name  Last name)', required='')
+									input.form-control(type='text', name='member2', placeholder='Researcher 2 (First name  Last name)', required='')
+									input.form-control(type='text', name='member3', placeholder='Researcher 3 (First name  Last name)')
+									input.form-control(type='text', name='member4', placeholder='Researcher 4 (First name  Last name)')
+									input.form-control(type='text', name='member5', placeholder='Researcher 5 (First name  Last name)')
 							.row.form-group
 								.col-md-12
 									label(for='subject') Advisers
-									input.form-control(type='text', placeholder="Adviser's name", required='')
-									input.form-control(type='text', placeholder="Adviser's name", required='')
+									input.form-control(type='text', name='adviser1', placeholder="Adviser's name", required='')
+									input.form-control(type='text', name='adviser2', placeholder="Adviser's name", required='')
 							.row.form-group
 								.col-md-12
 									label(for='subject') 1 Sentence Description
-									input.form-control(type='text', placeholder='Thesis introduction', required='')
+									input.form-control(type='text', name='sentence', placeholder='Thesis introduction', required='')
 							.row.form-group
 								.col-md-12
 									label(for='message') Short Description
-									textarea#message.form-control(name='message', cols='30', rows='10', placeholder='Say something about your thesis')
+									textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis', required='')
 							.row.form-group
 								.col-md-12
 									label(for='subject') Links
-									input.form-control(type='text', placeholder='Link for thesis pictures', required='')
-									input.form-control(type='text', placeholder='Youtube thesis video link', required='')
+									input.form-control(type='text', name='image', placeholder='Link for thesis pictures')
+									input.form-control(type='text', name='youtube', placeholder='Youtube thesis video link')
 							.form-group
 								input.btn.btn-primary(type='submit', value='Submit')
+
+		script(type='text/javascript').
+			if success === 'yes'
+				alert('Entry added!');
+			else if success === 'no'
+				alert('Adding failed!');

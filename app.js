@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var datetime = require('node-datetime');
+var dt;
+var formattedDate;
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -49,8 +53,47 @@ MongoClient.connect(mdbUrl, function(err, database){
 		res.render('details', { title: 'Collection'});
 	});
 
-	app.get('/add', function(req, res, next){
-		res.render('add', { title: 'Join'});
+	app.get('/collection/new', function(req, res, next){
+		res.render('add', { title: 'Join', success: ''});
+	});
+
+	app.post('/collection/new', function(req, res, next){
+		dt = datetime.create();
+		formattedDate = dt.format('m/d/Y');
+
+		//set default image
+		var imageurl = req.body.image && req.body.image.trim();
+		if(imageurl == ""){
+			imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
+		}
+		
+		var dataToSave = {
+			thesis: 			req.body.thesis && req.body.thesis.trim(),
+			subtitle: 		req.body.subtitle && req.body.subtitle.trim(),
+			member1: 			req.body.member1 && req.body.member1.trim(),
+			member2: 			req.body.member2 && req.body.member2.trim(),
+			member3: 			req.body.member3 && req.body.member3.trim(),
+			member4: 			req.body.member4 && req.body.member4.trim(),
+			member5: 			req.body.member5 && req.body.member5.trim(),
+			adviser1: 		req.body.adviser1 && req.body.adviser1.trim(),
+			adviser2: 		req.body.adviser2 && req.body.adviser2.trim(),
+			sentence: 		req.body.sentence && req.body.sentence.trim(),
+			description: 	req.body.description && req.body.description.trim(),
+			image: 				imageurl,
+			youtube: 			req.body.youtube && req.body.youtube.trim(),
+			added: 				formattedDate,
+			updated: 			formattedDate
+		};
+		console.log(dataToSave);
+		db.collection('collection')
+			.save(dataToSave, function(err, entry){
+				if(err) {
+					console.log('Error adding entry!');
+					return;
+				}
+				console.log('Entry added successfully!');
+				res.render('add', {title: 'Join', success: 'yes'});
+			});
 	});
 
 	// catch 404 and forward to error handler
