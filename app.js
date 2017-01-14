@@ -41,7 +41,13 @@ MongoClient.connect(mdbUrl, function(err, database){
 	app.use('/', index);
 	app.use('/users', users);
 
+	app.get('/collection', function(req, res, next){
+		res.render('collection', { title: 'Collection' });
+	});
 
+	app.get('/add', function(req, res, next){
+		res.render('add', { title: 'Join'});
+	});
 
 	// catch 404 and forward to error handler
 	app.use(function(req, res, next) {
