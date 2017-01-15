@@ -1,79 +1,70 @@
 extends layout
-
 block content
-			header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(/images/img_bg_1.jpg);')
-				.overlay
-				.container
-					.row
-						.col-md-12.col-md-offset-0.text-center
-							.display-t
-								.display-tc.animate-box(data-animate-effect='fadeInUp')
-									h1.mb30 Details
-			#fh5co-about
-				.container
-					.row.row-pb-md
-						.col-md-8.col-md-offset-2.text-center.fh5co-heading
-							span Know us
-							h2 #{entry.thesis}
-							if entry.subtitle != ""
-								h3 #{entry.subtitle}
-							a(href='/collection/#{entry._id}/edit')
-								button(value='#{entry._id}') Edit
-<<<<<<< HEAD
-
-							form(action='/collection/' + entry._id, method='post')
-								input(type='hidden',value='DELETE',name='_method')
-								button(type='submit')
-									|Delete
-=======
-							a(href='#')
-								button(value='#{entry._id}') Delete
->>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
-					.row.row-pb-md.animate-box
-						.col-md-6.col-md-push-6
-							.desc
-								h3 Entry History
-								p
-									| Added: 
-									span #{entry.added}
-									|  | Updated: 
-									span #{entry.updated}
-								h3 Description
-								p
-									| #{entry.description}
-								
-								h3 Links
-								ul.fh5co-social-icons
-									if entry.youtube != ""
-										li
-											a(href='#{entry.youtube}', target='_blank')
-												i.icon-youtube
-									li
-										a(href='#{entry.image}', target='_blank')
-											i.icon-camera
-								br
-						.col-md-6.col-md-pull-6
-							img.img-responsive(src='#{entry.image}', alt='thesis image')
-			#fh5co-team.fh5co-bg-section
-				.container
-					.row.animate-box
-						.col-md-8.col-md-offset-2.text-center.fh5co-heading
-							span Productive Team
-							h2 Meet Our Team
-					.row
-						.col-md-2
-						for adviser in entry.advisers
-							.col-md-4.col-sm-6.animate-box(data-animate-effect='fadeIn')
-								.fh5co-staff
-									img(src='/images/person3.jpg', alt='')
-									h3 #{adviser}
-									strong.role Adviser
-		
-					.row
-						for member in entry.members
-							if member != ""
-								.col-md-3.col-sm-6.animate-box(data-animate-effect='fadeIn')
-									.fh5co-staff
-										img(src='/images/person1.jpg', alt='')
-										h3 #{member}
-										strong.role Researcher
+    header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(/images/img_bg_1.jpg);')
+        .overlay
+        .container
+            .row
+                .col-md-12.col-md-offset-0.text-center
+                    .display-t
+                        .display-tc.animate-box(data-animate-effect='fadeInUp')
+                            h1.mb30 Details
+    #fh5co-about
+        .container
+            .row.row-pb-md
+                .col-md-8.col-md-offset-2.text-center.fh5co-heading
+                    span Know us
+                    h2 #{entry.thesis}
+                    if entry.subtitle != ""
+                        h3 #{entry.subtitle}
+                    a(href='/collection/#{entry._id}/edit')
+                        button(value='#{entry._id}') Edit
+                    form(action='/collection/' + entry._id, method='post')
+                        input(type='hidden',value='DELETE',name='_method')
+                        button(type='submit')
+                            | Delete
+            .row.row-pb-md.animate-box
+                .col-md-6.col-md-push-6
+                    .desc
+                        h3 Entry History
+                        p
+                            | Added:
+                            span #{entry.added}
+                            | | Updated:
+                            span #{entry.updated}
+                        h3 Description
+                        p
+                            | #{entry.description}
+                        h3 Links
+                        ul.fh5co-social-icons
+                            if entry.youtube != ""
+                                li
+                                    a(href='#{entry.youtube}', target='_blank')
+                                        i.icon-youtube
+                            li
+                                a(href='#{entry.image}', target='_blank')
+                                    i.icon-camera
+                        br
+                .col-md-6.col-md-pull-6
+                    img.img-responsive(src='#{entry.image}', alt='thesis image')
+    #fh5co-team.fh5co-bg-section
+        .container
+            .row.animate-box
+                .col-md-8.col-md-offset-2.text-center.fh5co-heading
+                    span Productive Team
+                    h2 Meet Our Team
+            .row
+                .col-md-2
+        for adviser in entry.advisers
+            .col-md-4.col-sm-6.animate-box(data-animate-effect='fadeIn')
+                .fh5co-staff
+                    img(src='/images/person3.jpg', alt='')
+                    h3 #{adviser}
+                    strong.role Adviser
+            .row
+        for member in entry.members
+            if member != ""
+                .col-md-3.col-sm-6.animate-box(data-animate-effect='fadeIn')
+                    .fh5co-staff
+                        img(src='/images/person1.jpg', alt='')
+                        h3 #{member}
+                        strong.role Researcher

@@ -12,10 +12,7 @@
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "jade": "~1.11.0",
-<<<<<<< HEAD
     "method-override": "^2.3.7",
-=======
->>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
     "mongodb": "^2.2.20",
     "morgan": "~1.7.0",
     "node-datetime": "^1.0.0",
