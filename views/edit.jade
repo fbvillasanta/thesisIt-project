@@ -14,7 +14,11 @@ block content
 				.row
 					.col-md-offset-3.col-md-6.animate-box
 						h3 Thesis Information
+<<<<<<< HEAD
 						form(action='/collection/' + entry._id, method='post')
+=======
+						form(action='#', method='post')
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 							.row.form-group
 								.col-md-12
 									label(for='subject') Thesis Title
@@ -23,14 +27,20 @@ block content
 							.row.form-group
 								.col-md-12
 									label(for='subject') Researchers
+<<<<<<< HEAD
 									input.form-control(type='text', name='member1', placeholder='Researcher 1 (First name  Last name)', value='#{entry.members[0]}')
 									input.form-control(type='text', name='member2', placeholder='Researcher 2 (First name  Last name)', value='#{entry.members[1]}')
+=======
+									input.form-control(type='text', name='member1', placeholder='Researcher 1 (First name  Last name)', required='' , value='#{entry.members[0]}')
+									input.form-control(type='text', name='member2', placeholder='Researcher 2 (First name  Last name)', required='', value='#{entry.members[1]}')
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 									input.form-control(type='text', name='member3', placeholder='Researcher 3 (First name  Last name)', value='#{entry.members[2]}')
 									input.form-control(type='text', name='member4', placeholder='Researcher 4 (First name  Last name)', value='#{entry.members[3]}')
 									input.form-control(type='text', name='member5', placeholder='Researcher 5 (First name  Last name)', value='#{entry.members[4]}')
 							.row.form-group
 								.col-md-12
 									label(for='subject') Advisers
+<<<<<<< HEAD
 									input.form-control(type='text', name='adviser1', placeholder="Adviser's name", value='#{entry.advisers[0]}')
 									input.form-control(type='text', name='adviser2', placeholder="Adviser's name", value='#{entry.advisers[1]}')
 							.row.form-group
@@ -41,14 +51,31 @@ block content
 								.col-md-12
 									label(for='message') Short Description
 									textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis') #{entry.description}
+=======
+									input.form-control(type='text', name='adviser1', placeholder="Adviser's name", required='', value='#{entry.advisers[0]}')
+									input.form-control(type='text', name='adviser2', placeholder="Adviser's name", required='', value='#{entry.advisers[1]}')
+							.row.form-group
+								.col-md-12
+									label(for='subject') 1 Sentence Description
+									input.form-control(type='text', name='sentence', placeholder='Thesis introduction', required='', value='#{entry.sentence}')
+							.row.form-group
+								.col-md-12
+									label(for='message') Short Description
+									textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis', required='') #{entry.description}
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 							.row.form-group
 								.col-md-12
 									label(for='subject') Links
 									input.form-control(type='text', name='image', placeholder='Link for thesis pictures', value='#{entry.image}')
 									input.form-control(type='text', name='youtube', placeholder='Youtube thesis video link', value='#{entry.youtube}')
 							.form-group
+<<<<<<< HEAD
 								p
 									input(type='hidden',value='PUT',name='_method')
 								button.btn.btn-primary(type='submit')
 									|Update
 
+=======
+								input.btn.btn-primary(type='submit', value='Submit')
+								input(type='hidden', value='#{entry._id}')
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4

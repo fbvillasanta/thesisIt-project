@@ -19,11 +19,16 @@ block content
 								h3 #{entry.subtitle}
 							a(href='/collection/#{entry._id}/edit')
 								button(value='#{entry._id}') Edit
+<<<<<<< HEAD
 
 							form(action='/collection/' + entry._id, method='post')
 								input(type='hidden',value='DELETE',name='_method')
 								button(type='submit')
 									|Delete
+=======
+							a(href='#')
+								button(value='#{entry._id}') Delete
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 					.row.row-pb-md.animate-box
 						.col-md-6.col-md-push-6
 							.desc

@@ -1,14 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
+<<<<<<< HEAD
 var assert = require('assert');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+=======
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 var db = require('../db');
 
 var datetime = require('node-datetime');
 var dt;
 var formattedDate;
+<<<<<<< HEAD
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -18,6 +22,9 @@ router.use(methodOverride(function(req, res){
         return method
     }
 }));
+=======
+
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 router.get('/', function(req, res, next){
     var collection = db.get().collection('collection');
     var count = collection.find().count();
@@ -82,7 +89,11 @@ router.post('/new', function(req, res, next){
 router.get('/:thesisId', function(req, res, next){
     var thesisId = req.params.thesisId;
     var collection = db.get().collection('collection');
+<<<<<<< HEAD
     collection.findOne({ _id:ObjectId(thesisId) }, function(err, entry) {
+=======
+    collection.findOne({ _id: new ObjectId(thesisId) }, function(err, entry) {
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
         res.render('details', {
             title: 'Collection',
             entry: entry
@@ -97,6 +108,7 @@ router.get('/:thesisId/edit', function(req, res, next){
     res.render('edit', {title: 'Collection', entry: entry});
   });
 });
+<<<<<<< HEAD
 
 router.put('/:thesisId', function(req,res, next) {
     var imageurl = req.body.image;
@@ -162,4 +174,6 @@ router.delete('/:thesisId',function(req,res,next) {
 
         });
 });
+=======
+>>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
 module.exports = router;
