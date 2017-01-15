@@ -1,12 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
+var assert = require('assert');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var db = require('../db');
 
 var datetime = require('node-datetime');
 var dt;
 var formattedDate;
-
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(methodOverride(function(req, res){
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        // look in urlencoded POST bodies and delete it
+        var method = req.body._method;
+        delete req.body._method;
+        return method
+    }
+}));
 router.get('/', function(req, res, next){
     var collection = db.get().collection('collection');
     var count = collection.find().count();
@@ -59,19 +70,19 @@ router.post('/new', function(req, res, next){
     };
     console.log(dataToSave);
     collection.save(dataToSave, function(err, entry){
-            if(err) {
-                console.log('Error adding entry!');
-                return;
-            }
-            console.log('Entry added successfully!');
-            res.render('add', {title: 'Join', success: 'yes'});
-        });
+        if(err) {
+            console.log('Error adding entry!');
+            return;
+        }
+        console.log('Entry added successfully!');
+        res.render('add', {title: 'Join', success: 'yes'});
+    });
 });
 
 router.get('/:thesisId', function(req, res, next){
     var thesisId = req.params.thesisId;
     var collection = db.get().collection('collection');
-    collection.findOne({ _id: new ObjectId(thesisId) }, function(err, entry) {
+    collection.findOne({ _id:ObjectId(thesisId) }, function(err, entry) {
         res.render('details', {
             title: 'Collection',
             entry: entry
@@ -80,10 +91,75 @@ router.get('/:thesisId', function(req, res, next){
 });
 
 router.get('/:thesisId/edit', function(req, res, next){
-  var thesisId = req.params.thesisId;
-  var collection = db.get().collection('collection');
-  collection.findOne({ _id: new ObjectId(thesisId)}, function(err, entry){
-    res.render('edit', {title: 'Collection', entry: entry});
-  });
+    var thesisId = req.params.thesisId;
+    var collection = db.get().collection('collection');
+    collection.findOne({ _id: new ObjectId(thesisId)}, function(err, entry){
+        res.render('edit', {title: 'Collection', entry: entry});
+    });
+});
+
+router.put('/:thesisId', function(req,res, next) {
+    var imageurl = req.body.image;
+    if(imageurl == ""){
+        imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
+    }
+    var dataToSave = {
+        thesis: req.body.thesis,
+        subtitle: req.body.subtitle,
+        members: [
+            req.body.member1,
+            req.body.member2,
+            req.body.member3,
+            req.body.member4,
+            req.body.member5
+        ],
+        advisers: [
+            req.body.adviser1,
+            req.body.adviser2
+        ],
+        sentence: req.body.sentence,
+        description: req.body.description,
+        image: imageurl,
+        youtube: req.body.youtube,
+        added: formattedDate,
+        updated: formattedDate
+    };
+
+    var collection = db.get().collection('collection');
+    var thesisId = req.params.thesisId;
+    collection.update({ '_id': ObjectId(thesisId) }, {$set: dataToSave }, function(err, entry) {
+
+        if (err) {
+            res.send("There was a problem updating the information to the database: " + err);
+        }
+        else {
+            res.format({
+                html: function () {
+
+                    res.redirect("/collection/" + thesisId);
+                },
+                //JSON responds showing the updated values
+                json: function () {
+                    res.json(entry);
+                }
+            });
+
+        }
+    });
+
+});
+router.delete('/:thesisId',function(req,res,next) {
+    var collection = db.get().collection('collection');
+    var thesisId = req.params.thesisId;
+    collection.deleteOne({ '_id': ObjectId(thesisId) },  function(err, entry) {
+        if (err) {
+            res.send("There was a problem deleting an entry to the database: " + err);
+        }
+        else {
+            console.log('Item deleted');
+            res.redirect("/collection") ;
+        }
+
+    });
 });
 module.exports = router;
