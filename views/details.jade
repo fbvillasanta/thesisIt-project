@@ -17,10 +17,8 @@ block content
 							h2 #{entry.thesis}
 							if entry.subtitle != ""
 								h3 #{entry.subtitle}
-							a(href='/collection/#{entry._id}/edit')
-								button(value='#{entry._id}') Edit
-							a(href='#')
-								button(value='#{entry._id}') Delete
+							a.btn.btn-primary(href='/collection/#{entry._id}/edit') Edit
+							a.btn.btn-danger(href='#') Delete
 					.row.row-pb-md.animate-box
 						.col-md-6.col-md-push-6
 							.desc
