@@ -1,0 +1,49 @@
+extends layout
+
+block content
+			header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(images/img_bg_1.jpg);')
+				.overlay
+				.container
+					.row
+						.col-md-12.col-md-offset-0.text-center
+							.display-t
+								.display-tc.animate-box(data-animate-effect='fadeInUp')
+									h1.mb30 Our Collection
+			#fh5co-blog.fh5co-bg-section
+				.container
+					.row.animate-box.row-pb-md(data-animate-effect='fadeInUp')
+						.col-md-8.col-md-offset-2.text-center.fh5co-heading
+							span Thoughts & Ideas
+							h2 Our Collection
+							p
+								| Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.
+					.row
+						- var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec']
+						for entry in entries
+							.col-md-3.col-sm-4.animate-box(data-animate-effect='fadeInUp')
+								.fh5co-post
+									span.fh5co-date #{entry.added}
+									h3
+										a(href='/collection/' + entry._id) #{entry.thesis}
+									p
+										| #{entry.sentence}
+						
+						.col-md-12.text-center
+							nav(aria-label='Page navigation')
+								ul.pagination
+									li
+										a(href='#', aria-label='Previous')
+											span(aria-hidden='true') «
+									li.active
+										a(href='#') 1
+									li
+										a(href='#') 2
+									li
+										a(href='#') 3
+									li
+										a(href='#') 4
+									li
+										a(href='#') 5
+									li
+										a(href='#', aria-label='Next')
+											span(aria-hidden='true') »
