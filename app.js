@@ -46,7 +46,17 @@ MongoClient.connect(mdbUrl, function(err, database){
 	app.use('/users', users);
 
 	app.get('/collection', function(req, res, next){
-		res.render('collection', { title: 'Collection' });
+		var collection = db.collection('collection');
+		var count = collection.find().count();
+		if (count == 0) {
+			console.log("Collection is empty.");
+		} else {
+			collection.find().sort({thesis: 1}).toArray(function(err, entry){
+				console.log("Thesis entries loaded.", entry);
+				//res.render('collection', { entries: entry });
+				res.render('collection', { title: 'Collection', entries: entry });
+			});
+		}
 	});
 
 	app.get('/collection/details', function(req, res, next){
@@ -70,13 +80,17 @@ MongoClient.connect(mdbUrl, function(err, database){
 		var dataToSave = {
 			thesis: 			req.body.thesis && req.body.thesis.trim(),
 			subtitle: 		req.body.subtitle && req.body.subtitle.trim(),
-			member1: 			req.body.member1 && req.body.member1.trim(),
-			member2: 			req.body.member2 && req.body.member2.trim(),
-			member3: 			req.body.member3 && req.body.member3.trim(),
-			member4: 			req.body.member4 && req.body.member4.trim(),
-			member5: 			req.body.member5 && req.body.member5.trim(),
-			adviser1: 		req.body.adviser1 && req.body.adviser1.trim(),
-			adviser2: 		req.body.adviser2 && req.body.adviser2.trim(),
+			members: 			[	
+											req.body.member1 && req.body.member1.trim(),
+											req.body.member2 && req.body.member2.trim(),
+											req.body.member3 && req.body.member3.trim(),
+											req.body.member4 && req.body.member4.trim(),
+											req.body.member5 && req.body.member5.trim()
+										],
+			advisers: 		[
+											req.body.adviser1 && req.body.adviser1.trim(),
+											req.body.adviser2 && req.body.adviser2.trim()
+										],
 			sentence: 		req.body.sentence && req.body.sentence.trim(),
 			description: 	req.body.description && req.body.description.trim(),
 			image: 				imageurl,
