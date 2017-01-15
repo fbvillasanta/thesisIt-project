@@ -16,24 +16,18 @@ block content
 							span Thoughts & Ideas
 							h2 Our Collection
 							p
-								| Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.
+								| This is a basically a compilation of awesome ideas that may change the world.
 					.row
-						- var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec']
-						- var counter = 0
-						for entry in entries
-							if counter == 4
-								.row
-								- counter = 0
-							else
-								- counter = counter + 1
-
-								.col-md-3.col-sm-4.animate-box(data-animate-effect='fadeInUp')
-									.fh5co-post
-										span.fh5co-date #{entry.added}
-										h3
-											a(href='/collection/' + entry._id) #{entry.thesis}
-										p
-											| #{entry.sentence}
+					- var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec']
+					- var counter = count
+					for entry in entries
+							.col-md-3.col-sm-4.animate-box(data-animate-effect='fadeInUp')
+								.fh5co-post
+									span.fh5co-date #{entry.added}
+									h3
+										a(href='/collection/' + entry._id) #{entry.thesis}
+									p
+										| #{entry.sentence}
 					
 //						.col-md-12.text-center
 //							nav(aria-label='Page navigation')
