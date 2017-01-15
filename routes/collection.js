@@ -99,6 +99,9 @@ router.get('/:thesisId/edit', function(req, res, next){
 });
 
 router.put('/:thesisId', function(req,res, next) {
+    dt = datetime.create();
+    formattedDate = dt.format('m/d/Y');
+
     var imageurl = req.body.image;
     if(imageurl == ""){
         imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
@@ -121,7 +124,6 @@ router.put('/:thesisId', function(req,res, next) {
         description: req.body.description,
         image: imageurl,
         youtube: req.body.youtube,
-        added: formattedDate,
         updated: formattedDate
     };
 
