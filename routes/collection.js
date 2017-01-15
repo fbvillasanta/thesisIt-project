@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 var db = require('../db');
+
+var datetime = require('node-datetime');
+var dt;
+var formattedDate;
+
 router.get('/', function(req, res, next){
     var collection = db.get().collection('collection');
     var count = collection.find().count();
@@ -16,20 +21,8 @@ router.get('/', function(req, res, next){
     }
 });
 
-router.get('/details/:thesisId', function(req, res, next){
-    var thesisId = req.params.thesisId;
-    var collection = db.get().collection('collection');
-    collection.findOne({ _id: new ObjectId(thesisId) }, function(err, entry) {
-        res.render('details', {
-            title: 'Collection',
-            entry: entry
-        });
-    });
-
-});
-
 router.get('/new', function(req, res, next){
-    res.render('add', { title: 'Join', success: ''});
+    res.render('add', { title: 'Join', success: ""});
 });
 
 router.post('/new', function(req, res, next){
@@ -73,5 +66,24 @@ router.post('/new', function(req, res, next){
             console.log('Entry added successfully!');
             res.render('add', {title: 'Join', success: 'yes'});
         });
+});
+
+router.get('/:thesisId', function(req, res, next){
+    var thesisId = req.params.thesisId;
+    var collection = db.get().collection('collection');
+    collection.findOne({ _id: new ObjectId(thesisId) }, function(err, entry) {
+        res.render('details', {
+            title: 'Collection',
+            entry: entry
+        });
+    });
+});
+
+router.get('/:thesisId/edit', function(req, res, next){
+  var thesisId = req.params.thesisId;
+  var collection = db.get().collection('collection');
+  collection.findOne({ _id: new ObjectId(thesisId)}, function(err, entry){
+    res.render('edit', {title: 'Collection', entry: entry});
+  });
 });
 module.exports = router;
