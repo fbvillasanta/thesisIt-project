@@ -39,7 +39,7 @@ router.get('/new', function(req, res, next){
 router.post('/new', function(req, res, next){
     var collection = db.get().collection('collection');
     dt = datetime.create();
-    formattedDate = dt.format('m/d/Y');
+    var formatted = dt.format('m/d/Y');
 
     //set default image
     var imageurl = req.body.image && req.body.image.trim();
@@ -65,8 +65,8 @@ router.post('/new', function(req, res, next){
         description: 	req.body.description && req.body.description.trim(),
         image: 				imageurl,
         youtube: 			req.body.youtube && req.body.youtube.trim(),
-        added: 				formattedDate,
-        updated: 			formattedDate
+        added: 				formatted,
+        updated: 			formatted
     };
     console.log(dataToSave);
     collection.save(dataToSave, function(err, entry){
