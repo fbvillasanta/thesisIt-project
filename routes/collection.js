@@ -47,6 +47,16 @@ router.post('/new', function(req, res, next){
         imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
     }
 
+    var sentence = req.body.sentence && req.body.sentence.trim();
+    if(sentence == ""){
+        sentence = "No description added.";
+    }
+
+    var sentence = req.body.description && req.body.description.trim();
+    if(description == ""){
+        description = "No description added.";
+    }
+
     var dataToSave = {
         thesis: 			req.body.thesis && req.body.thesis.trim(),
         subtitle: 		req.body.subtitle && req.body.subtitle.trim(),
@@ -61,8 +71,8 @@ router.post('/new', function(req, res, next){
             req.body.adviser1 && req.body.adviser1.trim(),
             req.body.adviser2 && req.body.adviser2.trim()
         ],
-        sentence: 		req.body.sentence && req.body.sentence.trim(),
-        description: 	req.body.description && req.body.description.trim(),
+        sentence: 		sentence,
+        description: 	description,
         image: 				imageurl,
         youtube: 			req.body.youtube && req.body.youtube.trim(),
         added: 				formatted,
@@ -99,34 +109,46 @@ router.get('/:thesisId/edit', function(req, res, next){
 });
 
 router.put('/:thesisId', function(req,res, next) {
+    var collection = db.get().collection('collection');
     dt = datetime.create();
     formattedDate = dt.format('m/d/Y');
 
-    var imageurl = req.body.image;
+    //set default image
+    var imageurl = req.body.image && req.body.image.trim();
     if(imageurl == ""){
         imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
     }
-    var dataToSave = {
-        thesis: req.body.thesis,
-        subtitle: req.body.subtitle,
-        members: [
-            req.body.member1,
-            req.body.member2,
-            req.body.member3,
-            req.body.member4,
-            req.body.member5
-        ],
-        advisers: [
-            req.body.adviser1,
-            req.body.adviser2
-        ],
-        sentence: req.body.sentence,
-        description: req.body.description,
-        image: imageurl,
-        youtube: req.body.youtube,
-        updated: formattedDate
-    };
 
+    var sentence = req.body.sentence && req.body.sentence.trim();
+    if(sentence == ""){
+        sentence = "No description added.";
+    }
+
+    var sentence = req.body.description && req.body.description.trim();
+    if(description == ""){
+        description = "No description added.";
+    }
+
+    var dataToSave = {
+        thesis:             req.body.thesis && req.body.thesis.trim(),
+        subtitle:       req.body.subtitle && req.body.subtitle.trim(),
+        members:            [
+            req.body.member1 && req.body.member1.trim(),
+            req.body.member2 && req.body.member2.trim(),
+            req.body.member3 && req.body.member3.trim(),
+            req.body.member4 && req.body.member4.trim(),
+            req.body.member5 && req.body.member5.trim()
+        ],
+        advisers:       [
+            req.body.adviser1 && req.body.adviser1.trim(),
+            req.body.adviser2 && req.body.adviser2.trim()
+        ],
+        sentence:       sentence,
+        description:    description,
+        image:              imageurl,
+        youtube:            req.body.youtube && req.body.youtube.trim(),
+        updated:            formattedDate
+    };
     var collection = db.get().collection('collection');
     var thesisId = req.params.thesisId;
     collection.update({ '_id': ObjectId(thesisId) }, {$set: dataToSave }, function(err, entry) {

@@ -11,6 +11,18 @@ block content
 								h1.mb30 Be part of our Collection
 		#fh5co-contact
 			.container
+				if success == "yes"
+					.row
+						.col-md-offset-3.col-md-6.animate-box
+							.alert.alert-success
+								i.icon-check2(style='font-size:15px')
+								strong   Entry added!
+				else if success == "no"
+					.row
+						.col-md-offset-3.col-md-6.animate-box
+							.alert.alert-danger
+								i.icon-cross2(style='font-size:15px')
+								strong   Error adding entry!
 				.row
 					.col-md-offset-3.col-md-6.animate-box
 						h3 Thesis Information
@@ -18,7 +30,7 @@ block content
 							.row.form-group
 								.col-md-12
 									label(for='subject') Thesis Title
-									input.form-control(type='text', name='thesis', placeholder='Your thesis title', required='')
+									input#search.form-control(type='text', name='thesis', placeholder='Your thesis title', required='')
 									input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle')
 							.row.form-group
 								.col-md-12
@@ -44,13 +56,7 @@ block content
 							.row.form-group
 								.col-md-12
 									label(for='subject') Links
-									input.form-control(type='text', name='image', placeholder='Link for thesis pictures')
-									input.form-control(type='text', name='youtube', placeholder='Youtube thesis video link')
+									input.form-control(type='text', name='image', placeholder='Thesis image link')
+									input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link')
 							.form-group
 								input.btn.btn-primary(type='submit', value='Submit')
-
-		script(type='text/javascript').
-			if success === 'yes'
-				alert('Entry added!');
-			else if success === 'no'
-				alert('Adding failed!');
