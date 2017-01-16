@@ -85,7 +85,8 @@ router.post('/new', function(req, res, next){
             return;
         }
         console.log('Entry added successfully!');
-        res.render('add', {title: 'Join', success: 'yes'});
+        res.render('add', {title: 'Join', sent: 'yes'});
+
     });
 });
 
