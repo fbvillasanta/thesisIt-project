@@ -52,7 +52,7 @@ router.post('/new', function(req, res, next){
         sentence = "No description added.";
     }
 
-    var sentence = req.body.description && req.body.description.trim();
+    var description = req.body.description && req.body.description.trim();
     if(description == ""){
         description = "No description added.";
     }
@@ -125,7 +125,7 @@ router.put('/:thesisId', function(req,res, next) {
         sentence = "No description added.";
     }
 
-    var sentence = req.body.description && req.body.description.trim();
+    var description = req.body.description && req.body.description.trim();
     if(description == ""){
         description = "No description added.";
     }
