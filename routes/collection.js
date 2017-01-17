@@ -33,13 +33,14 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/new', function(req, res, next){
-    res.render('add', { title: 'Join', success: ""});
+    res.render('add', { title: 'Join', sent: ""});
 });
 
 router.post('/new', function(req, res, next){
     var collection = db.get().collection('collection');
     dt = datetime.create();
     var formatted = dt.format('m/d/Y');
+    var findcount = 0;
 
     //set default image
     var imageurl = req.body.image && req.body.image.trim();
@@ -57,37 +58,58 @@ router.post('/new', function(req, res, next){
         description = "No description added.";
     }
 
-    var dataToSave = {
-        thesis: 			req.body.thesis && req.body.thesis.trim(),
-        subtitle: 		req.body.subtitle && req.body.subtitle.trim(),
-        members: 			[
-            req.body.member1 && req.body.member1.trim(),
-            req.body.member2 && req.body.member2.trim(),
-            req.body.member3 && req.body.member3.trim(),
-            req.body.member4 && req.body.member4.trim(),
-            req.body.member5 && req.body.member5.trim()
-        ],
-        advisers: 		[
-            req.body.adviser1 && req.body.adviser1.trim(),
-            req.body.adviser2 && req.body.adviser2.trim()
-        ],
-        sentence: 		sentence,
-        description: 	description,
-        image: 				imageurl,
-        youtube: 			req.body.youtube && req.body.youtube.trim(),
-        added: 				formatted,
-        updated: 			formatted
-    };
-    console.log(dataToSave);
-    collection.save(dataToSave, function(err, entry){
-        if(err) {
-            console.log('Error adding entry!');
-            return;
-        }
-        console.log('Entry added successfully!');
-        res.render('add', {title: 'Join', sent: 'yes'});
+    var thesis = req.body.thesis && req.body.thesis.trim();
+    var member1 = req.body.member1 && req.body.member1.trim();
+    var member2 = req.body.member2 && req.body.member2.trim();
+    var adviser1 = req.body.adviser1 && req.body.adviser1.trim();
+    var adviser2 = req.body.adviser2 && req.body.adviser2.trim();
 
-    });
+    findcount = collection.count({thesis: thesis});
+    
+    if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
+        // render error message
+        res.render('add', {title: 'Join', sent: 'no', error: 'Please fill up the required fields.'});
+        return;
+    } else if (findcount > 0){
+        console.log(findcount);
+        // render error message
+        res.render('add', {title: 'Join', sent: 'no', error: 'Found a research with the same title.'});
+        return;
+    } else {
+        var dataToSave = {
+            thesis:             thesis,
+            subtitle:       req.body.subtitle && req.body.subtitle.trim(),
+            members:            [
+                member1,
+                member2,
+                req.body.member3 && req.body.member3.trim(),
+                req.body.member4 && req.body.member4.trim(),
+                req.body.member5 && req.body.member5.trim()
+            ],
+            advisers:       [
+                adviser1,
+                adviser2
+            ],
+            sentence:       sentence,
+            description:    description,
+            image:              imageurl,
+            youtube:            req.body.youtube && req.body.youtube.trim(),
+            added:              formatted,
+            updated:            formatted
+        };
+        console.log(dataToSave);
+        collection.save(dataToSave, function(err, entry){
+            if(err) {
+                console.log('Error adding entry!');
+                return;
+            }
+            console.log('Entry added successfully!');
+            console.log(findcount);
+            res.render('add', {title: 'Join', sent: 'yes'});
+
+        });
+    }
+
 });
 
 router.get('/:thesisId', function(req, res, next){
@@ -110,6 +132,7 @@ router.get('/:thesisId/edit', function(req, res, next){
 });
 
 router.put('/:thesisId', function(req,res, next) {
+    var thesisId = req.params.thesisId;
     var collection = db.get().collection('collection');
     dt = datetime.create();
     formattedDate = dt.format('m/d/Y');
@@ -130,47 +153,62 @@ router.put('/:thesisId', function(req,res, next) {
         description = "No description added.";
     }
 
-    var dataToSave = {
-        thesis:             req.body.thesis && req.body.thesis.trim(),
-        subtitle:       req.body.subtitle && req.body.subtitle.trim(),
-        members:            [
-            req.body.member1 && req.body.member1.trim(),
-            req.body.member2 && req.body.member2.trim(),
-            req.body.member3 && req.body.member3.trim(),
-            req.body.member4 && req.body.member4.trim(),
-            req.body.member5 && req.body.member5.trim()
-        ],
-        advisers:       [
-            req.body.adviser1 && req.body.adviser1.trim(),
-            req.body.adviser2 && req.body.adviser2.trim()
-        ],
-        sentence:       sentence,
-        description:    description,
-        image:              imageurl,
-        youtube:            req.body.youtube && req.body.youtube.trim(),
-        updated:            formattedDate
-    };
-    var collection = db.get().collection('collection');
-    var thesisId = req.params.thesisId;
-    collection.update({ '_id': ObjectId(thesisId) }, {$set: dataToSave }, function(err, entry) {
+    var thesis = req.body.thesis && req.body.thesis.trim();
+    var member1 = req.body.member1 && req.body.member1.trim();
+    var member2 = req.body.member2 && req.body.member2.trim();
+    var adviser1 = req.body.adviser1 && req.body.adviser1.trim();
+    var adviser2 = req.body.adviser2 && req.body.adviser2.trim();
 
-        if (err) {
-            res.send("There was a problem updating the information to the database: " + err);
-        }
-        else {
-            res.format({
-                html: function () {
+    if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
+        // render error message
+        collection.findOne({ _id: new ObjectId(thesisId)}, function(err, entry){
+            res.redirect('/collection/'+thesisId+'/edit');
+        });
+        return;
+    } else {
 
-                    res.redirect("/collection/" + thesisId);
-                },
-                //JSON responds showing the updated values
-                json: function () {
-                    res.json(entry);
-                }
-            });
+        var dataToSave = {
+            thesis:             thesis,
+            subtitle:       req.body.subtitle && req.body.subtitle.trim(),
+            members:            [
+                member1,
+                member2,
+                req.body.member3 && req.body.member3.trim(),
+                req.body.member4 && req.body.member4.trim(),
+                req.body.member5 && req.body.member5.trim()
+            ],
+            advisers:       [
+                adviser1,
+                adviser
+            ],
+            sentence:       sentence,
+            description:    description,
+            image:              imageurl,
+            youtube:            req.body.youtube && req.body.youtube.trim(),
+            updated:            formattedDate
+        };
+        var collection = db.get().collection('collection');
+        var thesisId = req.params.thesisId;
+        collection.update({ '_id': ObjectId(thesisId) }, {$set: dataToSave }, function(err, entry) {
 
-        }
-    });
+            if (err) {
+                res.send("There was a problem updating the information to the database: " + err);
+            }
+            else {
+                res.format({
+                    html: function () {
+
+                        res.redirect("/collection/" + thesisId);
+                    },
+                    //JSON responds showing the updated values
+                    json: function () {
+                        res.json(entry);
+                    }
+                });
+
+            }
+        });
+    }
 
 });
 router.delete('/:thesisId',function(req,res,next) {
