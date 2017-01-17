@@ -188,7 +188,6 @@ router.put('/:thesisId', function(req,res, next) {
             updated:            formattedDate
         };
         var collection = db.get().collection('collection');
-        var thesisId = req.params.thesisId;
         collection.update({ '_id': ObjectId(thesisId) }, {$set: dataToSave }, function(err, entry) {
 
             if (err) {
