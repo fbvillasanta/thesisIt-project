@@ -179,7 +179,7 @@ router.put('/:thesisId', function(req,res, next) {
             ],
             advisers:       [
                 adviser1,
-                adviser
+                adviser2
             ],
             sentence:       sentence,
             description:    description,
