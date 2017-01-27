@@ -1,0 +1,63 @@
+extends layout
+
+block content
+		header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(images/img_bg_1.jpg);')
+			.overlay
+			.container
+				.row
+					.col-md-12.col-md-offset-0.text-center
+						.display-t
+							.display-tc.animate-box(data-animate-effect='fadeInUp')
+								h1.mb30 Be part of our Collection
+		#fh5co-contact
+			.container
+				if sent == "yes"
+					.row
+						.col-md-offset-3.col-md-6.animate-box
+							.alert.alert-success
+								i.icon-check2(style='font-size:15px; text-align:center')
+								strong   Entry added!
+				else if sent == "no"
+					.row
+						.col-md-offset-3.col-md-6.animate-box
+							.alert.alert-danger
+								i.icon-cross2(style='font-size:15px')
+								strong   Error adding entry! #{error}
+				.row
+					.col-md-offset-3.col-md-6.animate-box
+						h3 Thesis Information
+						form(action='/collection/new', method='post')
+							.row.form-group
+								.col-md-12
+									label(for='subject') Thesis Title
+									input#search.form-control(type='text', name='thesis', placeholder='Your thesis title', required='')
+									input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle')
+							.row.form-group
+								.col-md-12
+									label(for='subject') Researchers
+									input.form-control(type='text', name='member1', placeholder='Researcher 1 (First name  Last name)', required='')
+									input.form-control(type='text', name='member2', placeholder='Researcher 2 (First name  Last name)', required='')
+									input.form-control(type='text', name='member3', placeholder='Researcher 3 (First name  Last name)')
+									input.form-control(type='text', name='member4', placeholder='Researcher 4 (First name  Last name)')
+									input.form-control(type='text', name='member5', placeholder='Researcher 5 (First name  Last name)')
+							.row.form-group
+								.col-md-12
+									label(for='subject') Advisers
+									input.form-control(type='text', name='adviser1', placeholder="Adviser's name", required='')
+									input.form-control(type='text', name='adviser2', placeholder="Adviser's name", required='')
+							.row.form-group
+								.col-md-12
+									label(for='subject') 1 Sentence Description
+									input.form-control(type='text', name='sentence', placeholder='Thesis introduction', required='')
+							.row.form-group
+								.col-md-12
+									label(for='message') Short Description
+									textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis', required='')
+							.row.form-group
+								.col-md-12
+									label(for='subject') Links
+									input.form-control(type='text', name='image', placeholder='Thesis image link')
+									input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link')
+							.form-group
+
+								input.btn.btn-primary(type='submit', value='Submit')
