@@ -11,6 +11,7 @@ var formattedDate;
 var mongoose = require('mongoose');
 var index = require('./routes/index');
 var collection = require('./routes/collection');
+var auth = require('./routes/auth');
 
 //var MongoClient = require('mongodb').MongoClient;
 //var ObjectId = require('mongodb').ObjectId;
@@ -49,6 +50,7 @@ db.connect(mdbUrl, function(err) {
 
 		app.use('/', index);
 		app.use('/collection', collection);
+		app.use('/auth', auth);
 		// catch 404 and forward to error handler
 		app.use(function (req, res, next) {
 			var err = new Error('Not Found');
