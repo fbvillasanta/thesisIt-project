@@ -8,20 +8,20 @@ var bodyParser = require('body-parser');
 var datetime = require('node-datetime');
 var dt;
 var formattedDate;
-
+var mongoose = require('mongoose');
 var index = require('./routes/index');
 var collection = require('./routes/collection');
 
-var MongoClient = require('mongodb').MongoClient;
-var ObjectId = require('mongodb').ObjectId;
+//var MongoClient = require('mongodb').MongoClient;
+//var ObjectId = require('mongodb').ObjectId;
 
 var app = express();
 var db = require('./db');
 //var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
-var mdbUrl = "mongodb://admin:password@ds163758.mlab.com:63758/coen3463-m3t5";
+var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
 db.connect(mdbUrl, function(err) {
 	if (err) {
-		console.log('Unable to connect to Mongo');
+		console.log('Unable to connect to mongoose');
 		process.exit(1);
 	}
 	else {
