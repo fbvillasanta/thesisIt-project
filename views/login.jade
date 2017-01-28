@@ -31,6 +31,19 @@ html
 					strong Warning! 
 					for error in errors
 						| #{error.msg}. 
+			if(success_msg != "")
+				.alert.alert-success.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+					strong Success! 
+						| #{success_msg}. 
+			if(error_msg != "")
+				.alert.alert-success.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+					strong Success! 
+						| #{error_msg}. 
+
 			.tab-content
 				#login
 					h1 Welcome Back!
@@ -53,7 +66,7 @@ html
 						.field-wrap
 							label Username
 								span.req * (atleast 8 alpha characters long)
-							input(type='text' name='username' required value=(data ? '#{data.username}' : ''))
+							input(type='text' name='username' required autocomplete='off' value=(data ? '#{data.username}' : ''))
 						.top-row
 							.field-wrap
 								label First Name

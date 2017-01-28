@@ -3,6 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+var User = require('../models/user');
+
 router.get('/', function(req, res, next){
 	res.render('login', {title: 'Login'})
 });
@@ -48,8 +50,37 @@ router.post('/', function(req, res, next){
 			});
 			console.log(errors);
 		} else {
-			res.render('login', {title: 'Login'});
-			console.log('OK');
+			var newUser = new User({
+				username: username,
+				firstname: fname,
+				lastname: lname,
+				email: email,
+				password: password1
+			});
+
+			User.addUser(newUser, function(err, user){
+				if (err) {
+					res.render('login', {
+						title: 'Login',
+						errors: err,
+						data: {
+							username: username,
+							fname: fname,
+							lname: lname,
+							email: email
+						}
+					});
+					console.log(err);
+					console.log(user);
+				} else {
+					req.flash('success_msg', 'You are now registered. Log-in to continue.');
+
+					res.redirect('/auth');
+					console.log('OK');
+				}
+				
+			});
+
 		}
 	} else if(req.body.submit == "login"){
 		res.render('login', {title: 'Login'});
