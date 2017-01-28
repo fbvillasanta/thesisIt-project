@@ -4,6 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var mongo = require('mongodb');
+
 
 var datetime = require('node-datetime');
 var dt;
@@ -12,15 +19,21 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var collection = require('./routes/collection');
 
+var auth = require('./routes/auth');
+
+
 //var MongoClient = require('mongodb').MongoClient;
 //var ObjectId = require('mongodb').ObjectId;
 
 var app = express();
 
+
 //var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
 var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
 
 var db = require('./db'); //mongoose is in db.js
+
+//var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
 db.connect(mdbUrl, function(err) {
 	if (err) {
 		console.log('Unable to connect to mongoose');
@@ -49,8 +62,56 @@ db.connect(mdbUrl, function(err) {
 		app.use(express.static(path.join(__dirname, 'public')));
 
 
+
 		app.use('/', index);
 		app.use('/collection', collection);
+
+		// Express Session
+		app.use(session({
+		    secret: 'secret',
+		    saveUninitialized: true,
+		    resave: true
+		}));
+
+		// Passport init
+		app.use(passport.initialize());
+		app.use(passport.session());
+
+		// Express Validator
+		app.use(expressValidator({
+		  errorFormatter: function(param, msg, value) {
+		      var namespace = param.split('.')
+		      , root    = namespace.shift()
+		      , formParam = root;
+
+		    while(namespace.length) {
+		      formParam += '[' + namespace.shift() + ']';
+		    }
+		    return {
+		      param : formParam,
+		      msg   : msg,
+		      value : value
+		    };
+		  }
+		}));
+
+		// Connect Flash
+		app.use(flash());
+
+		// Global Vars
+		app.use(function (req, res, next) {
+		  res.locals.success_msg = req.flash('success_msg');
+		  res.locals.error_msg = req.flash('error_msg');
+		  res.locals.error = req.flash('error');
+		  res.locals.user = req.user || null;
+		  next();
+		});
+
+
+		app.use('/', index);
+		app.use('/collection', collection);
+		app.use('/auth', auth);
+
 		// catch 404 and forward to error handler
 		app.use(function (req, res, next) {
 			var err = new Error('Not Found');

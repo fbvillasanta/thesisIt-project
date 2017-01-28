@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e440d10a-56c4-49a9-a87b-2c9bd1da9360" name="Default" comment="" />
     <ignored path="coen3463-m3t5-master.iws" />
+=======
+    <list default="true" id="0b3a363b-2805-4153-96ea-e004f98d1aeb" name="Default" comment="" />
+    <ignored path="coen3463-m4t5.iws" />
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,6 +25,19 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <favorites_list name="coen3463-m4t5" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="collection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/collection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="3978">
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <favorites_list name="coen3463-m3t5-master" />
   </component>
   <component name="FileEditorManager">
@@ -35,6 +53,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -42,6 +64,15 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -52,6 +83,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1343">
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -59,26 +94,63 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/users.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       <file leaf-file-name="collection.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/collection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.6451613" vertical-offset="2518" max-vertical-offset="2890">
               <caret line="134" column="18" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="thesis-seeder.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seed/thesis-seeder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="13634">
+              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       <file leaf-file-name="DHTML.js" pinned="false" current-in-tab="false">
         <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="19564" max-vertical-offset="81617">
               <caret line="1158" column="17" selection-start-line="1158" selection-start-column="17" selection-end-line="1158" selection-end-column="17" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="add.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/add.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="30.36" vertical-offset="759" max-vertical-offset="1156">
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       <file leaf-file-name="error.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/error.jade">
           <provider selected="true" editor-type-id="text-editor">
@@ -89,6 +161,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -99,12 +175,23 @@
         <entry file="file://$PROJECT_DIR$/views/collection.jade">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
             <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="918">
               <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
 =======
             <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="918">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <folding />
             </state>
           </provider>
@@ -114,6 +201,26 @@
       <file leaf-file-name="details.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/details.jade">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+=======
+            <state vertical-scroll-proportion="37.64" vertical-offset="941" max-vertical-offset="1326">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="933" max-vertical-offset="1343">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="details.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/details.jade">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
             <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1343">
               <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
 =======
@@ -123,12 +230,26 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2822">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <folding />
             </state>
           </provider>
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="db.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.4097561" vertical-offset="168" max-vertical-offset="578">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       <file leaf-file-name="edit.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/edit.jade">
           <provider selected="true" editor-type-id="text-editor">
@@ -141,16 +262,34 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1683">
               <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="edit.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/edit.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       <file leaf-file-name="add.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/add.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1037">
               <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <folding />
             </state>
           </provider>
@@ -161,6 +300,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/models/thesis.js" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
         <option value="$PROJECT_DIR$/app.js" />
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/views/edit.jade" />
@@ -168,6 +314,10 @@
         <option value="$PROJECT_DIR$/routes/collection.js" />
 =======
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
       </list>
     </option>
   </component>
@@ -177,8 +327,18 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
+<<<<<<< HEAD
     <option name="width" value="1040" />
     <option name="height" value="744" />
+=======
+<<<<<<< HEAD
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
+=======
+    <option name="width" value="1040" />
+    <option name="height" value="744" />
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -207,27 +367,63 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="coen3463-m3t5-master" />
+=======
+<<<<<<< HEAD
+              <option name="myItemId" value="coen3463-m4t5" />
+=======
+              <option name="myItemId" value="coen3463-m3t5-master" />
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemId" value="coen3463-m3t5-master" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="coen3463-m3t5-master" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemId" value="coen3463-m3t5-master" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="coen3463-m3t5-master" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -237,11 +433,39 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="seed" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemId" value="coen3463-m3t5-master" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="coen3463-m3t5-master" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -249,6 +473,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coen3463-m4t5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -259,6 +531,31 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\TEST\Documents\ExpressProjects\coen3463-m4t5" />
+      <recent name="C:\Users\TEST\Documents\ExpressProjects\coen3463-m4t5\public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b3a363b-2805-4153-96ea-e004f98d1aeb" name="Default" comment="" />
+      <created>1485475817948</created>
+      <option name="number" value="Default" />
+      <updated>1485475817948</updated>
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -349,10 +646,40 @@
       <created>1484525528728</created>
       <option name="number" value="Default" />
       <updated>1484525528728</updated>
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
@@ -388,6 +715,10 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -412,6 +743,14 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="411">
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
@@ -447,11 +786,24 @@
     <entry file="file://$PROJECT_DIR$/views/error.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="493">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/views/collection.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="918">
@@ -464,26 +816,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1343">
           <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/edit.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
+=======
+    <entry file="file://$PROJECT_DIR$/views/edit.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/models/thesis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/views/add.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1037">
           <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="397">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/db.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
@@ -497,45 +890,100 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1343">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/collection.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3978">
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/collection.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="411">
+=======
+    <entry file="file://$PROJECT_DIR$/views/collection.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/details.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="410">
+=======
+    <entry file="file://$PROJECT_DIR$/views/details.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/seed/thesis-seeder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13634">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
 =======
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1683">
           <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/add.jade">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="30.36" vertical-offset="759" max-vertical-offset="1156">
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
         <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1037">
           <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
           <folding />
@@ -546,19 +994,43 @@
     <entry file="file://$PROJECT_DIR$/db.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1343">
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/views/collection.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+=======
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1343">
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/views/edit.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/routes/collection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
@@ -570,6 +1042,10 @@
     <entry file="file://$PROJECT_DIR$/views/collection.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -577,6 +1053,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/details.jade">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="37.64" vertical-offset="941" max-vertical-offset="1326">
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -602,6 +1084,10 @@
     <entry file="file://$PROJECT_DIR$/db.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -609,12 +1095,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1343">
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+=======
+        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1343">
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.4097561" vertical-offset="168" max-vertical-offset="578">
+=======
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/routes/collection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
@@ -822,12 +1324,21 @@
 =======
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2822">
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     <entry file="file://$PROJECT_DIR$/routes/collection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.6451613" vertical-offset="2518" max-vertical-offset="2890">
@@ -838,5 +1349,9 @@
     </entry>
 =======
 >>>>>>> 383c6eee8b41f2cd6ffe378d64c791c948e02ad4
+<<<<<<< HEAD
+=======
+>>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
   </component>
 </project>
