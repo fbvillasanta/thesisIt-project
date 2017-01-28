@@ -1,11 +1,14 @@
 {
-  "name": "coen3463-m4t5",
+
+  "name": "coen3463-m3t5",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
+
+    "body-parser": "~1.15.2",
     "bcryptjs": "^2.4.0",
     "body-parser": "~1.15.2",
     "connect-flash": "^0.1.1",
@@ -13,6 +16,12 @@
     "datejs": "^1.0.0-rc3",
     "debug": "~2.2.0",
     "express": "^4.14.0",
+    "jade": "~1.11.0",
+    "method-override": "^2.3.7",
+    "mongodb": "^2.2.20",
+    "mongoose": "^4.7.8",
+    "morgan": "~1.7.0",
+    "node-datetime": "^1.0.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.0",
     "express-validator": "^3.1.2",

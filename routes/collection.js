@@ -118,11 +118,70 @@ router.get('/:thesisId', function(req, res, next){
     var thesisId = req.params.thesisId;
     var collection = Thesis.find();
     collection.findOne({ _id:ObjectId(thesisId) }, function(err, entry) {
-        res.render('details', {
-            title: 'Collection',
-            entry: entry
-        });
+        var imageurl = entry.image;
+        if(imageurl == "" || imageurl == "undefined" || imageurl == null){
+            imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
+            entry.image = imageurl;
+        }
+        var member3 = entry.members[2];
+        if(member3 == "" || member3 == "undefined" ||member3 == null){
+            member3 = "";
+            entry.members[2] = member3
+        }
+        var member4 = entry.members[3];
+        if(member4 == "" || member4 == "undefined" ||member4 == null){
+            member4 = "";
+            entry.members[3] = member4
+        }
+        var member5 = entry.members[4];
+        if(member5 == "" || member5 == "undefined" ||member5== null){
+            member5 = "";
+            entry.members[4] = member5
+        }
+        var subtitle = entry.subtitle;
+        if(subtitle == "" || subtitle == "undefined" || subtitle == null){
+            subtitle = "";
+            entry.subtitle = subtitle;
+        }
+        var youtube = entry.youtube;
+        if(youtube == "" || youtube == "undefined" || youtube == null){
+            youtube = "";
+            entry.youtube = youtube
+        }
+        var item = {
+            thesis:         entry.thesis,
+            subtitle:       entry.subtitle,
+            members:            [
+                entry.members[0],
+                entry.members[1],
+                entry.members[2],
+                entry.members[3],
+                entry.members[4]
+            ],
+            advisers:       [
+                entry.advisers[0],
+                entry.advisers[1]
+            ],
+            sentence:       entry.sentence,
+            description:    entry.description,
+            image:              entry.image,
+            youtube:            entry.youtube
+        };
+        if (err) {
+            res.send("There's a value of undefined" + err);
+        }
+        else {
+            collection.findOneAndUpdate(item, function (err, entry) {
+
+                res.render('details', {
+                    title: 'Collection',
+                    entry: entry
+                });
+            });
+        }
     });
+
+
 });
 
 router.get('/:thesisId/edit', function(req, res, next){

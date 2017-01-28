@@ -11,21 +11,29 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 
+
 var datetime = require('node-datetime');
 var dt;
 var formattedDate;
 var mongoose = require('mongoose');
 var index = require('./routes/index');
 var collection = require('./routes/collection');
+
 var auth = require('./routes/auth');
+
 
 //var MongoClient = require('mongodb').MongoClient;
 //var ObjectId = require('mongodb').ObjectId;
 
 var app = express();
-var db = require('./db');
+
+
 //var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
 var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
+
+var db = require('./db'); //mongoose is in db.js
+
+//var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
 db.connect(mdbUrl, function(err) {
 	if (err) {
 		console.log('Unable to connect to mongoose');
@@ -52,6 +60,11 @@ db.connect(mdbUrl, function(err) {
 		app.use(bodyParser.urlencoded({extended: false}));
 		app.use(cookieParser());
 		app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+		app.use('/', index);
+		app.use('/collection', collection);
 
 		// Express Session
 		app.use(session({

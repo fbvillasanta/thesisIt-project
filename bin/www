@@ -5,7 +5,9 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('coen3463-m4t5:server');
+
+var debug = require('debug')('coen3463-m3t5:server');
+
 var http = require('http');
 
 /**

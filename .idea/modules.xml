@@ -3,10 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
 <<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/coen3463-m3t5-master.iml" filepath="$PROJECT_DIR$/.idea/coen3463-m3t5-master.iml" />
+=======
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/coen3463-m4t5.iml" filepath="$PROJECT_DIR$/.idea/coen3463-m4t5.iml" />
 =======
       <module fileurl="file://$PROJECT_DIR$/.idea/coen3463-m3t5-master.iml" filepath="$PROJECT_DIR$/.idea/coen3463-m3t5-master.iml" />
 >>>>>>> a1350a87713d5fc28ebc161d19719120f10b2878
+>>>>>>> 9085901e776eff8a7d8a529a69717fc636b6145b
     </modules>
   </component>
 </project>
