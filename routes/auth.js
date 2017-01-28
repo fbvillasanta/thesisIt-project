@@ -82,13 +82,29 @@ router.post('/', function(req, res, next){
 			});
 
 		}
-	} else if(req.body.submit == "login"){
-		res.render('login', {title: 'Login'});
-		console.log("Log In");
 	} else {
-		res.render('login', {title: 'Login'});
+		res.redirect('/auth');
 	}
 	
 });
+
+// passport.use(new LocalStrategy(
+// 	function(username, password, done){
+// 		User.findOne({username:username}, function(err, user){
+// 			if (err) { return done(err)}
+// 			if (!user) {
+// 				return done(null, false, { messsage : 'Unknown username.'});
+// 			}
+// 			if (!user.validPassword(password){
+// 				return done(null, false, { nessage: 'Incorrect password.'});
+// 			return done(null, user);
+
+// 			})
+// 		});
+// 	}));
+
+// router.post('auth/login', passport.authenticate('local', {successRedirect:'/', failurRedirect:'/auth'}, failureFlash:true), function(req, res){
+// 	res.redirect('/');
+// });
 
 module.exports = router;
