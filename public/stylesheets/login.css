@@ -86,7 +86,7 @@ label {
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
-  font-size: 22px;
+  
 }
 label .req {
   margin: 2px;
@@ -177,4 +177,10 @@ textarea {
 .forgot {
   margin-top: -20px;
   text-align: right;
+}
+
+@media screen and (max-width: 470px) {
+  label {
+    font-size: 12px !important;
+  }
 }

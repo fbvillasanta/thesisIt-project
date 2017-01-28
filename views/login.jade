@@ -8,7 +8,7 @@ html
 		link(rel='icon' type='image/png' sizes='32x32' href='/images/thesisit.ico')
 		
 		link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700', rel='stylesheet', type='text/css')
-		
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
 		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
 		link(rel='stylesheet', href='/stylesheets/login.css')
 		// Theme style
@@ -20,39 +20,21 @@ html
 		.form
 			ul.tab-group
 				li.tab.active
-					a(href='#signup') Sign Up
-				li.tab
 					a(href='#login') Log In
+				li.tab
+					a(href='#signup') Sign Up
 
+			if(errors)
+				.alert.alert-danger.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+					strong Warning! 
+					for error in errors
+						| #{error.msg}. 
 			.tab-content
-				#signup
-					h1 Sign Up for Free
-					form(action='#' method='post')
-						.top-row
-							.field-wrap
-								label First Name
-									span.req *
-								input(type='text' required autocomplete='off')
-							.field-wrap
-								label Last Name
-									span.req *
-								input(type='text' required autocomplete='off')
-						.field-wrap
-							label Email Adress
-								span.req *
-							input(type='email' required autocomplete='off')
-						.field-wrap
-							label Set a Password
-								span.req *
-							input(type='password' required autocomplete='off')
-						.field-wrap
-							label Retype your Password
-								span.req *
-							input(type='password' required autocomplete='off')
-						button.button.button-block(type='submit') Get Started
 				#login
 					h1 Welcome Back!
-					form(action='#' method='post')
+					form(action='auth' method='post')
 						.field-wrap
 							label Email Address
 								span.req *
@@ -63,9 +45,41 @@ html
 							input(type='password' required autocomplete='off')
 						p.forgot
 							a(href='#') Forgot Password?
-						button.button.button-block Log In
+						button.button.button-block(type='submit' value='login' name='submit') Log In
+
+				#signup
+					h1 Sign Up for Free
+					form(action='auth' method='post')
+						.field-wrap
+							label Username
+								span.req * (atleast 8 alpha characters long)
+							input(type='text' name='username' required value=(data ? '#{data.username}' : ''))
+						.top-row
+							.field-wrap
+								label First Name
+									span.req *
+								input(type='text' name='fname' required autocomplete='off' value=(data ? '#{data.fname}' : ''))
+							.field-wrap
+								label Last Name
+									span.req *
+								input(type='text' name='lname' required autocomplete='off' value=(data ? '#{data.lname}' : ''))
+						.field-wrap
+							label Email Adress
+								span.req *
+							input(type='text' name='email' required autocomplete='off' value=(data ? '#{data.email}' : ''))
+						.field-wrap
+							label Set a Password
+								span.req *
+							input(type='password' name='password1' required autocomplete='off')
+						.field-wrap
+							label Retype your Password
+								span.req *
+							input(type='password' name='password2' required autocomplete='off')
+						button.button.button-block(name='submit' type='submit' value='signup') Get Started
 
 		// jQuery
 		script(src='/javascripts/jquery.min.js')
+		// Bootstrap
+		script(src='/javascripts/bootstrap.min.js')
 		// Login
 		script(src='/javascripts/login.js')
