@@ -47,22 +47,22 @@ html
 			.tab-content
 				#login
 					h1 Welcome Back!
-					form(action='auth' method='post')
+					form(action='auth/login' method='post')
 						.field-wrap
-							label Email Address
+							label Username
 								span.req *
-							input(type='email' required autocomplete='off')
+							input(type='text' name='username' required autocomplete='off')
 						.field-wrap
 							label Password
 								span.req *
-							input(type='password' required autocomplete='off')
+							input(type='password' name='password' required autocomplete='off')
 						p.forgot
 							a(href='#') Forgot Password?
 						button.button.button-block(type='submit' value='login' name='submit') Log In
 
 				#signup
 					h1 Sign Up for Free
-					form(action='auth/login' method='post')
+					form(action='auth' method='post')
 						.field-wrap
 							label Username
 								span.req * (atleast 8 alpha characters long)

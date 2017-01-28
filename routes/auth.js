@@ -88,23 +88,37 @@ router.post('/', function(req, res, next){
 	
 });
 
-// passport.use(new LocalStrategy(
-// 	function(username, password, done){
-// 		User.findOne({username:username}, function(err, user){
-// 			if (err) { return done(err)}
-// 			if (!user) {
-// 				return done(null, false, { messsage : 'Unknown username.'});
-// 			}
-// 			if (!user.validPassword(password){
-// 				return done(null, false, { nessage: 'Incorrect password.'});
-// 			return done(null, user);
+passport.use(new LocalStrategy(
+	function(username, password, done){
+		User.findOne({username:username}, function(err, user){
+			if (err) { return done(err) }
+			if (!user) {
+				return done(null, false, { messsage : 'Unknown username.'});
+			}
+			User.comparePassword(password, user.password, function(err, isMatch){
+				if(err) { return done(err) }
+				if(isMatch){
+					return done(null, user);
+				} else {
+					return done(null, false, { message: 'Incorrect password.'});
+				}
+			});
+		});
+	}));
 
-// 			})
-// 		});
-// 	}));
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
 
-// router.post('auth/login', passport.authenticate('local', {successRedirect:'/', failurRedirect:'/auth'}, failureFlash:true), function(req, res){
-// 	res.redirect('/');
-// });
+passport.deserializeUser(function(id, done) {
+  User.getUserById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+router.post('/login', passport.authenticate('local', {successRedirect:'/', failureRedirect:'/auth', failureFlash:true}),
+	function(req, res){
+	res.redirect('/');
+});
 
 module.exports = router;
