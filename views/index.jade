@@ -1,0 +1,44 @@
+extends layout
+
+block content
+			header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(images/img_bg_1.jpg);')
+				.overlay
+				.container
+					.row
+						.col-md-12.col-md-offset-0.text-center
+							.display-t
+								.display-tc.animate-box(data-animate-effect='fadeInUp')
+									h1.mb30 Hell_ World.
+									br
+									h4(style='color:whitesmoke;font-weight:200')
+										| " Research is formalized curiosity. It is poking and prying with a purpose. "
+									h3(style='color:whitesmoke;font-weight:200')
+										i - Zora Neale Hurston
+			#fh5co-services.fh5co-bg-section
+				.container
+					.row
+						.col-md-8.col-md-offset-2.text-center.animate-box(data-animate-effect='fadeInUp')
+							.fh5co-heading
+								span We're expert
+								h2 What We Do
+								p
+									| Research invented the Internet. Much like anything else you can think of. This is basically a collection of researches that may change the world someday. 
+								p
+									| We believe in innovation. We believe in creating new knowledge.
+			#fh5co-project
+				.container
+					.row
+						.col-md-8.col-md-offset-2.text-center.fh5co-heading.animate-box
+							span Want Some Cool Stuff
+							h2 Recent Entries
+							p
+								| Check out the most recent additions to our collection.
+					.row
+						for entry in entries
+							.col-md-4.col-sm-4.animate-box(data-animate-effect='fadeInUp')
+								.fh5co-post
+									span.fh5co-date #{entry.added}
+									h3
+										a(href='/collection/'+ entry._id) #{entry.thesis}
+									p
+										| #{entry.sentence}
