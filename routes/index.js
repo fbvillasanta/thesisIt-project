@@ -15,7 +15,8 @@ router.get('/', function(req, res, next) {
 		.sort({_id: -1})
 		.limit(3).exec(function(e, entry){
 		  console.log(entry);
-		  res.render('index', { title: 'Home', entries: entry});
+		  res.render('index', { title: 'Home', entries: entry,
+		  						user: req.user});
 	});
 });
 

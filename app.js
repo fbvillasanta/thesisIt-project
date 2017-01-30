@@ -18,7 +18,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var collection = require('./routes/admin');
 var auth = require('./routes/auth');
-
+var forgot = require('./routes/forgot');
 
 //var MongoClient = require('mongodb').MongoClient;
 //var ObjectId = require('mongodb').ObjectId;
@@ -98,7 +98,7 @@ db.connect(mdbUrl, function(err) {
 		  res.locals.user = req.user || null;
 		  next();
 		});
-
+		app.use('/forgot',forgot);
 		app.use('/auth', auth);
 		app.use(function(req, res, next){
 			if(req.isAuthenticated()){

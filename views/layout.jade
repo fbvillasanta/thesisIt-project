@@ -43,6 +43,8 @@ html
 								a(href='/')
 									| Thesis It
 									span .
+							#name
+								| Hi #{user.username}!
 						.col-xs-12.text-center.menu-1
 							ul
 								li(class=(title === "Home" ? 'active' : ''))
@@ -53,6 +55,8 @@ html
 									a(href='/collection/new') Add Entry
 								li
 									a(href='/auth/logout') Log Out
+
+
 			block content
 
 		block footer
