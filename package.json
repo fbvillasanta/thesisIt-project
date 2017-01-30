@@ -15,6 +15,7 @@
     "datejs": "^1.0.0-rc3",
     "debug": "~2.2.0",
     "express": "^4.14.0",
+    "express-flash": "0.0.2",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.0",
     "express-validator": "^3.1.2",
@@ -24,6 +25,7 @@
     "mongoose": "^4.7.8",
     "morgan": "~1.7.0",
     "node-datetime": "^1.0.0",
+    "nodemailer": "^2.7.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0"
