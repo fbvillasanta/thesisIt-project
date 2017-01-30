@@ -53,8 +53,14 @@ html
 									a(href='/collection') Collection
 								li(class=(title === "Join" ? 'active' : ''))
 									a(href='/collection/new') Add Entry
-								li
-									a(href='/auth/logout') Log Out
+								li.has-dropdown
+									a(href='#') Account
+									ul.dropdown
+										if user.type === "admin"
+											li
+												a(href='/admin') Admin Dashboard
+										li
+											a(href='/auth/logout') Log Out
 
 
 			block content

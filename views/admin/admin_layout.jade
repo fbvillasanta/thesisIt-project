@@ -72,18 +72,20 @@ html
                   // The user image in the navbar
                   img.user-image(src='http://static.tumblr.com/0hxowcx/TKtm8i1j5/iron_man_face_avatar_01.gif', alt='User Image')
                   // hidden-xs hides the username on small devices so only the image appears.
-                  span.hidden-xs Tony Stark
+                  span.hidden-xs #{user.firstname} #{user.lastname}
                 ul.dropdown-menu
                   // The user image in the menu
                   li.user-header
                     img.img-circle(src='http://static.tumblr.com/0hxowcx/TKtm8i1j5/iron_man_face_avatar_01.gif', alt='User Image')
                     p
-                      | Tony Stark - Engineer | Billionaire
-                      small @iamironman
+                      | #{user.firstname} #{user.lastname} - Engineer | Billionaire
+                      small @#{user.username}
                   // Menu Footer
                   li.user-footer
+                    .pull-left
+                      a.btn.btn-primary.btn-flat(href='/') Return to Website
                     .pull-right
-                      a.btn.btn-danger.btn-flat(href='#') Sign out
+                      a.btn.btn-danger.btn-flat(href='/auth/logout') Sign out
               // Control Sidebar Toggle Button
               li
                 a(href='#', data-toggle='control-sidebar')
@@ -96,11 +98,11 @@ html
             li.header MENU
             // Optionally, you can add icons to the links
             li(class=(title === "Users" ? 'active' : ''))
-              a(href='#')
+              a(href='/admin')
                 i.fa.fa-user
                 span Users
             li(class=(title === "Collection" ? 'active' : ''))
-              a(href='#')
+              a(href='/admin/collections')
                 i.fa.fa-cubes
                 span Collection
             li.treeview(class=(title === "Add" || title==="Edit" || title==="Delete" ? 'active' : ''))
@@ -111,11 +113,11 @@ html
                   i.fa.fa-angle-left.pull-right
               ul.treeview-menu
                 li(class=(title === "Add" ? 'active' : ''))
-                  a(href='#') Add
+                  a(href='/admin/add') Add
                 li(class=(title === "Edit" ? 'active' : ''))
-                  a(href='#') Edit
+                  a(href='/admin/edit') Edit
                 li(class=(title === "Delete" ? 'active' : ''))
-                  a(href='#') Delete
+                  a(href='/admin/delete') Delete
           // /.sidebar-menu
         // /.sidebar
       // Content Wrapper. Contains page content
@@ -147,7 +149,7 @@ html
           // Default to the left
           strong
             | Copyright © 2017 
-            a(href='#') Thesis It v2.0
+            a(href='/') Thesis It v2.0
             | .
           |  All rights reserved.
         // Control Sidebar

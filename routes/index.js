@@ -26,38 +26,38 @@ router.get('/admin', function(req, res, next){
 	});
 });
 
-router.get('/collections', function(req, res, next){
+router.get('/admin/collections', function(req, res, next){
 	Thesis.find().sort({_id: -1}).exec(function(e, entry){
 		res.render('admin/admin_users', {title: 'Collection', entries: entry});
 	});
 });
 
-router.get('/add', function(req, res, next){
+router.get('/admin/add', function(req, res, next){
 	Request.find({type: 'add'}).sort({_id: -1}).exec(function(e, entry){
 		res.render('admin/admin_users', {title: 'Add', entries: entry});
 	});
 });
 
-router.get('/edit', function(req, res, next){
+router.get('/admin/edit', function(req, res, next){
 	Request.find({type: 'edit'}).sort({_id: -1}).exec(function(e, entry){
 		res.render('admin/admin_users', {title: 'Edit', entries: entry});
 	});
 });
 
-router.get('/delete', function(req, res, next){
+router.get('/admin/delete', function(req, res, next){
 	Request.find({type: 'delete'}).sort({_id: -1}).exec(function(e, entry){
 		res.render('admin/admin_users', {title: 'Delete', entries: entry});
 	});
 });
 
-router.post('/add/:itemid', function(req, res, next){
+router.post('/admin/add/:itemid', function(req, res, next){
 	var action = req.body.btn;
 	var itemid = req.params.itemid;
 	if(action=="accept"){
 		Request.find(itemid, function(e, entry){
 			if(e){
 				req.flash('error_msg', 'Could not find add request.');
-				res.redirect('/add');
+				res.redirect('/admin/add');
 			} else {
 				var data = {
 					_id : itemid,
@@ -79,10 +79,10 @@ router.post('/add/:itemid', function(req, res, next){
 		});
 		Request.findOneAndRemove({'_id': itemid}, function(e, entry){
 			if(e){
-				res.redirect('/add');
+				res.redirect('/admin/add');
 			} else {
 				console.log('Add request deleted');
-				res.redirect('/add');
+				res.redirect('/admin/add');
 			}
 		});
 	} else if(action=="decline"){
@@ -90,19 +90,19 @@ router.post('/add/:itemid', function(req, res, next){
 			if(e){
 				req.flash('error_msg', 'Request deletion failed.');
 				console.log('request not deleted')
-				res.redirect('/add');
+				res.redirect('/admin/add');
 			} else {
 				req.flash('success_msg', 'Request deleted successfully.');
 				console.log('success');
-				res.redirect('/add');
+				res.redirect('/admin/add');
 			}
 		});
 	} else {
-		res.redirect('/add');
+		res.redirect('/admin/add');
 	}
 });
 
-router.post('/delete/:itemid', function(req, res, next){
+router.post('/admin/delete/:itemid', function(req, res, next){
 	var action = req.body.btn;
 	var itemid = req.params.itemid;
 	var thesisid = req.body.thesisid;
@@ -110,7 +110,7 @@ router.post('/delete/:itemid', function(req, res, next){
 		Request.find(itemid, function(e, entry){
 			if(e){
 				req.flash('error_msg', 'Could not find delete request.');
-				res.redirect('/delete');
+				res.redirect('/admin/delete');
 			}
 		});
 		console.log('Request deleted');
@@ -118,11 +118,11 @@ router.post('/delete/:itemid', function(req, res, next){
 		Thesis.findOneAndRemove({'_id': thesisid}, function(e, entry){
 			if(e){
 				req.flash('error_msg', 'Thesis entry delete failed.');
-				res.redirect('/delete');
+				res.redirect('/admin/delete');
 			} else {
 				console.log('Thesis entry deleted');
 				req.flash('success_msg', 'Thesis entry successfully deleted.');
-				res.redirect('/delete');
+				res.redirect('/admin/delete');
 			}
 		})
 	} else if(action=="decline"){
@@ -130,15 +130,15 @@ router.post('/delete/:itemid', function(req, res, next){
 			if(e){
 				req.flash('error_msg', 'Request delete failed.');
 				console.log('request not deleted')
-				res.redirect('/delete');
+				res.redirect('/admin/delete');
 			} else {
 				req.flash('success_msg', 'Request deleted successfully.');
 				console.log('success');
-				res.redirect('/delete');
+				res.redirect('/admin/delete');
 			}
 		});
 	} else {
-		res.redirect('/delete');
+		res.redirect('/admin/delete');
 	}
 });
 
