@@ -21,33 +21,53 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/admin', function(req, res, next){
-	User.find({type: 'user'}).sort({_id: -1}).exec(function(e, entry){
-		res.render('admin/admin_users', {title: 'Users', entries: entry});
-	});
+	if(req.user.type == 'admin'){
+		User.find({type: 'user'}).sort({_id: -1}).exec(function(e, entry){
+			res.render('admin/admin_users', {title: 'Users', entries: entry});
+		});
+	} else {
+		res.redirect('/');
+	}
 });
 
 router.get('/admin/collections', function(req, res, next){
-	Thesis.find().sort({_id: -1}).exec(function(e, entry){
-		res.render('admin/admin_users', {title: 'Collection', entries: entry});
-	});
+	if(req.user.type == 'admin'){
+		Thesis.find().sort({_id: -1}).exec(function(e, entry){
+			res.render('admin/admin_users', {title: 'Collection', entries: entry});
+		});
+	} else {
+		res.redirect('/');
+	}
 });
 
 router.get('/admin/add', function(req, res, next){
-	Request.find({type: 'add'}).sort({_id: -1}).exec(function(e, entry){
-		res.render('admin/admin_users', {title: 'Add', entries: entry});
-	});
+	if(req.user.type == 'admin'){
+		Request.find({type: 'add'}).sort({_id: -1}).exec(function(e, entry){
+			res.render('admin/admin_users', {title: 'Add', entries: entry});
+		});
+	} else {
+		res.redirect('/');
+	}
 });
 
 router.get('/admin/edit', function(req, res, next){
-	Request.find({type: 'edit'}).sort({_id: -1}).exec(function(e, entry){
-		res.render('admin/admin_users', {title: 'Edit', entries: entry});
-	});
+	if(req.user.type == 'admin'){
+		Request.find({type: 'edit'}).sort({_id: -1}).exec(function(e, entry){
+			res.render('admin/admin_users', {title: 'Edit', entries: entry});
+		});
+	} else {
+		res.redirect('/');
+	}
 });
 
 router.get('/admin/delete', function(req, res, next){
-	Request.find({type: 'delete'}).sort({_id: -1}).exec(function(e, entry){
-		res.render('admin/admin_users', {title: 'Delete', entries: entry});
-	});
+	if(req.user.type == 'admin'){
+		Request.find({type: 'delete'}).sort({_id: -1}).exec(function(e, entry){
+			res.render('admin/admin_users', {title: 'Delete', entries: entry});
+		});
+	} else {
+		res.redirect('/');
+	}
 });
 
 router.post('/admin/add/:itemid', function(req, res, next){
