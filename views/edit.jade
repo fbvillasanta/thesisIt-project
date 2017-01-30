@@ -1,0 +1,52 @@
+extends layout
+block content
+    header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(images/img_bg_1.jpg);')
+        .overlay
+        .container
+            .row
+                .col-md-12.col-md-offset-0.text-center
+                    .display-t
+                        .display-tc.animate-box(data-animate-effect='fadeInUp')
+                            h1.mb30 Making the world a better place
+    #fh5co-contact
+        .container
+            .row
+                .col-md-offset-3.col-md-6.animate-box
+                    h3 Thesis Information
+                    form(action='/collection/' + entry._id, method='post')
+                        .row.form-group
+                            .col-md-12
+                                label(for='subject') Thesis Title
+                                input.form-control(type='text', name='thesis', placeholder='Your thesis title', required='', value='#{entry.thesis}')
+                                input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle', value='#{entry.subtitle}')
+                        .row.form-group
+                            .col-md-12
+                                label(for='subject') Researchers
+                                input.form-control(type='text', name='member1', placeholder='Researcher 1 (First name  Last name)', value='#{entry.members[0]}')
+                                input.form-control(type='text', name='member2', placeholder='Researcher 2 (First name  Last name)', value='#{entry.members[1]}')
+                                input.form-control(type='text', name='member3', placeholder='Researcher 3 (First name  Last name)', value='#{entry.members[2]}')
+                                input.form-control(type='text', name='member4', placeholder='Researcher 4 (First name  Last name)', value='#{entry.members[3]}')
+                                input.form-control(type='text', name='member5', placeholder='Researcher 5 (First name  Last name)', value='#{entry.members[4]}')
+                        .row.form-group
+                            .col-md-12
+                                label(for='subject') Advisers
+                                input.form-control(type='text', name='adviser1', placeholder="Adviser's name", value='#{entry.advisers[0]}')
+                                input.form-control(type='text', name='adviser2', placeholder="Adviser's name", value='#{entry.advisers[1]}')
+                        .row.form-group
+                            .col-md-12
+                                label(for='subject') 1 Sentence Description
+                                input.form-control(type='text', name='sentence', placeholder='Thesis introduction', value='#{entry.sentence}')
+                        .row.form-group
+                            .col-md-12
+                                label(for='message') Short Description
+                                textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis') #{entry.description}
+                        .row.form-group
+                            .col-md-12
+                                label(for='subject') Links
+                                input.form-control(type='text', name='image', placeholder='Thesis image link', value='#{entry.image}')
+                                input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link', value='#{entry.youtube}')
+                        .form-group
+                            p
+                                input(type='hidden',value='PUT',name='_method')
+                            button.btn.btn-primary(type='submit')
+                                | Update

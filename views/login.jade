@@ -1,0 +1,125 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		title Thesis It — #{title}
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(rel='icon' type='image/png' sizes='32x32' href='/images/thesisit.ico')
+		
+		link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700', rel='stylesheet', type='text/css')
+
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
+		link(rel='stylesheet', href='/stylesheets/login.css')
+		// Theme style
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		// FOR IE9 below
+		//if lt IE 9
+			script(src='/javascripts/respond.min.js')
+	body
+		.form
+			ul.tab-group
+				li.tab.testlogin(class=(title === "Login" ? 'is-active' : ''))
+					a(href='/auth/login') Log In
+				li.tab.testsignup(class=(title === "Register" ? 'is-active' : ''))
+					a(href='/auth/register') Sign Up
+
+			if(errors)
+				.alert.alert-danger.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+
+					strong Warning!
+					for error in errors
+						| #{error.msg}. 
+
+			if(success_msg != "")
+				.alert.alert-success.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+					strong Success! 
+						| #{success_msg}
+			if(error_msg != "")
+				.alert.alert-danger.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+					strong Warning! 
+						| #{error_msg}
+			if(error != "")
+				.alert.alert-danger.alert-dismissable(role='alert')
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') x
+					strong Warning! 
+						| #{error.message}
+
+			.tab-content
+				#login
+					h1 Welcome Back!
+					form(method='post')
+						.field-wrap
+							label Username
+								span.req *
+							input(type='text' name='username' required autocomplete='off')
+						.field-wrap
+							label Password
+								span.req *
+							input(type='password' name='password' required autocomplete='off')
+						p.forgot
+							a(href='#') Forgot Password?
+						button.button.button-block(type='submit' value='login' name='submit') Log In
+
+				#signup
+					h1 Sign Up for Free
+					form(action='/auth/register' method='post')
+						.field-wrap
+							label Username
+								span.req * (atleast 8 alpha characters long)
+							input(type='text' name='username' required autocomplete='off' value=(data ? '#{data.username}' : ''))
+
+						.top-row
+							.field-wrap
+								label First Name
+									span.req *
+								input(type='text' name='fname' required autocomplete='off' value=(data ? '#{data.fname}' : ''))
+							.field-wrap
+								label Last Name
+									span.req *
+								input(type='text' name='lname' required autocomplete='off' value=(data ? '#{data.lname}' : ''))
+						.field-wrap
+							label Email Adress
+								span.req *
+							input(type='email' name='email' required autocomplete='off' value=(data ? '#{data.email}' : ''))
+						.field-wrap
+							label Set a Password
+								span.req *
+							input(type='password' name='password' required autocomplete='off')
+						.field-wrap
+							label Retype your Password
+								span.req *
+							input(type='password' name='confirm' required autocomplete='off')
+						button.button.button-block(name='submit' type='submit' value='signup') Get Started
+
+		// jQuery
+		script(src='/javascripts/jquery.min.js')
+		if title === "Login"
+
+			script(type='text/javascript').
+				$('.tab.testlogin').addClass('active');
+				$('.tab.testsignup').removeClass('active');
+			style(type='text/css').
+				.tab-content > #signup {
+					display: none;
+				}
+		if title === "Register"
+
+			script(type='text/javascript').
+				$('.tab.testsignup').addClass('active');
+				$('.tab.testlogin').removeClass('active');
+			style(type='text/css').
+				.tab-content > #login {
+					display: none;
+				}
+		script(src='/javascripts/bootstrap.min.js')
+		// Login
+		script(src='/javascripts/login.js')

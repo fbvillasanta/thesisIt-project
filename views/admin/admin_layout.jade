@@ -1,0 +1,236 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Admin | Thesis It
+    meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+    link(rel='icon' type='image/png' sizes='32x32' href='/images/thesisit.ico')
+    // Bootstrap 3.3.6
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    // Font Awesome
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css')
+    // Ionicons
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
+    // Data Tables
+    link(rel='stylesheet', href='/stylesheets/dataTables/dataTables.bootstrap.css')
+    // Theme style
+    link(rel='stylesheet', href='/stylesheets/AdminLTE.css')
+    
+    link(rel='stylesheet', href='/stylesheets/skins/_all-skins.css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  //
+    BODY TAG OPTIONS:
+    =================
+    Apply one or more of the following classes to get the
+    desired effect
+    |---------------------------------------------------------|
+    | SKINS         | skin-blue                               |
+    |               | skin-black                              |
+    |               | skin-purple                             |
+    |               | skin-yellow                             |
+    |               | skin-red                                |
+    |               | skin-green                              |
+    |---------------------------------------------------------|
+    |LAYOUT OPTIONS | fixed                                   |
+    |               | layout-boxed                            |
+    |               | layout-top-nav                          |
+    |               | sidebar-collapse                        |
+    |               | sidebar-mini                            |
+    |---------------------------------------------------------|
+  body.hold-transition.skin-red-light.sidebar-mini
+    .wrapper
+      // Main Header
+      header.main-header
+        // Logo
+        a.logo(href='/admin')
+          // mini logo for sidebar mini 50x50 pixels
+          span.logo-mini
+            | T
+            b I.
+          // logo for regular state and mobile devices
+          span.logo-lg
+            | Thesis
+            b IT
+            | .
+        // Header Navbar
+        nav.navbar.navbar-static-top(role='navigation')
+          // Sidebar toggle button
+          a.sidebar-toggle(href='#', data-toggle='offcanvas', role='button')
+            span.sr-only Toggle navigation
+          // Navbar Right Menu
+          .navbar-custom-menu
+            ul.nav.navbar-nav
+              // User Account Menu
+              li.dropdown.user.user-menu
+                // Menu Toggle Button
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  // The user image in the navbar
+                  img.user-image(src='http://static.tumblr.com/0hxowcx/TKtm8i1j5/iron_man_face_avatar_01.gif', alt='User Image')
+                  // hidden-xs hides the username on small devices so only the image appears.
+                  span.hidden-xs Tony Stark
+                ul.dropdown-menu
+                  // The user image in the menu
+                  li.user-header
+                    img.img-circle(src='http://static.tumblr.com/0hxowcx/TKtm8i1j5/iron_man_face_avatar_01.gif', alt='User Image')
+                    p
+                      | Tony Stark - Engineer | Billionaire
+                      small @iamironman
+                  // Menu Footer
+                  li.user-footer
+                    .pull-right
+                      a.btn.btn-danger.btn-flat(href='#') Sign out
+              // Control Sidebar Toggle Button
+              li
+                a(href='#', data-toggle='control-sidebar')
+                  i.fa.fa-gears
+      // Left side column. contains the logo and sidebar
+      aside.main-sidebar
+        section.sidebar
+          // Sidebar Menu
+          ul.sidebar-menu
+            li.header MENU
+            // Optionally, you can add icons to the links
+            li(class=(title === "Users" ? 'active' : ''))
+              a(href='#')
+                i.fa.fa-user
+                span Users
+            li(class=(title === "Collection" ? 'active' : ''))
+              a(href='#')
+                i.fa.fa-cubes
+                span Collection
+            li.treeview(class=(title === "Add" || title==="Edit" || title==="Delete" ? 'active' : ''))
+              a(href='#')
+                i.fa.fa-commenting
+                span Requests
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li(class=(title === "Add" ? 'active' : ''))
+                  a(href='#') Add
+                li(class=(title === "Edit" ? 'active' : ''))
+                  a(href='#') Edit
+                li(class=(title === "Delete" ? 'active' : ''))
+                  a(href='#') Delete
+          // /.sidebar-menu
+        // /.sidebar
+      // Content Wrapper. Contains page content
+      .content-wrapper
+        // Content Header (Page header)
+        section.content-header
+          h1
+            | #{title}
+          ol.breadcrumb
+            li
+              a(href='#')
+                i.fa.fa-dashboard
+                |  Dashboard
+            li.active #{title}
+
+        block content
+          // Main content
+          section.content
+            // Your Page Content Here
+          // /.content
+        // /.content-wrapper
+
+      block footer
+        // Main Footer
+        footer.main-footer
+          // To the right
+          .pull-right.hidden-xs
+            | Anything you want
+          // Default to the left
+          strong
+            | Copyright © 2017 
+            a(href='#') Thesis It v2.0
+            | .
+          |  All rights reserved.
+        // Control Sidebar
+        aside.control-sidebar.control-sidebar-dark
+          // Create the tabs
+          ul.nav.nav-tabs.nav-justified.control-sidebar-tabs
+            li.active
+              a(href='#control-sidebar-home-tab', data-toggle='tab')
+                i.fa.fa-home
+            li
+              a(href='#control-sidebar-settings-tab', data-toggle='tab')
+                i.fa.fa-gears
+          // Tab panes
+          .tab-content
+            // Home tab content
+            #control-sidebar-home-tab.tab-pane.active
+              h3.control-sidebar-heading Recent Activity
+              ul.control-sidebar-menu
+                li
+                  a(href='javascript:;')
+                    i.menu-icon.fa.fa-birthday-cake.bg-red
+                    .menu-info
+                      h4.control-sidebar-subheading Langdon's Birthday
+                      p Will be 23 on April 24th
+              // /.control-sidebar-menu
+              h3.control-sidebar-heading Tasks Progress
+              ul.control-sidebar-menu
+                li
+                  a(href='javascript:;')
+                    h4.control-sidebar-subheading
+                      | Custom Template Design
+                      span.pull-right-container
+                        span.label.label-danger.pull-right 70%
+                    .progress.progress-xxs
+                      .progress-bar.progress-bar-danger(style='width: 70%')
+              // /.control-sidebar-menu
+            // /.tab-pane
+            // Stats tab content
+            #control-sidebar-stats-tab.tab-pane Stats Tab Content
+            // /.tab-pane
+            // Settings tab content
+            #control-sidebar-settings-tab.tab-pane
+              form(method='post')
+                h3.control-sidebar-heading General Settings
+                .form-group
+                  label.control-sidebar-subheading
+                    | Report panel usage
+                    input.pull-right(type='checkbox', checked='')
+                  p
+                    | Some information about this general settings option
+                // /.form-group
+            // /.tab-pane
+        // /.control-sidebar
+        //
+          Add the sidebar's background. This div must be placed
+          immediately after the control sidebar
+        .control-sidebar-bg
+    // ./wrapper
+    // REQUIRED JS SCRIPTS
+    // jQuery 2.2.3
+    script(src='/javascripts/jquery-2.2.3.min.js')
+    // Bootstrap 3.3.6
+    script(src='/javascripts/bootstrap.min.js')
+    // AdminLTE App
+    script(src='/javascripts/app.js')
+    
+    // DataTables
+    script(src='/javascripts/dataTables/jquery.dataTables.min.js')
+    script(src='/javascripts/dataTables/dataTables.bootstrap.js')
+    // SlimScroll
+    script(src='/javascripts/slimScroll/jquery.slimscroll.js')
+    // FastClick
+    script(src='/javascripts/fastClick/fastclick.js')
+    // page script
+    script(type='text/javascript').
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
