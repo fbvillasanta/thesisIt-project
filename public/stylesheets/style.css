@@ -1738,3 +1738,8 @@ h1, h2, h3, h4, h5, h6, figure {
 #hometitle {
   text-transform: none !important;
 }
+
+#hometitle > span {
+  color: #f35f55 !important;
+  font-weight: 600 !important;
+}
