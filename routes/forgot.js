@@ -1,13 +1,15 @@
 var express = require('express');
-var router = express.Router();
-var User = require('../models/user');
-var nodemailer = require('nodemailer');
-var bcrypt = require('bcrypt-nodejs');
+var path = require('path');
+
 var async = require('async');
 var crypto = require('crypto');
-var flash = require('express-flash');
+var router = express.Router();
 
-router.use(flash());
+var nodemailer = require('nodemailer');
+
+var User = require('../models/user');
+
+
 
 router.get('/', function(req, res) {
     res.render('partials/forgot', {

@@ -28,6 +28,9 @@ passport.deserializeUser(function(id, done) {
 });
 
 router.get('/login', function(req, res, next){
+	if(req.isAuthenticated()){
+		res.redirect('/')
+	}
 	res.render('login',{title: 'Login'});
 });
 
@@ -51,6 +54,9 @@ router.post('/login', function(req, res, next) {
 
 
 router.get('/register', function(req,res,next){
+	if(req.isAuthenticated()){
+		res.redirect('/')
+	}
 	res.render('login',{title: 'Register'});
 });
 
