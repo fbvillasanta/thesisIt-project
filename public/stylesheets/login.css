@@ -7,8 +7,8 @@ html {
 }
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.19),rgba(0, 0, 0, 0.45)),url(../images/login_bg.jpg) center #fff !important;
-
+  background: url(../images/login_bg.jpg) center #fff !important;
+  /*background-image: url(../images/login_bg.jpg);*/
   background-size: cover !important;
   font-family: 'Titillium Web', sans-serif;
 }
