@@ -6,202 +6,240 @@ block content
       .col-xs-12
         .box
           .box-body
-            table#example1.table.table-bordered.table-striped
-              if title === "Users"
-                thead
-                  tr
-                    th Username
-                    th Last Name
-                    th First Name
-                    th Email
-                tbody
-                  for entry in entries
+            if title === "Users"
+              .box.box-primary.collapsed-box.box-solid
+                .box-header.with-border
+                  h3.box-title Regular Users
+                  .box-tools.pull-right
+                    button.btn.btn-box-tool(type='button', data-widget='collapse')
+                      i.fa.fa-minus
+                .box-body(style='display:block;')
+                  table#example1.table.table-bordered.table-striped
+                    thead
+                      tr
+                        th Username
+                        th Last Name
+                        th First Name
+                        th Email
+                    tbody
+                      for entry in entries
+                        if entry.type === 'user'
+                          tr
+                            td #{entry.username}
+                            td #{entry.lastname}
+                            td #{entry.firstname}
+                            td #{entry.email}
+                    tfoot
+                      tr
+                        th Username
+                        th Last Name
+                        th First Name
+                        th Email
+
+              .box.box-warning.collapsed-box.box-solid
+                .box-header.with-border
+                  h3.box-title Administrators
+                  .box-tools.pull-right
+                    button.btn.btn-box-tool(type='button', data-widget='collapse')
+                      i.fa.fa-minus
+                .box-body(style='display:block;')
+                  table#example2.table.table-bordered.table-striped
+                    thead
+                      tr
+                        th Username
+                        th Last Name
+                        th First Name
+                        th Email
+                    tbody
+                      for entry in entries
+                        if entry.type === 'admin'
+                          tr
+                            td #{entry.username}
+                            td #{entry.lastname}
+                            td #{entry.firstname}
+                            td #{entry.email}
+                    tfoot
+                      tr
+                        th Username
+                        th Last Name
+                        th First Name
+                        th Email
+
+            else
+              table#example1.table.table-bordered.table-striped
+                if title === "Collection"
+                  thead
                     tr
-                      td #{entry.username}
-                      td #{entry.lastname}
-                      td #{entry.firstname}
-                      td #{entry.email}
-                tfoot
-                  tr
-                    th Username
-                    th Last Name
-                    th First Name
-                    th Email
+                      th Title
+                      th Subtitle
+                      th Description
+                      th Members
+                      th Advisers
+                  tbody
+                    for entry in entries
+                      tr
+                        td #{entry.thesis}
+                        td #{entry.subtitle}
+                        td #{entry.description}
+                        td 
+                          for member in entry.members
+                            ul
+                              if member != ""
+                                li #{member}
+                        td 
+                          for adviser in entry.advisers
+                            ul
+                              if adviser != ""
+                                li #{adviser}
+                  tfoot
+                    tr
+                      th Title
+                      th Subtitle
+                      th Description
+                      th Members
+                      th Advisers
 
 
-              if title === "Collection"
-                thead
-                  tr
-                    th Title
-                    th Subtitle
-                    th Description
-                    th Members
-                    th Advisers
-                tbody
-                  for entry in entries
+                if title === "Add"
+                  thead
                     tr
-                      td #{entry.thesis}
-                      td #{entry.subtitle}
-                      td #{entry.description}
-                      td 
-                        for member in entry.members
+                      th Request By
+                      th Details
+                      th Action
+                  tbody
+                    for entry in entries
+                      tr
+                        td #{entry.username}
+                        td
                           ul
-                            if member != ""
-                              li #{member}
-                      td 
-                        for adviser in entry.advisers
+                            li
+                              b Title: 
+                              | #{entry.details.thesis}
+                            if entry.details.subtitle !== ""
+                              li
+                                b Subtitle: 
+                                | #{entry.details.subtitle}
+                            li
+                              b Description: 
+                              | #{entry.details.description}
+                            li
+                              b Researchers: 
+                              for member in entry.details.members
+                                if member !== ""
+                                  | #{member} . 
+                            li
+                              b Advisers: 
+                              for adviser in entry.details.advisers
+                                | #{adviser} . 
+                            li
+                              b Image link: 
+                              | #{entry.details.image}
+                            if entry.details.youtube != ""
+                              li
+                                b Youtube link: 
+                                | #{entry.details.youtube}
+                        td
+                          form(method='post', action='/add/'+ entry._id)
+                            button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
+                            button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
+                  tfoot
+                    tr
+                      th Request By
+                      th Details
+                      th Action
+
+
+                if title === "Edit"
+                  thead
+                    tr
+                      th Request By
+                      th Details
+                      th Action
+                  tbody
+                    for entry in entries
+                      tr
+                        td #{entry.username}
+                        td
                           ul
-                            if adviser != ""
-                              li #{adviser}
-                tfoot
-                  tr
-                    th Title
-                    th Subtitle
-                    th Description
-                    th Members
-                    th Advisers
-
-
-              if title === "Add"
-                thead
-                  tr
-                    th Request By
-                    th Details
-                    th Action
-                tbody
-                  for entry in entries
+                            li
+                              b Title: 
+                              | #{entry.details.thesis}
+                            if entry.details.subtitle !== ""
+                              li
+                                b Subtitle: 
+                                | #{entry.details.subtitle}
+                            li
+                              b Description: 
+                              | #{entry.details.description}
+                            li
+                              b Researchers: 
+                              for member in entry.details.members
+                                if member !== ""
+                                  | #{member} . 
+                            li
+                              b Advisers: 
+                              for adviser in entry.details.advisers
+                                | #{adviser} . 
+                            li
+                              b Image link: 
+                              | #{entry.details.image}
+                            if entry.details.youtube != ""
+                              li
+                                b Youtube link: 
+                                | #{entry.details.youtube}
+                        td #{entry._id}
+                  tfoot
                     tr
-                      td #{entry.username}
-                      td
-                        ul
-                          li
-                            b Title: 
-                            | #{entry.details.thesis}
-                          if entry.details.subtitle !== ""
-                            li
-                              b Subtitle: 
-                              | #{entry.details.subtitle}
-                          li
-                            b Description: 
-                            | #{entry.details.description}
-                          li
-                            b Researchers: 
-                            for member in entry.details.members
-                              if member !== ""
-                                | #{member} . 
-                          li
-                            b Advisers: 
-                            for adviser in entry.details.advisers
-                              | #{adviser} . 
-                          li
-                            b Image link: 
-                            | #{entry.details.image}
-                          if entry.details.youtube != ""
-                            li
-                              b Youtube link: 
-                              | #{entry.details.youtube}
-                      td
-                        form(method='post', action='/add/'+ entry._id)
-                          button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
-                          button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
-                tfoot
-                  tr
-                    th Request By
-                    th Details
-                    th Action
+                      th Request By
+                      th Details
+                      th Action
 
 
-              if title === "Edit"
-                thead
-                  tr
-                    th Request By
-                    th Details
-                    th Action
-                tbody
-                  for entry in entries
+                if title === "Delete"
+                  thead
                     tr
-                      td #{entry.username}
-                      td
-                        ul
-                          li
-                            b Title: 
-                            | #{entry.details.thesis}
-                          if entry.details.subtitle !== ""
+                      th Request By
+                      th Details
+                      th Action
+                  tbody
+                    for entry in entries
+                      tr
+                        td #{entry.username}
+                        td
+                          ul
                             li
-                              b Subtitle: 
-                              | #{entry.details.subtitle}
-                          li
-                            b Description: 
-                            | #{entry.details.description}
-                          li
-                            b Researchers: 
-                            for member in entry.details.members
-                              if member !== ""
-                                | #{member} . 
-                          li
-                            b Advisers: 
-                            for adviser in entry.details.advisers
-                              | #{adviser} . 
-                          li
-                            b Image link: 
-                            | #{entry.details.image}
-                          if entry.details.youtube != ""
+                              b Title: 
+                              | #{entry.details.thesis}
+                            if entry.details.subtitle !== ""
+                              li
+                                b Subtitle: 
+                                | #{entry.details.subtitle}
                             li
-                              b Youtube link: 
-                              | #{entry.details.youtube}
-                      td #{entry._id}
-                tfoot
-                  tr
-                    th Request By
-                    th Details
-                    th Action
-
-
-              if title === "Delete"
-                thead
-                  tr
-                    th Request By
-                    th Details
-                    th Action
-                tbody
-                  for entry in entries
+                              b Description: 
+                              | #{entry.details.description}
+                            li
+                              b Researchers: 
+                              for member in entry.details.members
+                                if member !== ""
+                                  | #{member} . 
+                            li
+                              b Advisers: 
+                              for adviser in entry.details.advisers
+                                | #{adviser} . 
+                            li
+                              b Image link: 
+                              | #{entry.details.image}
+                            if entry.details.youtube != ""
+                              li
+                                b Youtube link: 
+                                | #{entry.details.youtube}
+                        td
+                          form(method='post', action='/delete/'+ entry._id)
+                            input(type='hidden', value='#{entry.details.id}', name='thesisid')
+                            button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
+                            button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
+                  tfoot
                     tr
-                      td #{entry.username}
-                      td
-                        ul
-                          li
-                            b Title: 
-                            | #{entry.details.thesis}
-                          if entry.details.subtitle !== ""
-                            li
-                              b Subtitle: 
-                              | #{entry.details.subtitle}
-                          li
-                            b Description: 
-                            | #{entry.details.description}
-                          li
-                            b Researchers: 
-                            for member in entry.details.members
-                              if member !== ""
-                                | #{member} . 
-                          li
-                            b Advisers: 
-                            for adviser in entry.details.advisers
-                              | #{adviser} . 
-                          li
-                            b Image link: 
-                            | #{entry.details.image}
-                          if entry.details.youtube != ""
-                            li
-                              b Youtube link: 
-                              | #{entry.details.youtube}
-                      td
-                        form(method='post', action='/delete/'+ entry._id)
-                          input(type='hidden', value='#{entry.details.id}', name='thesisid')
-                          button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
-                          button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
-                tfoot
-                  tr
-                    th Request By
-                    th Details
-                    th Action
+                      th Request By
+                      th Details
+                      th Action

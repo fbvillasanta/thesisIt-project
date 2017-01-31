@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/admin', function(req, res, next){
 	if(req.user.type == 'admin'){
-		User.find({type: 'user'}).sort({_id: -1}).exec(function(e, entry){
+		User.find().sort({_id: -1}).exec(function(e, entry){
 			res.render('admin/admin_users', {title: 'Users', entries: entry});
 		});
 	} else {
