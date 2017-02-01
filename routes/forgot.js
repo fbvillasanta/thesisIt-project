@@ -14,9 +14,9 @@ var User = require('../models/user');
 router.get('/', function(req, res) {
     res.render('partials/forgot'
         //{
-    //    user: req.user
-    //}
-     );
+        //    user: req.user
+        //}
+    );
 });
 
 router.post('/', function(req, res, next) {
