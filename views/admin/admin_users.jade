@@ -249,3 +249,26 @@ block content
                       th Request By
                       th Details
                       th Action
+  
+  if error_msg != ""
+    script(type='text/javascript').
+      alert('Warning! #{error_msg}');
+
+  else if success_msg != ""
+    script(type='text/javascript').
+      alert('Success! #{success_msg}');
+
+
+
+//    .example-modal
+//      .modal.modal-success#success
+//        .modal-dialog
+//          .modal-content
+//            .modal-header
+//              button.close(type='button', data-dismiss='modal', aria-label='Close')
+//                span(aria-hidden='true') x
+//              h4.modal-title Success
+//            .modal-body
+//              p #{success_msg}
+//            .modal-footer
+//              button.btn.btn-outline(type='button', data-dismiss='modal') Close

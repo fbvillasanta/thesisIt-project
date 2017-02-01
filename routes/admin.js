@@ -228,6 +228,7 @@ router.put('/:thesisId', function(req,res, next) {
     if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
         // render error message
         collection.findOne({ _id: new ObjectId(thesisId)}, function(err, entry){
+            req.flash('error_msg', 'Please fill out the required fields.');
             res.redirect('/collection/'+thesisId+'/edit');
         });
         return;
@@ -287,6 +288,7 @@ router.put('/:thesisId', function(req,res, next) {
                 res.format({
                     html: function () {
                         console.log(dataToSave);
+                        req.flash('success_msg', 'Edit request for that entry was sent to admin. An email will be sent to you when your request is approved');
                         res.redirect("/collection/" + thesisId);
                     },
                     //JSON responds showing the updated values
@@ -334,7 +336,7 @@ router.delete('/:thesisId',function(req,res,next) {
                     });
                     data.save();
                     console.log('Request for delete sent.');
-                    req.flash('success_msg', 'Request for delete was sent to admin.');
+                    req.flash('success_msg', 'Request for delete was sent to admin. An email will be sent to you when your request is approved.');
                     res.redirect("/collection/"+thesisId) ;
                     console.log(entry);
                 } else {

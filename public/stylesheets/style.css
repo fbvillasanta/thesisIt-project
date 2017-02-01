@@ -1743,3 +1743,8 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #f35f55 !important;
   font-weight: 600 !important;
 }
+
+label > span {
+  color: #f35f55;
+  font-weight: bold;
+}

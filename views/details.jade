@@ -70,3 +70,11 @@ block content
                     img(src='/images/person1.jpg', alt='')
                     h3 #{member}
                     strong.role Researcher
+
+      if success_msg != ""
+        script(type='text/javascript').
+          alert('#{success_msg}');
+      if error_msg != ""
+        script(type='text/javascript').
+          alert('#{error_msg}')
+
