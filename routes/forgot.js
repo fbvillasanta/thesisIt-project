@@ -54,7 +54,7 @@ router.post('/', function(req, res, next) {
                 service: 'Gmail',
                 auth: {
                     user: 'ironman.programmer@gmail.com',
-                    pass: 'iamironman'
+                    pass: 'password'
                 }
             });
             var mailOptions = {
@@ -111,17 +111,17 @@ router.post('/reset/:token', function(req, res) {
         },
         function(user, done) {
             var smtpTransport = nodemailer.createTransport('SMTP', {
-                service: 'SendGrid',
+                service: 'Gmail',
                 auth: {
-                    user: 'dretorrente',
-                    pass: 'Davepogi0#'
+                    user: 'ironman.programmer@gmail.com',
+                    pass: 'password'
                 }
             });
             var mailOptions = {
                 to: user.email,
-                from: 'passwordreset@demo.com',
+                from: 'ironman.programmer@gmail.com',
                 subject: 'Your password has been changed',
-                text: 'Hello,\n\n' +
+                text: 'Hello, '+ user.username+'!\n\n' +
                 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
