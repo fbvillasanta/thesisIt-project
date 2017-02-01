@@ -1,41 +1,50 @@
 doctype html
 html
     head
-        title= title
-        link(rel='stylesheet', href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-        script(src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Thesis It — #{title}
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='icon' type='image/png' sizes='32x32' href='/images/thesisit.ico')
+        link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700', rel='stylesheet', type='text/css')
+        link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
+        link(rel='stylesheet', href='/stylesheets/login.css')
+        // Theme style
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        // FOR IE9 below
+        //if lt IE 9
+            script(src='/javascripts/respond.min.js')
     body
-        .navbar.navbar-inverse.navbar-static-top(role='navigation')
-            .container
-                .navbar-header
-                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='/') Project name
-                .collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li.active
-                            a(href='/') Home
-                        if user
-                            li
-                                a(href='/logout') Logout
-                        else
-                            li
-                                a(href='/login') Login
-                            li
-                                a(href='/signup') Signup
-      .container
-            if messages.error
-              .alert.alert-danger
-                div= messages.error
-            if messages.info
-              .alert.alert-info
-                div= messages.info
-            if messages.success
-              .alert.alert-success
-                div= messages.success
-
+        .form
+            if(errors)
+                .alert.alert-danger.alert-dismissable(role='alert')
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                        span(aria-hidden='true') x
+                    strong Warning!
+                for error in errors
+                    | #{error.msg}.
+            if(success_msg != "")
+                .alert.alert-success.alert-dismissable(role='alert')
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                        span(aria-hidden='true') x
+                    strong Success!
+                        | #{success_msg}
+            if(error_msg != "")
+                .alert.alert-danger.alert-dismissable(role='alert')
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                        span(aria-hidden='true') x
+                    strong Warning!
+                        | #{error_msg}
+            if(error != "")
+                .alert.alert-danger.alert-dismissable(role='alert')
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                        span(aria-hidden='true') x
+                    strong Warning!
+                        | #{error.message}
             block content
+
+        script(src='/javascripts/jquery.min.js')
+        script(src='/javascripts/bootstrap.min.js')
+        // Login
+        script(src='/javascripts/login.js')

@@ -84,6 +84,7 @@ router.post('/register', function(req, res, next){
 		req.checkBody('lname', 'Last name is required').notEmpty();
 		req.checkBody('email', 'Email is required').notEmpty();
 		req.checkBody('email', 'Email is not valid').isEmail();
+		req.checkBody('email', 'Email is not valid').isEmail();
 		req.checkBody('password', 'Username is required').notEmpty();
 		req.checkBody('confirm', 'Passwords do not match').equals(password);
 

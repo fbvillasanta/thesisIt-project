@@ -1,8 +1,10 @@
 extends layout
 block content
-    form(method='POST')
-        legend Forgot Password
-        .form-group
-            label(for='email') Email
-            input.form-control(type='text', name='email', autofocus)
-        button.btn.btn-primary(type='submit') Reset Password
+    #forgotPass
+        h1 Forgot Password
+        form(method='post')
+            .field-wrap
+                label Email Adress
+                    span.req *
+                input(type='email' name='email' required autocomplete='off' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$' value=(data ? '#{data.email}' : ''))
+            button.button.button-block(type='submit') Reset Password
