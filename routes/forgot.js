@@ -51,16 +51,16 @@ router.post('/', function(req, res, next) {
         },
         function(token, user, done) {
             var smtpTransport = nodemailer.createTransport('SMTP', {
-                service: 'SendGrid',
+                service: 'Gmail',
                 auth: {
-                    user: 'dretorrente',
-                    pass: 'Davepogi0#'
+                    user: 'ironman.programmer@gmail.com',
+                    pass: 'iamironman'
                 }
             });
             var mailOptions = {
                 to: user.email,
-                from: 'passwordreset@demo.com',
-                subject: 'Node.js Password Reset',
+                from: 'ironman.programmer@gmail.com',
+                subject: 'Thesis IT Password Reset',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                 'http://' + req.headers.host + '/forgot/reset/' + token + '\n\n' +
@@ -125,7 +125,7 @@ router.post('/reset/:token', function(req, res) {
                 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
-                req.flash('success_msg', 'Success! Your password has been changed.');
+                req.flash('success_msg', 'Your password has been changed.');
                 done(err);
             });
 
