@@ -75,10 +75,10 @@ router.post('/admin/add/:itemid', function(req, res, next){
 	var itemid = req.params.itemid;
 	if(action=="accept"){
 		Request.find(itemid, function(e, entry){
-			if(e){
+			if(!entry.length && !e){
 				req.flash('error_msg', 'Could not find add request.');
 				res.redirect('/admin/add');
-			} else {
+			} else if(entry.length && !e) {
 				var data = {
 					_id : itemid,
 					thesis : entry.details.thesis,
@@ -92,9 +92,13 @@ router.post('/admin/add/:itemid', function(req, res, next){
 					added : entry.details.added,
 					updated : entry.details.updated
 				};
+				console.log(data);
 				console.log('Thesis entry added.');
 				Thesis.save(data);
 				req.flash('success_msg', 'Thesis entry added successfully.');
+			} else {
+				req.flash('error', e);
+				res.redirect('/admin/add');
 			}
 		});
 		Request.findOneAndRemove({'_id': itemid}, function(e, entry){
