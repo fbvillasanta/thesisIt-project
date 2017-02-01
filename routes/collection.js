@@ -11,7 +11,7 @@ var formattedDate;
 var Thesis = require('../models/thesis');
 
 router.use(bodyParser.urlencoded({ extended: true }));
-router.use(methodOverride(function(req, res){
+router.use(methodOverride(function(req, res){n
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         // look in urlencoded POST bodies and delete it
         var method = req.body._method;
