@@ -25,8 +25,8 @@ var forgot = require('./routes/forgot');
 
 var app = express();
 
-var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
-//var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
+//var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
+var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
 
 var db = require('./db'); //mongoose is in db.js
 
