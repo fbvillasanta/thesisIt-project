@@ -141,7 +141,7 @@ block content
                                 b Youtube link: 
                                 | #{entry.details.youtube}
                         td
-                          form(method='post', action='/add/'+ entry._id)
+                          form(method='post', action='/admin/add/'+ entry._id)
                             button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
                             button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
                   tfoot
@@ -240,7 +240,7 @@ block content
                                 b Youtube link: 
                                 | #{entry.details.youtube}
                         td
-                          form(method='post', action='/delete/'+ entry._id)
+                          form(method='post', action='/admin/delete/'+ entry._id)
                             input(type='hidden', value='#{entry.details.id}', name='thesisid')
                             button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
                             button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
