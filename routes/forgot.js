@@ -54,7 +54,7 @@ router.post('/', function(req, res, next) {
                 service: 'Gmail',
                 auth: {
                     user: 'ironman.programmer@gmail.com',
-                    pass: 'password'
+                    pass: 'try'
                 }
             });
             var mailOptions = {
@@ -114,7 +114,7 @@ router.post('/reset/:token', function(req, res) {
                 service: 'Gmail',
                 auth: {
                     user: 'ironman.programmer@gmail.com',
-                    pass: 'password'
+                    pass: 'try'
                 }
             });
             var mailOptions = {
