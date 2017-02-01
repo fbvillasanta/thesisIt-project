@@ -9,6 +9,13 @@ var nodemailer = require('nodemailer');
 
 var User = require('../models/user');
 
+router.use(function(req, res, next){
+    if(!req.isAuthenticated()){
+        next();
+        return;
+    }
+
+});
 
 
 router.get('/', function(req, res) {
@@ -56,7 +63,7 @@ router.post('/', function(req, res, next) {
                 subject: 'Node.js Password Reset',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+                'http://' + req.headers.host + '/forgot/reset/' + token + '\n\n' +
                 'If you did not request this, please ignore this email and your password will remain unchanged.\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
@@ -121,8 +128,10 @@ router.post('/reset/:token', function(req, res) {
                 req.flash('success_msg', 'Success! Your password has been changed.');
                 done(err);
             });
+
         }
     ], function(err) {
+        req.logout();
         res.redirect('/auth/login');
     });
 });
