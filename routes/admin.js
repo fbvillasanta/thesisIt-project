@@ -101,7 +101,7 @@ router.post('/new', function(req, res, next){
         };
         console.log(dataToSave);
         var thesisnew = new Request({
-            username : username,
+            username : req.user.username,
             details : dataToSave,
             type : 'add'
         });
@@ -274,7 +274,7 @@ router.put('/:thesisId', function(req,res, next) {
                 };
 
         var data = new Request({
-                    username : username,
+                    username : req.user.username,
                     details : dataToSave,
                     type : 'edit'
                 })

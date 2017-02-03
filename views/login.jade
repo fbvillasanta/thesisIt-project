@@ -55,7 +55,9 @@ html
 
 			.tab-content
 				#login
-					h1 Welcome to ThesisIT!
+					h1 Welcome to 
+						span ThesisIT 
+						| !
 					form(method='post')
 						.field-wrap
 							label Username
@@ -70,7 +72,9 @@ html
 						button.button.button-block(type='submit' value='login' name='submit') Log In
 
 				#signup
-					h1 Be part of ThesisIT!
+					h1 Be part of 
+						span ThesisIT 
+						| !
 					form(action='/auth/register' method='post')
 						.field-wrap
 							label Username

@@ -26,9 +26,10 @@ var RequestSchema = mongoose.Schema({
 	}
 });
 
+RequestSchema.methods.findRequest = function(id){
+	var query = {_id: id};
+	return this.model('Request').findOne(query);
+}
+
 var Request = module.exports = mongoose.model('Request', RequestSchema);
 
-module.exports.findRequest = function(id, callback){
-	var query = {_id: id};
-	Request.findOne(query, callback);
-}

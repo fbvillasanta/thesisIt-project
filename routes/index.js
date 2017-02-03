@@ -74,27 +74,29 @@ router.post('/admin/add/:itemid', function(req, res, next){
 	var action = req.body.btn;
 	var itemid = req.params.itemid;
 	if(action=="accept"){
-		Request.find(itemid, function(e, entry){
-			if(!entry.length && !e){
+		Request.find({'_id': itemid}, 'details', function(e, result){
+			if(!result.length && !e){
 				req.flash('error_msg', 'Could not find add request.');
 				res.redirect('/admin/add');
-			} else if(entry.length && !e) {
-				var data = {
+			} else if(result.length && !e) {
+				//var result = Request.findRequest({'_id':itemid});
+				console.log(result);
+				var data = new Thesis({
 					_id : itemid,
-					thesis : entry.details.thesis,
-					subtitle : entry.details.subtitle,
-					members : entry.details.members,
-					advisers : entry.details.advisers,
-					sentence : entry.details.sentence,
-					description : entry.details.description,
-					image : entry.details.image,
-					youtube : entry.details.youtube,
-					added : entry.details.added,
-					updated : entry.details.updated
-				};
-				console.log(data);
+					thesis : result[0].details.thesis,
+					subtitle : result[0].details.subtitle,
+					members : result[0].details.members,
+					advisers : result[0].details.advisers,
+					sentence : result[0].details.sentence,
+					description : result[0].details.description,
+					image : result[0].details.image,
+					youtube : result[0].details.youtube,
+					added : result[0].details.added,
+					updated : result[0].details.updated
+				});
+				//console.log(data);
 				console.log('Thesis entry added.');
-				Thesis.save(data);
+				data.save();
 				req.flash('success_msg', 'Thesis entry added successfully.');
 			} else {
 				req.flash('error', e);
@@ -132,18 +134,20 @@ router.post('/admin/delete/:itemid', function(req, res, next){
 	var thesisid = req.body.thesisid;
 	if(action=="accept"){
 		Request.find(itemid, function(e, entry){
-			if(e){
+			if(!entry.length && !e){
 				req.flash('error_msg', 'Could not find delete request.');
+				res.redirect('/admin/delete');
+			} else if(e){
+				req.flash('error', e);
 				res.redirect('/admin/delete');
 			}
 		});
-		console.log('Request deleted');
-		Request.remove({ 'details.id' : thesisid});
 		Thesis.findOneAndRemove({'_id': thesisid}, function(e, entry){
 			if(e){
 				req.flash('error_msg', 'Thesis entry delete failed.');
 				res.redirect('/admin/delete');
 			} else {
+				Request.remove({ 'details.id' : thesisid});
 				console.log('Thesis entry deleted');
 				req.flash('success_msg', 'Thesis entry successfully deleted.');
 				res.redirect('/admin/delete');
