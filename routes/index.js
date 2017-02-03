@@ -137,24 +137,26 @@ router.post('/admin/delete/:itemid', function(req, res, next){
 			if(!entry.length && !e){
 				req.flash('error_msg', 'Could not find delete request.');
 				res.redirect('/admin/delete');
+			}  else if(entry.length && !e){
+				Thesis.remove({'_id': thesisid}, function(e, result){
+					if(e){
+						req.flash('error_msg', 'Thesis entry delete failed.');
+						res.redirect('/admin/delete');
+					} else {
+						
+					}
+				}).exec();
+				Request.remove({ 'details.id' : thesisid}).exec();
+				console.log('Thesis entry deleted');
+				req.flash('success_msg', 'Thesis entry successfully deleted.');
+				res.redirect('/admin/delete');
 			} else if(e){
 				req.flash('error', e);
 				res.redirect('/admin/delete');
 			}
-		});
-		Thesis.findOneAndRemove({'_id': thesisid}, function(e, entry){
-			if(e){
-				req.flash('error_msg', 'Thesis entry delete failed.');
-				res.redirect('/admin/delete');
-			} else {
-				Request.remove({ 'details.id' : thesisid});
-				console.log('Thesis entry deleted');
-				req.flash('success_msg', 'Thesis entry successfully deleted.');
-				res.redirect('/admin/delete');
-			}
-		})
+		});	
 	} else if(action=="decline"){
-		Request.remove({_id: itemid}).exec(function(e, entry){
+		Request.remove({'_id': itemid}).exec(function(e, entry){
 			if(e){
 				req.flash('error_msg', 'Request delete failed.');
 				console.log('request not deleted')
