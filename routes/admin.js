@@ -121,7 +121,10 @@ router.post('/new', function(req, res, next){
 router.get('/:thesisId', function(req, res, next){
     var thesisId = req.params.thesisId;
     var collection = Thesis.find();
-    collection.findOne({ _id:ObjectId(thesisId) }, function(err, entry) {
+    collection.findOne({ '_id':ObjectId(thesisId) }, function(err, entry) {
+        // if(!entry.length && !err){
+        //     return res.redirect('/collection');
+        // }
         var imageurl = entry.image;
         if(imageurl == "" || imageurl == "undefined" || imageurl == null){
             imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";

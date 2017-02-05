@@ -143,7 +143,7 @@ block content
                         td
                           form(method='post', action='/admin/add/'+ entry._id)
                             button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
-                            button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
+                            button.btn.btn-danger.btn-flat(type='submit', value='DELETE', name='_method') Delete
                   tfoot
                     tr
                       th Request By
@@ -163,6 +163,9 @@ block content
                         td #{entry.username}
                         td
                           ul
+                            p
+                              a(href='/collection/#{entry.details.id}', target='_blank')
+                                b See current version
                             li
                               b Title: 
                               | #{entry.details.thesis}
@@ -191,7 +194,11 @@ block content
                               li
                                 b Youtube link: 
                                 | #{entry.details.youtube}
-                        td #{entry._id}
+                        td
+                          form(method='post', action='/admin/edit/'+ entry._id)
+                            .form-group
+                              button.btn.btn-success.btn-flat(type='submit', value='PUT', name='_method') Appove                  
+                              button.btn.btn-danger.btn-flat(type='submit', value='DELETE', name='_method') Delete
                   tfoot
                     tr
                       th Request By
@@ -243,7 +250,7 @@ block content
                           form(method='post', action='/admin/delete/'+ entry._id)
                             input(type='hidden', value='#{entry.details.id}', name='thesisid')
                             button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
-                            button.btn.btn-danger.btn-flat(type='submit', value='decline', name='btn') Delete
+                            button.btn.btn-danger.btn-flat(type='submit', value='DELETE', name='_method') Delete
                   tfoot
                     tr
                       th Request By
@@ -252,11 +259,11 @@ block content
   
   if error_msg != ""
     script(type='text/javascript').
-      alert('Warning! #{error_msg}');
+      alert('#{error_msg}');
 
   else if success_msg != ""
     script(type='text/javascript').
-      alert('Success! #{success_msg}');
+      alert('#{success_msg}');
 
 
 
