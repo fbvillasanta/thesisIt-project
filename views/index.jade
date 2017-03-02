@@ -38,9 +38,9 @@ block content
 					.row
 						for entry in entries
 							.col-md-4.col-sm-4.animate-box(data-animate-effect='fadeInUp')
-								.fh5co-post
+								.fh5co-post#recentEntries
 									span.fh5co-date #{entry.added}
 									h3
 										a(href='/collection/'+ entry._id) #{entry.thesis}
 									p
-										| #{entry.sentence}
+										| #{entry.description}

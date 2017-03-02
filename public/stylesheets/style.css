@@ -1766,6 +1766,15 @@ label > span {
   border-color: #d9534f !important;
 }
 
+.fh5co-post {
+  height: 400px;
+  overflow: hidden;
+}
+
+#recentEntries {
+  height: 150px !important;
+}
+
 /*#search > .input-group > span > input.btn {
   display: table-cell !important;
   line-height: 54px !important;
