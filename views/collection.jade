@@ -17,6 +17,13 @@ block content
 							h2 Our Collection
 							p
 								| This is a basically a compilation of awesome ideas that may change the world.
+							br
+							form#search(action='#', method='post')
+								.input-group
+									span.input-group-addon#basic-addon1 Thesis Title
+									input.form-control(type='text', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
+									.span.input-group-btn
+										input.btn.btn-danger(type="submit" value='Go!')
 					.row
 					- var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec']
 					- var counter = count

@@ -1748,3 +1748,25 @@ label > span {
   color: #f35f55;
   font-weight: bold;
 }
+
+#search > .input-group {
+  display: inline-table !important;
+}
+
+#search > .input-group > span {
+  display: table-cell !important;
+}
+
+#search > .input-group > input {
+  background: white !important;
+  height: 46px !important;
+}
+
+#search > .input-group > input:focus {
+  border-color: #d9534f !important;
+}
+
+/*#search > .input-group > span > input.btn {
+  display: table-cell !important;
+  line-height: 54px !important;
+}*/
