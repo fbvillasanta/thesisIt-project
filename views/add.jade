@@ -26,9 +26,8 @@ block content
 				.row
 					.col-md-offset-2.col-md-8.animate-box
 						form#example-advanced-form(action='#')
-							h3 Account
+							h3 Details
 							fieldset
-								legend Account Information
 								.row.form-group
 									.col-md-12
 										label(for='thesis') Thesis Title
@@ -48,9 +47,8 @@ block content
 										label(for='tags') Tags
 											span  * &nbsp; &nbsp;
 										input#tags(name='tags', data-role='tagsinput', placeholder='Enter keywords', required='', style='display:none')
-							h3 Profile
+							h3 People
 							fieldset
-								legend Profile Information
 								.row.form-group
 									.col-md-12
 										h2 Researchers:
@@ -84,7 +82,6 @@ block content
 										input.form-control(type='text', name='adviser2', placeholder="Adviser's name (First name Last name)", required='')
 							h3 File & Links
 							fieldset
-								legend Document, Images, Video
 								.row.form-group
 									.col-md-12
 										h2 Thesis File:
@@ -96,16 +93,17 @@ block content
 										h2 Links:
 									.col-md-12
 										label(for='image') Images
-										input.form-control(type='text', name='image1', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
-										input.form-control(type='text', name='image2', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
-										input.form-control(type='text', name='image3', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
+										input.form-control(type='url', name='image1', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
+										input.form-control(type='url', name='image2', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
+										input.form-control(type='url', name='image3', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
 									.col-md-12
 										label(for='youtube') Youtube
-										input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link (eg. https://youtube.com/yourvideo)')
+										input.form-control(type='url', name='youtube', placeholder='Thesis Youtube link (eg. https://youtube.com/yourvideo)')
 							h3 Finish
 							fieldset
-								legend Terms and Conditions
 								.row.form-group
+									.col-md-12
+										h2 Terms and Conditions:
 									.col-md-offset-2.col-md-9
 										label(for='acceptTerms-2')
 											span By submitting, you certify that the information provided are true and correct. Also, you approve viewing and distribution of the file uploaded.
