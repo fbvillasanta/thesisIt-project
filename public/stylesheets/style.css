@@ -1679,9 +1679,9 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .form-control {
   box-shadow: none;
-  background: transparent;
+  background-color: whitesmoke;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 54px;
+  height: 40px;
   font-size: 18px;
   font-weight: 300;
 }

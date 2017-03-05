@@ -24,45 +24,87 @@ block content
 								i.icon-cross2(style='font-size:15px')
 								strong   Error sending request to add entry! #{error}
 				.row
-					.col-md-offset-3.col-md-6.animate-box
-						h3 Thesis Information
-						form(action='/collection/new', method='post')
-							.row.form-group
-								.col-md-12
-									label(for='subject') Thesis Title
-										span  *
-									input#search.form-control(type='text', name='thesis', placeholder='*Your thesis title', required='')
-									input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle')
-							.row.form-group
-								.col-md-12
-									label(for='subject') Researchers
-										span  *
-									input.form-control(type='text', name='member1', placeholder='*Researcher 1 (First name  Last name)', required='')
-									input.form-control(type='text', name='member2', placeholder='*Researcher 2 (First name  Last name)', required='')
-									input.form-control(type='text', name='member3', placeholder='Researcher 3 (First name  Last name)')
-									input.form-control(type='text', name='member4', placeholder='Researcher 4 (First name  Last name)')
-									input.form-control(type='text', name='member5', placeholder='Researcher 5 (First name  Last name)')
-							.row.form-group
-								.col-md-12
-									label(for='subject') Advisers
-										span  *
-									input.form-control(type='text', name='adviser1', placeholder="Adviser's name (First name Last name)", required='')
-									input.form-control(type='text', name='adviser2', placeholder="Adviser's name (First name Last name)", required='')
-							.row.form-group
-								.col-md-12
-									label(for='subject') 1 Sentence Description
-										span  *
-									input.form-control(type='text', name='sentence', placeholder='Thesis introduction', required='')
-							.row.form-group
-								.col-md-12
-									label(for='message') Short Description
-										span  *
-									textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis', required='')
-							.row.form-group
-								.col-md-12
-									label(for='subject') Links
-									input.form-control(type='text', name='image', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
-									input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link (eg. https://youtube.com/yourvideo)')
-							.form-group
-
-								input.btn.btn-primary(type='submit', value='Submit')
+					.col-md-offset-2.col-md-8.animate-box
+						form#example-advanced-form(action='#')
+							h3 Account
+							fieldset
+								legend Account Information
+								.row.form-group
+									.col-md-12
+										label(for='thesis') Thesis Title
+											span  *
+										input#search.form-control(type='text', name='thesis', placeholder='Your thesis title', required='')
+								.row.form-group
+									.col-md-12
+										label(for='subtitle') Subtitle
+										input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle')
+								.row.form-group
+									.col-md-12
+										label(for='description') Short Description
+											span  *
+										textarea#message.form-control(name='description', cols='30', rows='10', placeholder='Say something about your thesis', required='')
+								.row.form-group
+									.col-md-12
+										label(for='tags') Tags
+											span  * &nbsp; &nbsp;
+										input#tags(name='tags', data-role='tagsinput', placeholder='Enter keywords', required='', style='display:none')
+							h3 Profile
+							fieldset
+								legend Profile Information
+								.row.form-group
+									.col-md-12
+										h2 Researchers:
+									.col-md-12
+										label(for='member1') 1st Member
+											span  *
+										input.form-control(type='text', name='member1', placeholder='Researcher 1 (First name  Last name) *', required='')
+									.col-md-12
+										label(for='member2') 2nd Member
+											span  *
+										input.form-control(type='text', name='member2', placeholder='Researcher 2 (First name  Last name) *', required='')
+									.col-md-12
+										label(for='member3') 3rd Member
+										input.form-control(type='text', name='member3', placeholder='Researcher 3 (First name  Last name)')
+									.col-md-12
+										label(for='member4') 4th Member
+										input.form-control(type='text', name='member4', placeholder='Researcher 4 (First name  Last name)')
+									.col-md-12
+										label(for='member5') 5th Member
+										input.form-control(type='text', name='member5', placeholder='Researcher 5 (First name  Last name)')
+								.row.form-group
+									.col-md-12
+										h2 Advisers:
+									.col-md-12
+										label(for='adviser1') Adviser
+											span  *
+										input.form-control(type='text', name='adviser1', placeholder="Adviser's name (First name Last name)", required='')
+									.col-md-12
+										label(for='adviser2') Adviser
+											span  *											
+										input.form-control(type='text', name='adviser2', placeholder="Adviser's name (First name Last name)", required='')
+							h3 File & Links
+							fieldset
+								legend Document, Images, Video
+								.row.form-group
+									.col-md-12
+										h2 Thesis File:
+										label(for='files') Document
+										input.form-control(type='file', name='files', placeholder='No file' required)
+								.row.form-group
+									.col-md-12
+										h2 Links:
+									.col-md-12
+										label(for='image') Images
+										input.form-control(type='text', name='image1', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
+										input.form-control(type='text', name='image2', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
+										input.form-control(type='text', name='image3', placeholder='Thesis image link (eg. https://postimage.org/yourimage.jpg)')
+									.col-md-12
+										label(for='youtube') Youtube
+										input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link (eg. https://youtube.com/yourvideo)')
+							h3 Finish
+							fieldset
+								legend Terms and Conditions
+								.row.form-group
+									.col-md-offset-2.col-md-9
+										label(for='acceptTerms-2')
+											span By submitting, you certify that the information provided are true and correct. Also, you approve viewing and distribution of the file uploaded.

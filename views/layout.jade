@@ -27,6 +27,9 @@ html
 		link(rel='stylesheet', href='/stylesheets/magnific-popup.css')
 		// Theme style
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		if title === "Join"
+			link(rel='stylesheet', href='/stylesheets/formWizard/jquery-steps.css')
+			link(rel='stylesheet', href='/stylesheets/tagsInput/bootstrap-tagsinput.css')
 		// Modernizr JS
 		script(src='/javascripts/modernizr-2.6.2.min.js')
 		// FOR IE9 below
@@ -83,8 +86,11 @@ html
 		.gototop.js-top
 			a.js-gotop(href='#')
 				i.icon-arrow-up
+
 		// jQuery
 		script(src='/javascripts/jquery.min.js')
+		// Form wizard style
+
 		// jQuery Easing
 		script(src='/javascripts/jquery.easing.1.3.js')
 		// Bootstrap
@@ -98,3 +104,50 @@ html
 		script(src='/javascripts/magnific-popup-options.js')
 		// Main
 		script(src='/javascripts/main.js')
+		if title === "Join"
+			// Form Wizard
+			script(src='/javascripts/tagsInput/bootstrap-tagsinput.js')
+			script(src='/javascripts/tagsInput/bootstrap-tagsinput-angular.js')
+			script(src='/javascripts/jqueryValidation/jquery.validate.js')
+			script(src='/javascripts/formWizard/jquery.steps.js')
+			script(type='text/javascript').
+				var form = $("#example-advanced-form").show();
+				form.steps({
+				headerTag: "h3",
+				bodyTag: "fieldset",
+				transitionEffect: "slideLeft",
+				onStepChanging: function (event, currentIndex, newIndex)
+				{
+				// Allways allow previous action even if the current form is not valid!
+				if (currentIndex > newIndex)
+				{
+				return true;
+				}
+				// Needed in some cases if the user went back (clean up)
+				if (currentIndex < newIndex)
+				{
+				// To remove error styles
+				form.find(".body:eq(" + newIndex + ") label.error").remove();
+				form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+				}
+				form.validate().settings.ignore = ":disabled,:hidden";
+				return form.valid();
+				},
+				onStepChanged: function (event, currentIndex, priorIndex)
+				{
+				
+				},
+				onFinishing: function (event, currentIndex)
+				{
+				form.validate().settings.ignore = ":disabled";
+				return form.valid();
+				},
+				onFinished: function (event, currentIndex)
+				{
+				alert("Submitted!");
+				}
+				}).validate({
+				errorPlacement: function errorPlacement(error, element) { element.before(error); },
+				rules: {
+				}
+				});
