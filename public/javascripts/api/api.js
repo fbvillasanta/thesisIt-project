@@ -1,7 +1,10 @@
-filepicker.setKey("API_KEY)");
+filepicker.setKey("API_KEY");
 
 $(document).ready(function(){
 	if (window.location.pathname === '/collection/new') {
+		var myDate = new Date();
+		var currentyear = myDate.getFullYear();
+
 		var form = $("#example-advanced-form").show();
 		form.steps({
 			headerTag: "h3",
@@ -29,7 +32,6 @@ $(document).ready(function(){
 				return form.valid();
 			},
 			onFinished: function (event, currentIndex){
-				alert("Submitted!");
 				var form = $(this);
 				form.submit();
 			}
@@ -38,6 +40,7 @@ $(document).ready(function(){
 			rules: {
 				thesis : "required",
 				description : "required",
+				year : { range : [currentyear-6, currentyear], date: true },
 				tags : "required",
 				member1 : "required",
 				member2 : "required",
@@ -45,7 +48,7 @@ $(document).ready(function(){
 				adviser2 : "required",
 				files : {
 					required : true,
-					extension : "docx|rtf|doc|pdf"
+					extension : "docx|doc|pdf"
 				},
 				image1 : { url : true },
 				image2 : { url : true },
@@ -60,11 +63,17 @@ $(document).ready(function(){
 			}
 		});
 
+		window.onload = function(){
+			for(var i=currentyear; i>currentyear-6; i--){
+				document.getElementById('year').insertAdjacentHTML('beforeend','<option value="'+i+'">'+i+'</option>');
+			}
+		}
+
 		$('.filepicker').on('click', function(event){
 		  var _this = $(this);       
 		  filepicker.pick(
 		    {
-		      extension: ['.pdf', '.doc', '.docx', '.ppt', '.txt'],
+		      extension: ['.pdf', '.doc', '.docx'],
 		      container: 'modal',
 		      service: ['COMPUTER'],
 		      openTo: 'COMPUTER' 
@@ -87,6 +96,7 @@ $(document).ready(function(){
 		  var tags = $("#tags").tagsinput('items');
 		  var thesis = document.querySelector('[name="thesis"]').value;
 			var subtitle = document.querySelector('[name="subtitle"]').value;
+			var year = document.querySelector('[name="year"]').value;
 			var description = document.querySelector('[name="description"]').value;
 			var member1 = document.querySelector('[name="member1"]').value;
 			var member2 = document.querySelector('[name="member2"]').value;
@@ -100,10 +110,16 @@ $(document).ready(function(){
 			var image2 = document.querySelector('[name="image2"]').value;
 			var image3 = document.querySelector('[name="image3"]').value;
 			var youtube = document.querySelector('[name="youtube"]').value;
+
+			if(fileURL === undefined){
+				fileURL = ''
+			}
+
 			var data = {
 				"thesis" : thesis,
 				"subtitle" : subtitle,
 				"description" : description,
+				"year" : year,
 				"tags" : tags,
 				"member1" : member1,
 				"member2" : member2,
@@ -118,14 +134,25 @@ $(document).ready(function(){
 				"image3" : image3,
 				"youtube" : youtube
 			}
-		  alert('example-advanced-form was submitted');
 		  console.log(data);
-		  document.getElementById('example-advanced-form').reset();
-		  $("#example-advanced-form").steps('reset');
-		  $('#fileUploaded').html("");
-		  $('.filepicker').data('doc-url', '');
-		  $("#tags").tagsinput('destroy');
-		  $("#tags").tagsinput('refresh');
+
+		  $.ajax({
+	      url: href,
+	      type:'POST',
+	      dataType: 'json',
+	      data: data
+	    }).done(function(res){
+	      document.getElementById('example-advanced-form').reset();
+			  $("#example-advanced-form").steps('reset');
+			  $('#fileUploaded').html("");
+			  $('.filepicker').data('doc-url', '');
+			  $("#tags").tagsinput('destroy');
+			  $("#tags").tagsinput('refresh');
+			  $('#addAlertBox').html("<div class='alert alert-success'><i class='icon-check' style='font-size:15px; text-align:center'></i><strong>Request for adding entry sent! Waiting for approval.</strong></div>");
+	    }).fail(function(res){
+	      alert(res.message);
+	      $('#addAlertBox').html("<div class='alert alert-danger'><i class='icon-check' style='font-size:15px'></i><strong>Error sending request to add entry! "+res.message+"</strong></div>");
+	    }); 
 		});
 	}
 });

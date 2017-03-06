@@ -11,18 +11,10 @@ block content
 								h1.mb30 Be part of our Collection
 		#fh5co-contact
 			.container
-				if sent == "yes"
-					.row
-						.col-md-offset-2.col-md-8.animate-box
-							.alert.alert-success
-								i.icon-check2(style='font-size:15px; text-align:center')
-								strong   Request for adding entry sent! Waiting for approval.
-				else if sent == "no"
-					.row
-						.col-md-offset-2.col-md-8.animate-box
-							.alert.alert-danger
-								i.icon-cross2(style='font-size:15px')
-								strong   Error sending request to add entry! #{error}
+				.row
+					.col-md-offset-2.col-md-8.animate-box
+						#addAlertBox
+
 				.row
 					.col-md-offset-2.col-md-8.animate-box
 						form#example-advanced-form(action='/collection/new' method='POST')
@@ -37,6 +29,11 @@ block content
 									.col-md-12
 										label(for='subtitle') Subtitle
 										input.form-control(type='text', name='subtitle', placeholder='Thesis subtitle')
+								.row.form-group
+									.col-md-12
+										label(for='year') Year
+											span  *
+										select#year.form-control(name='year')
 								.row.form-group
 									.col-md-12
 										label(for='description') Short Description
@@ -85,7 +82,7 @@ block content
 								.row.form-group
 									.col-md-12
 										h2 Thesis File:
-										label(for='files') Document (docx, doc, rtf, pdf)
+										label(for='files') Document (docx, doc, pdf) (Max. size: 15MB)
 											span  *
 										//- input.filepicker.btn.btn-info(type='button', value='Upload file')
 										input.btn.btn-info.filepicker(type="button", value='Upload file')

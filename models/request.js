@@ -11,16 +11,17 @@ var RequestSchema = mongoose.Schema({
 		id: String,
 		thesis: String,
 		subtitle: String,
-		members: Array,
-		advisers: Array,
 		description: String,
+		year : Number,
 		tags: {
-			type: String,
+			type: Array,
 			index: true
 		},
-		image: Array,
-		youtube: String,
-		file: String
+		members: Array,
+		advisers: Array,
+		fileURL: String,
+		images: Array,
+		youtube: String
 	},
 	type: {
 		type: String,

@@ -5,9 +5,6 @@ var assert = require('assert');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var db = require('../db');
-var datetime = require('node-datetime');
-var dt;
-var formattedDate;
 var username = 'username';
 var Thesis = require('../models/thesis');
 var Request = require('../models/request');
@@ -35,24 +32,19 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/new', function(req, res, next){
-    res.render('add', { title: 'Join', sent: ""});
+    res.render('add', { title: 'Join', sent: "" });
 });
 
 router.post('/new', function(req, res, next){
     var collection = Thesis.find();
-    dt = datetime.create();
-    var formatted = dt.format('m/d/Y');
     var findcount = 0;
 
     //set default image
-    var imageurl = req.body.image && req.body.image.trim();
-    if(imageurl == ""){
-        imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
-    }
-
-    var sentence = req.body.sentence && req.body.sentence.trim();
-    if(sentence == ""){
-        sentence = "No description added.";
+    var image1 = req.body.image1 && req.body.image1.trim();
+    var image2 = req.body.image2 && req.body.image2.trim();
+    var image3 = req.body.image3 && req.body.image3.trim();
+    if(image1 == "" && image2 == "" && image3 == ""){
+        image1 = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
     }
 
     var description = req.body.description && req.body.description.trim();
@@ -66,38 +58,34 @@ router.post('/new', function(req, res, next){
     var adviser1 = req.body.adviser1 && req.body.adviser1.trim();
     var adviser2 = req.body.adviser2 && req.body.adviser2.trim();
 
-    findcount = collection.count({thesis: thesis});
-
     if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
         // render error message
-        res.render('add', {title: 'Join', sent: 'no', error: 'Please fill up the required fields.'});
-        return;
-    } else if (findcount > 0){
-        console.log(findcount);
-        // render error message
-        res.render('add', {title: 'Join', sent: 'no', error: 'Found a research with the same title.'});
-        return;
+        return res.send({ message: 'Please fill up the required fields.' });
     } else {
         var dataToSave = {
-            thesis:             thesis,
+            thesis:         thesis,
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
-            members:            [
-                member1,
-                member2,
-                req.body.member3 && req.body.member3.trim(),
-                req.body.member4 && req.body.member4.trim(),
-                req.body.member5 && req.body.member5.trim()
-            ],
-            advisers:       [
-                adviser1,
-                adviser2
-            ],
-            sentence:       sentence,
             description:    description,
-            image:              imageurl,
-            youtube:            req.body.youtube && req.body.youtube.trim(),
-            added:              formatted,
-            updated:            formatted
+            year:           req.body.year,
+            tags:           req.body.tags,
+            members: [
+                            member1,
+                            member2,
+                            req.body.member3 && req.body.member3.trim(),
+                            req.body.member4 && req.body.member4.trim(),
+                            req.body.member5 && req.body.member5.trim()
+            ],
+            advisers: [
+                            adviser1,
+                            adviser2
+            ],
+            fileURL :       req.body.fileURL,
+            images: [
+                            image1,
+                            image2,
+                            image3
+            ],
+            youtube:            req.body.youtube && req.body.youtube.trim()
         };
         console.log(dataToSave);
         var thesisnew = new Request({
@@ -108,11 +96,10 @@ router.post('/new', function(req, res, next){
         thesisnew.save(function(err, entry){
             if(err) {
                 console.log('Error adding entry!');
-                return;
+                return res.send({ message : err });
             }
             console.log('Entry added successfully!');
-            res.render('add', {title: 'Join', sent: 'yes'});
-
+            res.status(200).send({ message: 'Success!' });
         });
     }
 
