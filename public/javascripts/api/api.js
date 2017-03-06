@@ -1,4 +1,4 @@
-filepicker.setKey("API_KEY");
+filepicker.setKey("API_KEY)");
 
 $(document).ready(function(){
 	if (window.location.pathname === '/collection/new') {
@@ -120,6 +120,12 @@ $(document).ready(function(){
 			}
 		  alert('example-advanced-form was submitted');
 		  console.log(data);
+		  document.getElementById('example-advanced-form').reset();
+		  $("#example-advanced-form").steps('reset');
+		  $('#fileUploaded').html("");
+		  $('.filepicker').data('doc-url', '');
+		  $("#tags").tagsinput('destroy');
+		  $("#tags").tagsinput('refresh');
 		});
 	}
 });
