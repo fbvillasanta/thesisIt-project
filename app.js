@@ -11,8 +11,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var datetime = require('node-datetime');
-var dt;
-var formattedDate;
 var mongoose = require('mongoose');
 
 var index = require('./routes/index');
@@ -20,8 +18,9 @@ var collection = require('./routes/admin');
 var auth = require('./routes/auth');
 var forgot = require('./routes/forgot');
 
-//var MongoClient = require('mongodb').MongoClient;
-//var ObjectId = require('mongodb').ObjectId;
+const methodOverride = require('method-override');
+const restify = require('express-restify-mongoose');
+const router = express.Router();
 
 var app = express();
 

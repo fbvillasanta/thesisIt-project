@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var timestamps = require('mongoose-timestamp');
 
 var RequestSchema = mongoose.Schema({
 	username: {
@@ -12,12 +13,14 @@ var RequestSchema = mongoose.Schema({
 		subtitle: String,
 		members: Array,
 		advisers: Array,
-		sentence: String,
 		description: String,
-		image: String,
+		tags: {
+			type: String,
+			index: true
+		},
+		image: Array,
 		youtube: String,
-		added: String,
-		updated: String
+		file: String
 	},
 	type: {
 		type: String,
@@ -25,6 +28,8 @@ var RequestSchema = mongoose.Schema({
 		enum: ['add', 'edit', 'delete']
 	}
 });
+
+RequestSchema.plugin(timestamps);
 
 RequestSchema.methods.findRequest = function(id){
 	var query = {_id: id};

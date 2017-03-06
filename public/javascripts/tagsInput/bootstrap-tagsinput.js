@@ -6,7 +6,7 @@
       return 'label label-info';
     },
     itemValue: function(item) {
-      return item ? item.toString() : item;
+      return item ? item.toString().toLowerCase() : item;
     },
     itemText: function(item) {
       return this.itemValue(item);
@@ -25,7 +25,7 @@
     onTagExists: function(item, $tag) {
       $tag.hide().fadeIn();
     },
-    trimValue: false,
+    trimValue: true,
     allowDuplicates: false
   };
 
@@ -106,7 +106,7 @@
           itemTitle = self.options.itemTitle(item);
 
       // Ignore items allready added
-      var existing = $.grep(self.itemsArray, function(item) { return self.options.itemValue(item) === itemValue; } )[0];
+      var existing = $.grep(self.itemsArray, function(item) { return self.options.itemValue(item).toLowerCase().trim() === itemValue.toLowerCase().trim(); } )[0];
       if (existing && !self.options.allowDuplicates) {
         // Invoke onTagExists
         if (self.options.onTagExists) {
@@ -151,7 +151,7 @@
       if (self.options.maxTags === self.itemsArray.length || self.items().toString().length === self.options.maxInputLength)
         self.$container.addClass('bootstrap-tagsinput-max');
 
-      self.$element.trigger($.Event('itemAdded', { item: item, options: options }));
+      self.$element.trigger($.Event('itemAdded', { item: item.toLowerCase(), options: options }));
     },
 
     /**

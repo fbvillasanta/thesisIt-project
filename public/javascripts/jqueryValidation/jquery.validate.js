@@ -286,6 +286,9 @@ $.extend( $.validator, {
 			}
 		},
 		onfocusout: function( element ) {
+			if (element.tagName === "TEXTAREA" || element.tagName === "INPUT") {
+		        element.value = $.trim(element.value);
+		    }
 			if ( !this.checkable( element ) && ( element.name in this.submitted || !this.optional( element ) ) ) {
 				this.element( element );
 			}

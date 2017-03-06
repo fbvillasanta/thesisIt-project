@@ -13,19 +13,19 @@ block content
 			.container
 				if sent == "yes"
 					.row
-						.col-md-offset-3.col-md-6.animate-box
+						.col-md-offset-2.col-md-8.animate-box
 							.alert.alert-success
 								i.icon-check2(style='font-size:15px; text-align:center')
 								strong   Request for adding entry sent! Waiting for approval.
 				else if sent == "no"
 					.row
-						.col-md-offset-3.col-md-6.animate-box
+						.col-md-offset-2.col-md-8.animate-box
 							.alert.alert-danger
 								i.icon-cross2(style='font-size:15px')
 								strong   Error sending request to add entry! #{error}
 				.row
 					.col-md-offset-2.col-md-8.animate-box
-						form#example-advanced-form(action='/new' method='POST')
+						form#example-advanced-form(action='/collection/new' method='POST')
 							h3 Details
 							fieldset
 								.row.form-group
@@ -87,7 +87,9 @@ block content
 										h2 Thesis File:
 										label(for='files') Document (docx, doc, rtf, pdf)
 											span  *
-										input.form-control(type='file', name='files', placeholder='Accepted file types: docx, doc, rtf, pdf', required)
+										//- input.filepicker.btn.btn-info(type='button', value='Upload file')
+										input.btn.btn-info.filepicker(type="button", value='Upload file')
+										label#fileUploaded(style='display:inline')
 								.row.form-group
 									.col-md-12
 										h2 Links:

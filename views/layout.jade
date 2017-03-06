@@ -35,6 +35,7 @@ html
 		// FOR IE9 below
 		//if lt IE 9
 			script(src='/javascripts/respond.min.js')
+		script(type="text/javascript" src="//api.filestackapi.com/filestack.js")
 	body
 		.fh5co-loader
 		#page
@@ -47,7 +48,7 @@ html
 									| Thesis It
 									span .
 							//#name
-							//	| Hi #{user.username}!
+							//  | Hi #{user.username}!
 						.col-xs-12.text-center.menu-1
 							ul
 								li(class=(title === "Home" ? 'active' : ''))
@@ -104,6 +105,8 @@ html
 		script(src='/javascripts/magnific-popup-options.js')
 		// Main
 		script(src='/javascripts/main.js')
+		// API
+		script(src='/javascripts/api/api.js')
 		if title === "Join"
 			// Form Wizard
 			script(src='/javascripts/tagsInput/bootstrap-tagsinput.js')
@@ -112,71 +115,5 @@ html
 			script(src='/javascripts/jqueryValidation/additional-methods.js')
 			script(src='/javascripts/formWizard/jquery.steps.js')
 			script(type='text/javascript').
-				var form = $("#example-advanced-form").show();
-				form.steps({
-				headerTag: "h3",
-				bodyTag: "fieldset",
-				transitionEffect: "slideLeft",
-				onStepChanging: function (event, currentIndex, newIndex)
-				{
-				// Allways allow previous action even if the current form is not valid!
-				if (currentIndex > newIndex)
-				{
-				return true;
-				}
-				// Needed in some cases if the user went back (clean up)
-				if (currentIndex < newIndex)
-				{
-				// To remove error styles
-				form.find(".body:eq(" + newIndex + ") label.error").remove();
-				form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
-				}
-				form.validate().settings.ignore = ":disabled,:hidden";
-				return form.valid();
-				},
-				onStepChanged: function (event, currentIndex, priorIndex)
-				{
 				
-				},
-				onFinishing: function (event, currentIndex)
-				{
-				form.validate().settings.ignore = ":disabled";
-				return form.valid();
-				},
-				onFinished: function (event, currentIndex)
-				{
-				alert("Submitted!");
-				}
-				}).validate({
-				errorPlacement: function errorPlacement(error, element) { element.before(error); },
-				rules: {
-					thesis : "required",
-					description : "required",
-					member1 : "required",
-					member2 : "required",
-					adviser1 : "required",
-					adviser2 : "required",
-					files : {
-						required : true,
-						extension : "docx|rtf|doc|pdf"
-					},
-					image1 : {
-						url : true
-					},
-					image2 : {
-						url : true
-					},
-					image3 : {
-						url : true
-					},
-					youtube : {
-						url : true
-					}
-				},
-				messages : {
-					files : {
-						required : "This field is required",
-						extension : "Please enter a value with a valid mimetype"
-					}
-				}
-				});
+				
