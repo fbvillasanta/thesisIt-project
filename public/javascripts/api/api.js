@@ -94,6 +94,7 @@ $(document).ready(function(){
 		  e.preventDefault();
 		  var href = document.getElementById('example-advanced-form').getAttribute('action');
 		  var tags = $("#tags").tagsinput('items');
+		  //var tags = $("#tags").val();
 		  var thesis = document.querySelector('[name="thesis"]').value;
 			var subtitle = document.querySelector('[name="subtitle"]').value;
 			var year = document.querySelector('[name="year"]').value;
@@ -120,7 +121,7 @@ $(document).ready(function(){
 				"subtitle" : subtitle,
 				"description" : description,
 				"year" : year,
-				"tags" : tags,
+				"tags" : JSON.stringify(tags),
 				"member1" : member1,
 				"member2" : member2,
 				"member3" : member3,
@@ -148,10 +149,10 @@ $(document).ready(function(){
 			  $('.filepicker').data('doc-url', '');
 			  $("#tags").tagsinput('destroy');
 			  $("#tags").tagsinput('refresh');
-			  $('#addAlertBox').html("<div class='alert alert-success'><i class='icon-check' style='font-size:15px; text-align:center'></i><strong>Request for adding entry sent! Waiting for approval.</strong></div>");
+			  $('#addAlertBox').html("<div class='alert alert-success'><i class='icon-check' style='font-size:15px; text-align:center'></i> <strong>Request for adding entry sent! Waiting for approval.</strong></div>");
 	    }).fail(function(res){
 	      alert(res.message);
-	      $('#addAlertBox').html("<div class='alert alert-danger'><i class='icon-check' style='font-size:15px'></i><strong>Error sending request to add entry! "+res.message+"</strong></div>");
+	      $('#addAlertBox').html("<div class='alert alert-danger'><i class='icon-cross2' style='font-size:15px'></i> <strong>Error sending request to add entry! "+res.message+"</strong></div>");
 	    }); 
 		});
 	}

@@ -67,7 +67,7 @@ router.post('/new', function(req, res, next){
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
             description:    description,
             year:           req.body.year,
-            tags:           req.body.tags,
+            tags:           JSON.parse(req.body.tags),
             members: [
                             member1,
                             member2,

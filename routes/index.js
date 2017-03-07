@@ -87,7 +87,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 	var action = req.body.btn;
 	var itemid = req.params.itemid;
 	if(action=="accept"){
-		Request.find({'_id': itemid}, 'details', function(e, result){
+		Request.find({'_id': itemid}, 'details createdAt username', function(e, result){
 			if(!result.length && !e){
 				req.flash('error_msg', 'Could not find add request.');
 				return res.redirect('/admin/add');
@@ -98,14 +98,17 @@ router.post('/admin/add/:itemid', function(req, res, next){
 					_id : ObjectId(itemid),
 					thesis : result[0].details.thesis,
 					subtitle : result[0].details.subtitle,
+					description : result[0].details.description,
+					year : result[0].details.year,
+					tags : result[0].details.tags,
 					members : result[0].details.members,
 					advisers : result[0].details.advisers,
-					sentence : result[0].details.sentence,
-					description : result[0].details.description,
-					image : result[0].details.image,
+					fileURL : result[0].details.fileURL,
+					images : result[0].details.images,
 					youtube : result[0].details.youtube,
-					added : result[0].details.added,
-					updated : result[0].details.updated
+					added : result[0].createdAt,
+					updated : result[0].createdAt,
+					uploadedBy: result[0].username
 				});
 				//console.log(data);
 				console.log('Thesis entry added.');
@@ -121,7 +124,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 				return res.redirect('/admin/add');
 			} else {
 				console.log('Add request deleted');
-				res.redirect('/admin/add');
+				return res.redirect('/admin/add');
 			}
 		});
 	} else {

@@ -18,6 +18,7 @@ html
     link(rel='stylesheet', href='/stylesheets/AdminLTE.css')
     
     link(rel='stylesheet', href='/stylesheets/skins/_all-skins.css')
+    script(type="text/javascript" src="//api.filestackapi.com/filestack.js")
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -43,6 +44,31 @@ html
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
   body.hold-transition.skin-red-light.sidebar-mini
+    .example-modal
+      .modal.modal-success#success
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') x
+              h4.modal-title Success
+            .modal-body
+              p Do you want to save changes you made to document before closing?
+              p.text-warning
+                small If you don't save, your changes will be lost.
+            .modal-footer
+              button.btn.btn-outline(type='button', data-dismiss='modal') Close
+    .modal.fade#myModal
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+            h4.modal-title Confirmation
+          .modal-body
+            #filepicker(type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK" style="width:75%; height:500px")
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save Changes
     .wrapper
       // Main Header
       header.main-header
@@ -210,12 +236,11 @@ html
     // ./wrapper
     // REQUIRED JS SCRIPTS
     // jQuery 2.2.3
-    script(src='/javascripts/jquery-2.2.3.min.js')
+    script(src='/javascripts/jquery-3.1.1.js')
     // Bootstrap 3.3.6
     script(src='/javascripts/bootstrap.min.js')
     // AdminLTE App
     script(src='/javascripts/app.js')
-    
     // DataTables
     script(src='/javascripts/dataTables/jquery.dataTables.min.js')
     script(src='/javascripts/dataTables/dataTables.bootstrap.js')
@@ -223,6 +248,8 @@ html
     script(src='/javascripts/slimScroll/jquery.slimscroll.js')
     // FastClick
     script(src='/javascripts/fastClick/fastclick.js')
+    // API
+    script(src='/javascripts/api/api.js')
     // page script
     script(type='text/javascript').
       $(function () {
@@ -235,6 +262,10 @@ html
           "info": true,
           "autoWidth": false
         });
+      });
+
+      $(document).ready(function(){
+        $('#myModal').modal('show'); // show
       });
       
 //    if success_msg !== ""
