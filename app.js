@@ -10,8 +10,11 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
-var datetime = require('node-datetime');
 var mongoose = require('mongoose');
+
+var Thesis = require('./models/thesis');
+var User = require('./models/user');
+var Request = require('./models/request');
 
 var index = require('./routes/index');
 var collection = require('./routes/admin');
@@ -67,6 +70,12 @@ db.connect(mdbUrl, function(err) {
 		// Passport init
 		app.use(passport.initialize());
 		app.use(passport.session());
+
+		// Express Restify Mongoose
+		restify.serve(router, Thesis);
+		restify.serve(router, User);
+		restify.serve(router, Request);
+		app.use(router);
 
 		// Express Validator
 		app.use(expressValidator({

@@ -29,43 +29,56 @@ block content
                 h3 Entry History
                 p
                   | Added:  
-                  span #{entry.added}
+                  span #{moment(entry.added).format('YYYY-MM-DD')}
                   |    |  Updated:  
-                  span #{entry.updated}
+                  span #{moment(entry.updated).format('YYYY-MM-DD')}
+                  |    |  Uploaded by:  
+                  span #{entry.uploadedBy}
                 h3 Description
                 p
-                    | #{entry.description}
+                  | #{entry.description}
+                p
+                  | TAGS: 
+                  span
+                    for tag in entry.tags
+                      | #{tag} . 
                 h3 Links
                 ul.fh5co-social-icons
                     if entry.youtube != ""
                         li
                             a(href='#{entry.youtube}', target='_blank')
                                 i.icon-youtube
-                    li
-                        a(href='#{entry.image}', target='_blank')
-                            i.icon-camera
+                    for image in entry.images
+                      if image != ''
+                        li
+                            a(href='#{entry.image}', target='_blank')
+                                i.icon-camera
                 br
             .col-md-6.col-md-pull-6
                 #myCarousel.carousel.slide(data-ride='carousel')
                   // Indicators
                   ol.carousel-indicators
-                    li.active(data-target='#myCarousel', data-slide-to='0')
-                    li(data-target='#myCarousel', data-slide-to='1')
-                    li(data-target='#myCarousel', data-slide-to='2')
-                    li(data-target='#myCarousel', data-slide-to='3')
-                    li(data-target='#myCarousel', data-slide-to='4')
+                    - var counter = 0
+                    for image in entry.images
+                      if image !== ''
+                        li.active(data-target='#myCarousel', data-slide-to='#{counter}', class=(counter === 0 ? 'active' : ''))
+                        - counter++
                   // Wrapper for slides
                   .carousel-inner(role='listbox')
-                    .item.active
-                      img.img-responsive(src='#{entry.image}', alt='thesis image')
-                    .item
-                      img.img-responsive(src='https://images.unsplash.com/16/unsplash_5263605581e32_1.JPG', alt='thesis image')
-                    .item
-                      img.img-responsive(src='http://wefunction.com/wordpress/wp-content/uploads/2013/10/tumblr_ms9mpnB2o61st5lhmo1_1280.jpg', alt='thesis image')
-                    .item
-                      img.img-responsive(src='https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg', alt='thesis image')
-                    .item
-                      img.img-responsive(src='http://2.bp.blogspot.com/-y5x8a2YNFKA/VMGuWrRvBAI/AAAAAAAAgqA/1zda8X_QAzU/s1600/ad50c1f0.jpg', alt='thesis image')
+                    - var counter = 0
+                    for image in entry.images
+                      if image !== ''
+                        .item(class=(counter === 0 ? 'active' : ''))
+                          img.img-responsive(src='#{image}', alt='Thesis image')
+                        - counter++
+                    //- .item
+                    //-   img.img-responsive(src='https://images.unsplash.com/16/unsplash_5263605581e32_1.JPG', alt='thesis image')
+                    //- .item
+                    //-   img.img-responsive(src='http://wefunction.com/wordpress/wp-content/uploads/2013/10/tumblr_ms9mpnB2o61st5lhmo1_1280.jpg', alt='thesis image')
+                    //- .item
+                    //-   img.img-responsive(src='https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg', alt='thesis image')
+                    //- .item
+                    //-   img.img-responsive(src='http://2.bp.blogspot.com/-y5x8a2YNFKA/VMGuWrRvBAI/AAAAAAAAgqA/1zda8X_QAzU/s1600/ad50c1f0.jpg', alt='thesis image')
                   // Left and right controls
                   a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
                     span.glyphicon.glyphicon-chevron-left(aria-hidden='true')

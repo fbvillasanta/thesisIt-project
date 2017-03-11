@@ -1,6 +1,60 @@
-filepicker.setKey("API_KEY");
+// filepicker.setKey("API_KEY");
 
 $(document).ready(function(){
+	if (window.location.pathname === '/collection') {
+		fetch('api/v1/Thesis?sort=_id').then(function(res) {
+      res.json().then(function(entries) {
+        console.log('entries', entries);
+        var tbody = document.getElementById('thesis-body');
+        entries.forEach(function(entries) {
+          tbody.insertAdjacentHTML('beforeend', '<div class="col-md-3 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">'+moment(entries.added).format("YYYY-MM-DD")+'</span><h3><a href="/collection/' + entries._id + '">'+entries.thesis+'</a></h3><p>'+entries.description+'</p></div></div>' );
+        });
+      })
+    });
+
+
+    fetch('api/v1/Thesis/count').then(function(res) {
+      res.json().then(function(count) {
+        $('#collectiontitle').html("Total: <span><u>" + count.count+ "</u></span>  entries");
+      });
+    });
+
+    $('#searchbox').on('keyup', function(e){
+		  e.preventDefault();
+		  var inputbox = document.getElementById("searchbox").value;
+		  inputbox = $.trim(inputbox);
+		  console.log(inputbox);
+		  if(inputbox != ""){
+		    fetch('api/v1/Thesis?query={"thesis":"~('+inputbox+')"}').then(function (res) {
+	        res.json().then(function (entries) {
+            console.log('entries', entries);
+            var tbody = document.getElementById('thesis-body');
+            if(entries.length > 0){
+              $('#thesis-body').html('');
+              entries.forEach(function(entries){
+                tbody.insertAdjacentHTML('beforeend','<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + moment(entries.added).format("YYYY-MM-DD") + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>' + entries.description + '</p></div></div>');
+              });
+            } else {
+              $('#thesis-body').html('<div class="col-md-8 col-md-offset-2" style="text-align:center"><h1>SEARCH SHOWS 0 RESULTS.</h1></div>');
+            }
+	        })
+		    });
+		  } else {
+		    fetch('api/v1/Thesis?sort=_id').then(function(res) {
+	        res.json().then(function(entries) {
+            console.log('entries', entries);
+            var tbody = document.getElementById('thesis-body');
+            $('#thesis-body').html('');
+            entries.forEach(function(entries) {
+              tbody.insertAdjacentHTML('beforeend', '<div class="col-md-3 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">'+moment(entries.added).format("YYYY-MM-DD")+'</span><h3><a href="/collection/' + entries._id + '">'+entries.thesis+'</a></h3><p>'+entries.description+'</p></div></div>' );
+
+            });
+	        })
+		    });
+		  }
+		});
+	}
+
 	if (window.location.pathname === '/collection/new') {
 		var myDate = new Date();
 		var currentyear = myDate.getFullYear();
@@ -93,6 +147,7 @@ $(document).ready(function(){
 		$('#example-advanced-form').on('submit', function(e){
 		  e.preventDefault();
 		  var href = document.getElementById('example-advanced-form').getAttribute('action');
+		  var type = document.getElementById('example-advanced-form').getAttribute('method');
 		  var tags = $("#tags").tagsinput('items');
 		  //var tags = $("#tags").val();
 		  var thesis = document.querySelector('[name="thesis"]').value;
@@ -111,9 +166,9 @@ $(document).ready(function(){
 			var image2 = document.querySelector('[name="image2"]').value;
 			var image3 = document.querySelector('[name="image3"]').value;
 			var youtube = document.querySelector('[name="youtube"]').value;
-
+			fileURL = 'https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK';
 			if(fileURL === undefined){
-				fileURL = ''
+				fileURL = 'https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK';
 			}
 
 			var data = {
@@ -139,7 +194,7 @@ $(document).ready(function(){
 
 		  $.ajax({
 	      url: href,
-	      type:'POST',
+	      type: type,
 	      dataType: 'json',
 	      data: data
 	    }).done(function(res){
@@ -149,10 +204,10 @@ $(document).ready(function(){
 			  $('.filepicker').data('doc-url', '');
 			  $("#tags").tagsinput('destroy');
 			  $("#tags").tagsinput('refresh');
-			  $('#addAlertBox').html("<div class='alert alert-success'><i class='icon-check' style='font-size:15px; text-align:center'></i> <strong>Request for adding entry sent! Waiting for approval.</strong></div>");
+			  $('#addAlertBox').html("<div class='alert alert-success alert-dismissable'><i class='icon-check' style='font-size:15px; text-align:center'></i> <strong>Request for adding entry sent! Waiting for approval.</strong></div>");
 	    }).fail(function(res){
 	      alert(res.message);
-	      $('#addAlertBox').html("<div class='alert alert-danger'><i class='icon-cross2' style='font-size:15px'></i> <strong>Error sending request to add entry! "+res.message+"</strong></div>");
+	      $('#addAlertBox').html("<div class='alert alert-danger alert-dismissable'><i class='icon-cross2' style='font-size:15px'></i> <strong>Error sending request to add entry! "+res.message+"</strong></div>");
 	    }); 
 		});
 	}

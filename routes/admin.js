@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 var ObjectId = require('mongodb').ObjectId;
 var assert = require('assert');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+
 var db = require('../db');
 var username = 'username';
 var Thesis = require('../models/thesis');
@@ -24,9 +26,9 @@ router.get('/', function(req, res, next){
     if (count == 0) {
         console.log("Collection is empty.");
     } else {
-        collection.find().sort({thesis: 1}).exec(function(err, entry){
+        collection.find().sort({added: -1}).exec(function(err, entry){
             console.log("Thesis entries loaded.");
-            res.render('collection', { title: 'Collection', entries: entry });
+            res.render('collection', { title: 'Collection', entries: entry, moment: moment });
         });
     }
 });
@@ -169,7 +171,8 @@ router.get('/:thesisId', function(req, res, next){
 
                 res.render('details', {
                     title: 'Collection',
-                    entry: entry
+                    entry: entry,
+                    moment: moment
                 });
             });
         }
@@ -188,8 +191,6 @@ router.get('/:thesisId/edit', function(req, res, next){
 router.put('/:thesisId', function(req,res, next) {
     var thesisId = req.params.thesisId;
     var collection = Thesis.find();
-    dt = datetime.create();
-    formattedDate = dt.format('m/d/Y');
 
     //set default image
     var imageurl = req.body.image && req.body.image.trim();

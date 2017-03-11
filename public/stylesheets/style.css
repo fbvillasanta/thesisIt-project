@@ -1744,6 +1744,16 @@ h1, h2, h3, h4, h5, h6, figure {
   font-weight: 600 !important;
 }
 
+#collectiontitle {
+  text-transform: none !important;
+  color: #f35f55 !important;
+  font-size: 55px !important;
+}
+
+#collectiontitle > span {
+  font-weight: 600 !important;
+}
+
 label > span {
   color: #f35f55;
   font-weight: bold;
@@ -1773,6 +1783,11 @@ label > span {
 
 #recentEntries {
   height: 150px !important;
+}
+
+p > span {
+  color: #f35f55;
+  font-weight: bold;
 }
 
 /*#search > .input-group > span > input.btn {

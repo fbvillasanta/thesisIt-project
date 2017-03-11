@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 var ObjectId = require('mongodb').ObjectId;
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var ObjectId = require('mongodb').ObjectId;
+
 var db = require('../db');
 var Thesis = require('../models/thesis');
 var User = require('../models/user');
@@ -25,11 +26,11 @@ router.use(methodOverride(function(req, res){
 router.get('/', function(req, res, next) {
 	//var collection = db.get().collection('theses');
 	Thesis.find()
-		.sort({_id: -1})
+		.sort({added: -1})
 		.limit(3).exec(function(e, entry){
 		  console.log(entry);
 		  res.render('index', { title: 'Home', entries: entry,
-		  						user: req.user});
+		  						user: req.user, moment: moment});
 	});
 });
 

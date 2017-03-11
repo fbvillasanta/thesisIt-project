@@ -18,7 +18,10 @@ html
     link(rel='stylesheet', href='/stylesheets/AdminLTE.css')
     
     link(rel='stylesheet', href='/stylesheets/skins/_all-skins.css')
+
+    // FILESTACK API
     script(type="text/javascript" src="//api.filestackapi.com/filestack.js")
+
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -65,7 +68,7 @@ html
             button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
             h4.modal-title Confirmation
           .modal-body
-            #filepicker(type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK" style="width:75%; height:500px")
+            //- #filepicker(type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK" style="width:75%; height:500px")
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='button') Save Changes
@@ -265,7 +268,7 @@ html
       });
 
       $(document).ready(function(){
-        $('#myModal').modal('show'); // show
+        $('#myModal').modal('hide'); // show
       });
       
 //    if success_msg !== ""
