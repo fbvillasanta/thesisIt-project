@@ -1790,6 +1790,14 @@ p > span {
   font-weight: bold;
 }
 
+#searchGroup > input {
+    width:75%;
+}
+
+#searchGroup > select {
+    width:25%;
+}
+
 /*#search > .input-group > span > input.btn {
   display: table-cell !important;
   line-height: 54px !important;

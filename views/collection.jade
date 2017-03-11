@@ -21,11 +21,13 @@ block content
 								| This is a basically a compilation of awesome ideas that may change the world.
 							br
 							form#search(action='/collection', method='post')
-								.input-group
-									span.input-group-addon#basic-addon1 Thesis Title
+								.input-group#searchGroup
+									select.selectpicker.form-control#searchfilter(data-live-search='true', title='Seach by: ')
+										option(value='title') Thesis title
+										option(value='tag') Thesis tag
 									input.form-control#searchbox(type='text', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
 									.span.input-group-btn
-										input.btn.btn-danger#searchbtn(type="submit" value='Go!')
+										input.btn.btn-danger#searchbtn(type='button' value='Search!')
 					.row
 						#thesis-body
 						//- for entry in entries

@@ -22,23 +22,44 @@ $(document).ready(function(){
     $('#searchbox').on('keyup', function(e){
 		  e.preventDefault();
 		  var inputbox = document.getElementById("searchbox").value;
+		  var selectfilter = document.getElementById("searchfilter").value;
 		  inputbox = $.trim(inputbox);
 		  console.log(inputbox);
 		  if(inputbox != ""){
-		    fetch('api/v1/Thesis?query={"thesis":"~('+inputbox+')"}').then(function (res) {
-	        res.json().then(function (entries) {
-            console.log('entries', entries);
-            var tbody = document.getElementById('thesis-body');
-            if(entries.length > 0){
-              $('#thesis-body').html('');
-              entries.forEach(function(entries){
-                tbody.insertAdjacentHTML('beforeend','<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + moment(entries.added).format("YYYY-MM-DD") + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>' + entries.description + '</p></div></div>');
-              });
-            } else {
-              $('#thesis-body').html('<div class="col-md-8 col-md-offset-2" style="text-align:center"><h1>SEARCH SHOWS 0 RESULTS.</h1></div>');
-            }
-	        })
-		    });
+		  	if(selectfilter == "title"){
+			    fetch('api/v1/Thesis?query={"thesis":"~('+inputbox+')"}').then(function (res) {
+		        res.json().then(function (entries) {
+	            console.log('entries', entries);
+	            var tbody = document.getElementById('thesis-body');
+	            if(entries.length > 0){
+	              $('#thesis-body').html('');
+	              entries.forEach(function(entries){
+	                tbody.insertAdjacentHTML('beforeend','<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + moment(entries.added).format("YYYY-MM-DD") + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>' + entries.description + '</p></div></div>');
+	              });
+	            } else {
+	              $('#thesis-body').html('<div class="col-md-8 col-md-offset-2" style="text-align:center"><h1>SEARCH SHOWS 0 RESULTS.</h1></div>');
+	            }
+		        })
+			    });
+			   }
+
+			  if(selectfilter == "tag"){
+			  	fetch('api/v1/Thesis?query={"tags":"~('+inputbox+')"}').then(function(res){
+			  		res.json().then(function (entries) {
+			  			console.log('entries', entries);
+			  			var tbody = document.getElementById('thesis-body');
+			  			if(entries.length > 0){
+	              $('#thesis-body').html('');
+	              entries.forEach(function(entries){
+	                tbody.insertAdjacentHTML('beforeend','<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + moment(entries.added).format("YYYY-MM-DD") + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>' + entries.description + '</p></div></div>');
+	              });
+	            } else {
+	              $('#thesis-body').html('<div class="col-md-8 col-md-offset-2" style="text-align:center"><h1>SEARCH SHOWS 0 RESULTS.</h1></div>');
+	            }
+			  		})
+			  	});
+			  }
+			  
 		  } else {
 		    fetch('api/v1/Thesis?sort=_id').then(function(res) {
 	        res.json().then(function(entries) {
