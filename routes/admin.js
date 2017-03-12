@@ -265,30 +265,28 @@ router.put('/:thesisId', function(req,res, next) {
                 };
 
         var data = new Request({
-                    username : req.user.username,
-                    details : dataToSave,
-                    type : 'edit'
+                  username : req.user.username,
+                  details : dataToSave,
+                  type : 'edit'
                 })
 
         data.save(function(err, entry) {
-
-            if (err) {
-                res.send("There was a problem in sending your request: " + err);
-            }
-            else {
-                res.format({
-                    html: function () {
-                        console.log(dataToSave);
-                        req.flash('success_msg', 'Edit request for that entry was sent to admin. An email will be sent to you when your request is approved');
-                        res.redirect("/collection/" + thesisId);
-                    },
-                    //JSON responds showing the updated values
-                    json: function () {
-                        res.json(entry);
-                    }
-                });
-
-            }
+          if (err) {
+              res.send("There was a problem in sending your request: " + err);
+          }
+          else {
+            res.format({
+              html: function () {
+                console.log(dataToSave);
+                req.flash('success_msg', 'Edit request for that entry was sent to admin. An email will be sent to you when your request is approved');
+                res.redirect("/collection/" + thesisId);
+              },
+              //JSON responds showing the updated values
+              json: function () {
+                  res.json(entry);
+              }
+            });
+          }
         });
     }
 
@@ -299,41 +297,38 @@ router.delete('/:thesisId',function(req,res,next) {
 
     collection.findOne({ '_id': ObjectId(thesisId) },  function(err, entry) {
         if (err) {
-            res.send("There was a problem deleting an entry to the database: " + err);
-        }
-        else {
-            Request.find({'details.id': thesisId, 'type' : 'delete'}, function(err, exist){
-                if(exist.length && !err){
-                    req.flash('error_msg', 'Delete request for that entry already exists.');
-                    res.redirect('/collection/'+thesisId);
-                    console.log('Exist')
-                } else if(!exist.length && !err){
-                    var data = new Request({
-                        username : req.user.username,
-                        details: {
-                            id : thesisId,
-                            thesis : entry.thesis,
-                            subtitle : entry.subtitle,
-                            members : entry.members,
-                            advisers : entry.advisers,
-                            description : entry.description,
-                            sentence : entry.sentence,
-                            image : entry.image,
-                            youtube : entry.youtube,
-                            added : entry.added,
-                            updated : entry.updated
-                        },
-                        type : 'delete'
-                    });
-                    data.save();
-                    console.log('Request for delete sent.');
-                    req.flash('success_msg', 'Request for delete was sent to admin. An email will be sent to you when your request is approved.');
-                    res.redirect("/collection/"+thesisId) ;
-                    console.log(entry);
-                } else {
-                    res.status(500).send({'message': 'not found'});
-                }
-            })
+            res.send({'message' : "There was a problem deleting an entry to the database: " + err});
+        } else {
+          Request.find({'details.id': thesisId, 'type' : 'delete'}, function(err, exist){
+            if(exist.length && !err){
+              res.send({'message' : 'Delete request for that entry already exists.'});
+              console.log('Exist')
+            } else if(!exist.length && !err){
+              var data = new Request({
+                username : req.user.username,
+                details: {
+                  id : thesisId,
+                  thesis : entry.thesis,
+                  subtitle : entry.subtitle,
+                  description : entry.description,
+                  year : entry.year,
+                  tags : entry.tags,
+                  members : entry.members,
+                  advisers : entry.advisers,
+                  fileURL : entry.fileURL,
+                  images : entry.images,
+                  youtube : entry.youtube
+                },
+                type : 'delete'
+              });
+              data.save();
+              console.log('Request for delete sent.');
+              res.status(200).send({'message' : 'Request for delete was sent to admin. An email will be sent to you when your request is approved.'});
+              console.log(entry);
+            } else {
+                res.send({'message': 'Thesis entry was not found.'});
+            }
+          });
         }
 
     });

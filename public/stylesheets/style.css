@@ -1791,11 +1791,20 @@ p > span {
 }
 
 #searchGroup > input {
-    width:75%;
+  width:75%;
 }
 
 #searchGroup > select {
-    width:25%;
+  width:25%;
+  background-color: white;
+}
+
+.label-danger {
+  background-color: #f35f55 !important;
+}
+
+.label-primary {
+  background-color: #0C9CEE !important;
 }
 
 /*#search > .input-group > span > input.btn {
