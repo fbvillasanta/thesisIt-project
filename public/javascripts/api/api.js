@@ -44,8 +44,8 @@ $(document).ready(function(){
 		  inputbox = $.trim(inputbox);
 		  console.log(inputbox);
 		  if(inputbox != ""){
-		  	if(selectfilter == "title"){
-			    fetch('api/v1/Thesis?query={"thesis":"~('+inputbox+')"}').then(function (res) {
+		  	if(selectfilter == "thesis" || selectfilter == "tags"){
+			    fetch('api/v1/Thesis?query={"'+selectfilter+'":"~('+inputbox+')"}').then(function (res) {
 		        res.json().then(function (entries) {
 	            console.log('entries', entries);
 	            var tbody = document.getElementById('thesis-body');
@@ -65,8 +65,8 @@ $(document).ready(function(){
 			    });
 			   }
 
-			  if(selectfilter == "tag"){
-			  	fetch('api/v1/Thesis?query={"tags":"~('+inputbox+')"}').then(function(res){
+			  if(selectfilter == "year"){
+			  	fetch('api/v1/Thesis?query={"year":'+inputbox+'}').then(function(res){
 			  		res.json().then(function (entries) {
 			  			console.log('entries', entries);
 			  			var tbody = document.getElementById('thesis-body');
