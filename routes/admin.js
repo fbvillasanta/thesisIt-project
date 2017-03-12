@@ -193,14 +193,11 @@ router.put('/:thesisId', function(req,res, next) {
     var collection = Thesis.find();
 
     //set default image
-    var imageurl = req.body.image && req.body.image.trim();
-    if(imageurl == ""){
-        imageurl = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
-    }
-
-    var sentence = req.body.sentence && req.body.sentence.trim();
-    if(sentence == ""){
-        sentence = "No description added.";
+    var image1 = req.body.image1 && req.body.image1.trim();
+    var image2 = req.body.image2 && req.body.image2.trim();
+    var image3 = req.body.image3 && req.body.image3.trim();
+    if(image1 == "" && image2 == "" && image3 == ""){
+        image1 = "https://s24.postimg.org/4n4g07o9x/img_bg_1.jpg";
     }
 
     var description = req.body.description && req.body.description.trim();
@@ -213,80 +210,49 @@ router.put('/:thesisId', function(req,res, next) {
     var member2 = req.body.member2 && req.body.member2.trim();
     var adviser1 = req.body.adviser1 && req.body.adviser1.trim();
     var adviser2 = req.body.adviser2 && req.body.adviser2.trim();
-    var youtube = req.body.youtube && req.body.youtube.trim();
-    var subtitle = req.body.subtitle && req.body.subtitle.trim();
 
     if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
         // render error message
-        collection.findOne({ _id: new ObjectId(thesisId)}, function(err, entry){
-            req.flash('error_msg', 'Please fill out the required fields.');
-            res.redirect('/collection/'+thesisId+'/edit');
-        });
-        return;
+        return res.send({ message: 'Please fill up the required fields.' });
     } else {
-        // Save only edited values
-         var item = collection.findOne({_id: new ObjectId(thesisId)});
-         if (subtitle == item.subtitle){
-            subtitle = "";
-         }
-         if (sentence == item.sentence){
-            sentence = "";
-         }
-         if (description == item.description){
-            description = "";
-         }
-         if (imageurl == item.imageurl){
-            imageurl = "";
-         }
-         if (youtube == item.youtube){
-            youtube = "";
-         }
-
         var dataToSave = {
-                    id : thesisId,
-                    thesis:             thesis,
-                    subtitle:       subtitle,
-                    members:            [
-                        member1,
-                        member2,
-                        req.body.member3 && req.body.member3.trim(),
-                        req.body.member4 && req.body.member4.trim(),
-                        req.body.member5 && req.body.member5.trim()
-                    ],
-                    advisers:       [
-                        adviser1,
-                        adviser2
-                    ],
-                    sentence:       sentence,
-                    description:    description,
-                    image:              imageurl,
-                    youtube:            youtube,
-                    updated:            formattedDate
-                };
-
-        var data = new Request({
-                  username : req.user.username,
-                  details : dataToSave,
-                  type : 'edit'
-                })
-
-        data.save(function(err, entry) {
-          if (err) {
-              res.send("There was a problem in sending your request: " + err);
-          }
-          else {
-            res.format({
-              html: function () {
-                console.log(dataToSave);
-                req.flash('success_msg', 'Edit request for that entry was sent to admin. An email will be sent to you when your request is approved');
-                res.redirect("/collection/" + thesisId);
-              },
-              //JSON responds showing the updated values
-              json: function () {
-                  res.json(entry);
-              }
-            });
-          }
+            thesis:         thesis,
+            subtitle:       req.body.subtitle && req.body.subtitle.trim(),
+            description:    description,
+            year:           req.body.year,
+            tags:           JSON.parse(req.body.tags),
+            members: [
+                            member1,
+                            member2,
+                            req.body.member3 && req.body.member3.trim(),
+                            req.body.member4 && req.body.member4.trim(),
+                            req.body.member5 && req.body.member5.trim()
+            ],
+            advisers: [
+                            adviser1,
+                            adviser2
+            ],
+            fileURL :       req.body.fileURL,
+            images: [
+                            image1,
+                            image2,
+                            image3
+            ],
+            youtube:            req.body.youtube && req.body.youtube.trim()
+        };
+        console.log(dataToSave);
+        var thesisnew = new Request({
+            username : req.user.username,
+            details : dataToSave,
+            type : 'edit'
+        });
+        thesisnew.save(function(err, entry){
+            if(err) {
+                console.log('Error adding request!');
+                return res.send({ message : err });
+            }
+            console.log('Reques added successfully!');
+            res.status(200).send({ message: 'Edit request for that entry was sent to admin. An email will be sent to you when your request is approved', redirect: '/collection/'+thesisId });
         });
     }
 
