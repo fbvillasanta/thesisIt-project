@@ -150,20 +150,22 @@ router.delete('/admin/add/:itemid', function(req, res, next){
 
 router.put('/admin/edit/:itemid', function(req, res, next){
 	var requestId = req.params.itemid;
-	Request.findOne({'_id':ObjectId(requestId)}, 'details', function(err, entry){
+	Request.findOne({'_id':ObjectId(requestId)}, 'details updatedAt', function(err, entry){
 		if (err) {
 			res.send("There was a problem in finding that particular request: " + err);
 		} else {
 			var dataToSave = {
 				thesis : entry.details.thesis,
 				subtitle : entry.details.subtitle,
+				year : entry.details.year,
+				description : entry.details.description,
+				tags : entry.details.tags,
 				members : entry.details.members,
 				advisers : entry.details.advisers,
-				sentence : entry.details.sentence,
-				description : entry.details.description,
-				image : entry.details.image,
+				fileURL : entry.details.fileURL,
+				images : entry.details.images,
 				youtube : entry.details.youtube,
-				updated : entry.details.updated
+				updated : entry.updatedAt
 			};
 			Thesis.findByIdAndUpdate(ObjectId(entry.details.id), dataToSave, function (err, result) {
 				if(err) {

@@ -189,6 +189,15 @@ block content
                               b Description: 
                               | #{entry.details.description}
                             li
+                              b Year: 
+                              | #{entry.details.year}
+                            li
+                              b Tags: 
+                              for tag in entry.details.tags
+                                if tag !== ""
+                                  i #{tag}
+                                  |  | 
+                            li
                               b Researchers: 
                               for member in entry.details.members
                                 if member !== ""
@@ -201,7 +210,10 @@ block content
                                 |  | 
                             li
                               b Image link: 
-                              | #{entry.details.image}
+                              for image in entry.details.images
+                                if image !== ""
+                                  i #{image}
+                                  |  | 
                             if entry.details.youtube != ""
                               li
                                 b Youtube link: 
@@ -241,6 +253,15 @@ block content
                               b Description: 
                               | #{entry.details.description}
                             li
+                              b Year: 
+                              | #{entry.details.year}
+                            li
+                              b Tags: 
+                              for tag in entry.details.tags
+                                if tag !== ""
+                                  i #{tag}
+                                  |  | 
+                            li
                               b Researchers: 
                               for member in entry.details.members
                                 if member !== ""
@@ -253,7 +274,10 @@ block content
                                 |  | 
                             li
                               b Image link: 
-                              | #{entry.details.image}
+                              for image in entry.details.images
+                                if image !== ""
+                                  i #{image}
+                                  |  | 
                             if entry.details.youtube != ""
                               li
                                 b Youtube link: 

@@ -216,6 +216,7 @@ router.put('/:thesisId', function(req,res, next) {
         return res.send({ message: 'Please fill up the required fields.' });
     } else {
         var dataToSave = {
+            id:             ObjectId(thesisId),
             thesis:         thesis,
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
             description:    description,
@@ -273,7 +274,7 @@ router.delete('/:thesisId',function(req,res,next) {
               var data = new Request({
                 username : req.user.username,
                 details: {
-                  id : thesisId,
+                  id : ObjectId(thesisId),
                   thesis : entry.thesis,
                   subtitle : entry.subtitle,
                   description : entry.description,
