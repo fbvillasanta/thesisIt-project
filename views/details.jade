@@ -1,6 +1,7 @@
 extends layout
 
 block content
+      
       header#fh5co-header.fh5co-cover(role='banner', style='background-image:url(/images/img_bg_1.jpg);')
         .overlay
         .container
@@ -42,8 +43,12 @@ block content
                     span.label.label-default
                       | #{tag}
                     | 
-                h3 Links
+                h3 File & Links
                 ul.fh5co-social-icons
+                    if entry.fileHandle != ""
+                        li
+                            a#fileLink(href='#{entry.fileHandle}')
+                                i.icon-file
                     if entry.youtube != ""
                         li
                             a(href='#{entry.youtube}', target='_blank')

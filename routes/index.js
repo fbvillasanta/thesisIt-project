@@ -91,7 +91,6 @@ router.post('/admin/add/:itemid', function(req, res, next){
 		Request.find({'_id': itemid}, 'details createdAt username', function(e, result){
 			if(!result.length && !e){
 				req.flash('error_msg', 'Could not find add request.');
-				return res.redirect('/admin/add');
 			} else if(result.length && !e) {
 				//var result = Request.findRequest({'_id':itemid});
 				console.log(result);
@@ -105,6 +104,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 					members : result[0].details.members,
 					advisers : result[0].details.advisers,
 					fileURL : result[0].details.fileURL,
+					fileHandle : result[0].details.fileHandle,
 					images : result[0].details.images,
 					youtube : result[0].details.youtube,
 					added : result[0].createdAt,
@@ -117,19 +117,16 @@ router.post('/admin/add/:itemid', function(req, res, next){
 				req.flash('success_msg', 'Thesis entry added successfully.');
 			} else {
 				req.flash('error', e);
-				return res.redirect('/admin/add');
 			}
 		});
 		Request.findOneAndRemove({'_id': itemid}, function(e, entry){
-			if(e){
-				return res.redirect('/admin/add');
-			} else {
+			if(!e){
 				console.log('Add request deleted');
-				return res.redirect('/admin/add');
 			}
+			return res.redirect('/admin/add');
 		});
 	} else {
-		res.redirect('/admin/add');
+		return res.redirect('/admin/add');
 	}
 });
 
@@ -163,6 +160,7 @@ router.put('/admin/edit/:itemid', function(req, res, next){
 				members : entry.details.members,
 				advisers : entry.details.advisers,
 				fileURL : entry.details.fileURL,
+				fileHandle : entry.details.fileHandle,
 				images : entry.details.images,
 				youtube : entry.details.youtube,
 				updated : entry.updatedAt

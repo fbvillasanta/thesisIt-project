@@ -21,6 +21,7 @@ html
 
     // FILESTACK API
     script(type="text/javascript" src="//api.filestackapi.com/filestack.js")
+    //script(src="//static.filestackapi.com/v3/filestack.js")
 
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
@@ -62,16 +63,13 @@ html
             .modal-footer
               button.btn.btn-outline(type='button', data-dismiss='modal') Close
     .modal.fade#myModal
-      .modal-dialog
+      .modal-dialog.modal-lg
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
-            h4.modal-title Confirmation
+            h4.modal-title File Viewer
           .modal-body
-            //- #filepicker(type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK" style="width:75%; height:500px")
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save Changes
+            #filepicker(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/")
     .wrapper
       // Main Header
       header.main-header
@@ -266,11 +264,7 @@ html
           "autoWidth": false
         });
       });
-
-      $(document).ready(function(){
-        $('#myModal').modal('hide'); // show
-      });
-      
+    
 //    if success_msg !== ""
 //      script(type='text/javascript').
 //        $('#success').modal('show');

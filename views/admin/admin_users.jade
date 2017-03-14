@@ -152,6 +152,12 @@ block content
                               li
                                 b Youtube link: 
                                 | #{entry.details.youtube}
+                            if entry.details.fileURL != ""
+                              li
+                                b File URL: 
+                                | #{entry.details.fileURL}
+                          if entry.details.fileHandle != ""
+                            a.btn.btn-info.viewFile.col-md-offset-4.col-md-4.col(type='button', href='#{entry.details.fileHandle}') View File Uploaded
                         td
                           form(method='post', action='/admin/add/'+ entry._id)
                             button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
@@ -218,6 +224,8 @@ block content
                               li
                                 b Youtube link: 
                                 | #{entry.details.youtube}
+                          if entry.details.fileHandle != ""
+                            a.btn.btn-info.viewFile.col-md-offset-4.col-md-4.col(type='button', href='#{entry.details.fileHandle}') View File Uploaded
                         td
                           form(method='post', action='/admin/edit/'+ entry._id)
                             .form-group

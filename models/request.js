@@ -20,6 +20,7 @@ var RequestSchema = mongoose.Schema({
 		members: Array,
 		advisers: Array,
 		fileURL: String,
+		fileHandle: String,
 		images: Array,
 		youtube: String
 	},

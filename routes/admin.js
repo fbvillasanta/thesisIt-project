@@ -82,6 +82,7 @@ router.post('/new', function(req, res, next){
                             adviser2
             ],
             fileURL :       req.body.fileURL,
+            fileHandle :    req.body.fileHandle,
             images: [
                             image1,
                             image2,
@@ -234,6 +235,7 @@ router.put('/:thesisId', function(req,res, next) {
                             adviser2
             ],
             fileURL :       req.body.fileURL,
+            fileHandle :    req.body.fileHandle,
             images: [
                             image1,
                             image2,
@@ -283,6 +285,7 @@ router.delete('/:thesisId',function(req,res,next) {
                   members : entry.members,
                   advisers : entry.advisers,
                   fileURL : entry.fileURL,
+                  fileHandle : entry.fileHandle,
                   images : entry.images,
                   youtube : entry.youtube
                 },

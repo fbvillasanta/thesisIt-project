@@ -1,4 +1,4 @@
-// filepicker.setKey("API_KEY");
+filepicker.setKey("API_KEY");
 
 $(document).ready(function(){
 	$('#deleteItem').on('click', function(e){
@@ -29,7 +29,6 @@ $(document).ready(function(){
         });
       })
     });
-
 
     fetch('api/v1/Thesis/count').then(function(res) {
       res.json().then(function(count) {
@@ -186,7 +185,7 @@ $(document).ready(function(){
 		    function(Blob){
 		      console.log(JSON.stringify(Blob));
 		      _this.data("doc-url", Blob.url);
-		      $('[type="filepicker-preview"]').data('fp-ur', Blob.url);
+		      //$('[type="filepicker-preview"]').data('fp-ur', Blob.url);
 		      $('#fileUploaded').html("<span>"+Blob.filename+"</span>");
 		    },
 		    function(FPError){
@@ -212,14 +211,23 @@ $(document).ready(function(){
 			var member5 = document.querySelector('[name="member5"]').value;
 			var adviser1 = document.querySelector('[name="adviser1"]').value;
 			var adviser2 = document.querySelector('[name="adviser2"]').value;
-			var fileURL = $('.filepicker').data('doc-url')
+			var fileURL = $('.filepicker').data('doc-url');
 			var image1 = document.querySelector('[name="image1"]').value;
 			var image2 = document.querySelector('[name="image2"]').value;
 			var image3 = document.querySelector('[name="image3"]').value;
 			var youtube = document.querySelector('[name="youtube"]').value;
-			fileURL = 'https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK';
+			
+			fileURL = 'https://cdn.filestackcontent.com/HTSyNrCRRKtkyDxxn2D7';
 			if(fileURL === undefined){
-				fileURL = 'https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK';
+				fileURL = '';
+			}
+
+			// Generate file handle
+			var lastIndex = fileURL.lastIndexOf('/');
+			if(lastIndex != -1){
+				var fileHandle = fileURL.substring(lastIndex+1, fileURL.length);
+			} else {
+				var fileHandle = '';
 			}
 
 			var data = {
@@ -236,6 +244,7 @@ $(document).ready(function(){
 				"adviser1" : adviser1,
 				"adviser2" : adviser2,
 				"fileURL" : fileURL,
+				"fileHandle" : fileHandle,
 				"image1" : image1,
 				"image2" : image2,
 				"image3" : image3,
@@ -260,6 +269,23 @@ $(document).ready(function(){
 	      alert(res.message);
 	      $('#addAlertBox').html("<div class='alert alert-danger alert-dismissable'><i class='icon-cross2' style='font-size:15px'></i> <strong>Error sending request to add entry! "+res.message+"</strong></div>");
 	    }); 
+		});
+	}
+
+	if (window.location.pathname === '/admin/add' || window.location.pathname === '/admin/edit') {
+		$('.viewFile').on('click', function(e){
+      e.preventDefault();
+      var link = $(this).attr('href');
+      var url = 'https://www.filestackapi.com/api/file/' + link;
+      var src = 'https://www.filestackapi.com/api/preview/' + link;
+      $('#myModal #filepicker').attr('data-fp-url', url);
+      $('#myModal iframe').attr('src', src);
+      $('#myModal').modal('show');
+    });
+
+    $('#myModal').on('show.bs.modal', function () {
+      var height = $(window).height();
+      $(this).find('.modal-body').css('max-height', height);
 		});
 	}
 });
