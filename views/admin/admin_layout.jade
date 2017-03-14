@@ -34,11 +34,11 @@ html
     Apply one or more of the following classes to get the
     desired effect
     |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
+    | SKINS         | skin-blue      skin-blue-light          |
+    |               | skin-black     skin-black-light         |
     |               | skin-purple                             |
     |               | skin-yellow                             |
-    |               | skin-red                                |
+    |               | skin-red       skin-red-light           |
     |               | skin-green                              |
     |---------------------------------------------------------|
     |LAYOUT OPTIONS | fixed                                   |
@@ -47,7 +47,7 @@ html
     |               | sidebar-collapse                        |
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
-  body.hold-transition.skin-red-light.sidebar-mini
+  body.hold-transition.skin-red.sidebar-mini
     .example-modal
       .modal.modal-success#success
         .modal-dialog
@@ -123,7 +123,6 @@ html
           // Sidebar Menu
           ul.sidebar-menu
             li.header MENU
-            // Optionally, you can add icons to the links
             li(class=(title === "Users" ? 'active' : ''))
               a(href='/admin')
                 i.fa.fa-user
@@ -137,14 +136,27 @@ html
                 i.fa.fa-commenting
                 span Requests
                 span.pull-right-container
-                  i.fa.fa-angle-left.pull-right
+                  span#requestContainer.label.label-success.pull-right 17
+                  //- i.fa.fa-angle-left.pull-right
               ul.treeview-menu
                 li(class=(title === "Add" ? 'active' : ''))
-                  a(href='/admin/add') Add
+                  a(href='/admin/add')
+                    i.fa.fa-circle-o 
+                    span Add
+                    span.pull-right-container
+                      span.label.label-warning.pull-right 5
                 li(class=(title === "Edit" ? 'active' : ''))
-                  a(href='/admin/edit') Edit
+                  a(href='/admin/edit')
+                    i.fa.fa-circle-o
+                    span Edit
+                    span.pull-right-container
+                      //- span.label.label-warning.pull-right 0
                 li(class=(title === "Delete" ? 'active' : ''))
-                  a(href='/admin/delete') Delete
+                  a(href='/admin/delete')
+                    i.fa.fa-circle-o
+                    span Delete
+                    span.pull-right-container
+                      span.label.label-warning.pull-right 12
           // /.sidebar-menu
         // /.sidebar
       // Content Wrapper. Contains page content

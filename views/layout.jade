@@ -118,19 +118,4 @@ html
 		script(src='/javascripts/api/api.js')
 		
 		block scripts
-			script(type='text/javascript').
-				$('#fileLink').on('click', function(e){
-					e.preventDefault();
-					var link = $(this).attr('href');
-					var url = 'https://www.filestackapi.com/api/file/' + link;
-					var src = 'https://www.filestackapi.com/api/preview/' + link;
-					$('#myModal #filepicker').attr('data-fp-url', url);
-					$('#myModal iframe').attr('src', src);
-					$('#myModal').modal('show');
-				});
-
-				$('#myModal').on('show.bs.modal', function () {
-					var height = $(window).height();
-					$(this).find('.modal-body').css('max-height', height);
-				});
 			

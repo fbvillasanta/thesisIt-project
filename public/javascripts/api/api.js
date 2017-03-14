@@ -1,5 +1,14 @@
 filepicker.setKey("API_KEY");
 
+function viewFile(){
+  var link = $('#fileLink').attr('data-doc-handle');
+  var url = 'https://www.filestackapi.com/api/file/' + link;
+  var src = 'https://www.filestackapi.com/api/preview/' + link;
+  $('#myModal #filepicker').attr('data-fp-url', url);
+  $('#myModal iframe').attr('src', src);
+  $('#myModal').modal('show');
+};
+
 $(document).ready(function(){
 	$('#deleteItem').on('click', function(e){
 	    e.preventDefault();
@@ -14,7 +23,21 @@ $(document).ready(function(){
 	      alert(res.message);
 	    });
 	});
-	
+
+	$('#myModal').on('show.bs.modal', function () {
+		var height = $(window).height();
+		$(this).find('.modal-body').css('max-height', height);
+	});
+
+	// Count for Admin Page
+	// if (window.location.pathname === '/admin' || window.location.pathname === '/admin/collections' || window.location.pathname === '/admin/add' || window.location.pathname === '/admin/edit' || window.location.pathname === '/admin/delete'){
+	//   fetch('api/v1/Request/count').then(function(res) {
+	//     res.json().then(function(count) {
+	//       $('#requestContainer').html(count.count);
+	//     });
+	//   });
+	// }
+
 	if (window.location.pathname === '/collection') {
 		fetch('api/v1/Thesis?sort=_id').then(function(res) {
       res.json().then(function(entries) {
@@ -186,7 +209,16 @@ $(document).ready(function(){
 		      console.log(JSON.stringify(Blob));
 		      _this.data("doc-url", Blob.url);
 		      //$('[type="filepicker-preview"]').data('fp-ur', Blob.url);
-		      $('#fileUploaded').html("<span>"+Blob.filename+"</span>");
+		      // Generate file handle
+					var lastIndex = Blob.url.lastIndexOf('/');
+					if(lastIndex != -1){
+						var fileHandle = Blob.url.substring(lastIndex+1, Blob.url.length);
+						$('#fileUploaded').html("<a id='fileLink' href='#' data-doc-handle='"+fileHandle+"' onclick='viewFile()'>View File</a>");
+					} else {
+						var fileHandle = '';
+						$('#fileUploaded').html("<span>No file uploaded.</span>");
+					}
+		      
 		    },
 		    function(FPError){
 		      console.log(FPError.toString());
@@ -217,7 +249,7 @@ $(document).ready(function(){
 			var image3 = document.querySelector('[name="image3"]').value;
 			var youtube = document.querySelector('[name="youtube"]').value;
 			
-			fileURL = 'https://cdn.filestackcontent.com/HTSyNrCRRKtkyDxxn2D7';
+			// fileURL = 'https://cdn.filestackcontent.com/HTSyNrCRRKtkyDxxn2D7';
 			if(fileURL === undefined){
 				fileURL = '';
 			}

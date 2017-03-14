@@ -90,6 +90,8 @@ block content
                       span  *
                     input.btn.btn-info.filepicker(type="button", value='Upload file', data-doc-url='#{entry.fileURL}')
                     label#fileUploaded(style='display:inline')
+                      if entry.fileHandle != ''
+                        a#fileLink(href='#' type='button' data-doc-handle='#{entry.fileHandle}' onclick='viewFile()') View File
                 .row.form-group
                   .col-md-12
                     h2 Links:
@@ -116,6 +118,7 @@ block scripts
     script(src='/javascripts/jqueryValidation/additional-methods.js')
     script(src='/javascripts/formWizard/jquery.steps.js')
     script(type='text/javascript').
+
       var myDate = new Date();
       var currentyear = myDate.getFullYear();
       var form = $("#edit-entry-form").show();
@@ -188,8 +191,16 @@ block scripts
           function(Blob){
             console.log(JSON.stringify(Blob));
             _this.data("doc-url", Blob.url);
-            $('[type="filepicker-preview"]').data('fp-ur', Blob.url);
-            $('#fileUploaded').html("<span>"+Blob.filename+"</span>");
+            // Generate file handle
+            var lastIndex = Blob.url.lastIndexOf('/');
+            if(lastIndex != -1){
+              var fileHandle = Blob.url.substring(lastIndex+1, Blob.url.length);
+              console.log(fileHandle)
+              $('#fileUploaded').html("<a id='fileLink' href='#' data-doc-handle='"+fileHandle+"' onclick='viewFile()'>View File</a>");
+            } else {
+              var fileHandle = '';
+              $('#fileUploaded').html("<span>No file uploaded.</span>");
+            }
           },
           function(FPError){
             console.log(FPError.toString());
@@ -213,14 +224,22 @@ block scripts
         var member5 = document.querySelector('[name="member5"]').value;
         var adviser1 = document.querySelector('[name="adviser1"]').value;
         var adviser2 = document.querySelector('[name="adviser2"]').value;
-        var fileURL = $('.filepicker').data('doc-url')
+        var fileURL = $('.filepicker').data('doc-url');
         var image1 = document.querySelector('[name="image1"]').value;
         var image2 = document.querySelector('[name="image2"]').value;
         var image3 = document.querySelector('[name="image3"]').value;
         var youtube = document.querySelector('[name="youtube"]').value;
-        fileURL = 'https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK';
+
         if(fileURL === undefined){
-          fileURL = 'https://www.filestackapi.com/api/preview/12ydxHa3RZe0grJhrrkK';
+          fileURL = '';
+        }
+
+        // Generate file handle
+        var lastIndex = fileURL.lastIndexOf('/');
+        if(lastIndex != -1){
+          var fileHandle = fileURL.substring(lastIndex+1, fileURL.length);
+        } else {
+          var fileHandle = '';
         }
 
         var data = {

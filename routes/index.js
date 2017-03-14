@@ -88,7 +88,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 	var action = req.body.btn;
 	var itemid = req.params.itemid;
 	if(action=="accept"){
-		Request.find({'_id': itemid}, 'details createdAt username', function(e, result){
+		Request.find({'_id': ObjectId(itemid)}, 'details createdAt username', function(e, result){
 			if(!result.length && !e){
 				req.flash('error_msg', 'Could not find add request.');
 			} else if(result.length && !e) {
@@ -119,7 +119,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 				req.flash('error', e);
 			}
 		});
-		Request.findOneAndRemove({'_id': itemid}, function(e, entry){
+		Request.findOneAndRemove({'_id': ObjectId(itemid)}, function(e, entry){
 			if(!e){
 				console.log('Add request deleted');
 			}

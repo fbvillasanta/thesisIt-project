@@ -47,7 +47,7 @@ block content
                 ul.fh5co-social-icons
                     if entry.fileHandle != ""
                         li
-                            a#fileLink(href='#{entry.fileHandle}')
+                            a#fileLink(href='#' data-doc-handle='#{entry.fileHandle}' onclick='viewFile()')
                                 i.icon-file
                     if entry.youtube != ""
                         li
