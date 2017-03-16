@@ -74,6 +74,37 @@ router.get('/admin/edit', function(req, res, next){
 	}
 });
 
+router.get('/admin/edit/compare/:itemid', function(req, res, next){
+	if(req.user.type == 'admin'){
+		var itemid = req.params.itemid;
+		var editVal;
+		var origVal;
+		Request.findOne({'_id': ObjectId(itemid)}, 'details').exec(function(e, entry){
+			if(e){
+				req.flash('error_msg', 'Could not find request.');
+				console.log('Request not found');
+				next();
+			}
+			editVal = entry.details;
+			console.log('requestfind: ' + editVal);
+			Thesis.findOne({'_id': ObjectId(entry.details.id)}).exec(function(e, result){
+				if(e){
+					req.flash('error_msg', 'Could not find thesis entry.');
+					console.log('Thesis entry not found');
+					next();
+				}
+				origVal = result;
+				console.log('thesisfind: ' + origVal);
+
+				res.render('admin/edit_compare', {title: 'Edit', old: origVal, edit: editVal});
+			})
+		})
+		
+	} else {
+		res.redirect('/');
+	}
+});
+
 router.get('/admin/delete', function(req, res, next){
 	if(req.user.type == 'admin'){
 		Request.find({type: 'delete'}).sort({_id: -1}).exec(function(e, entry){
