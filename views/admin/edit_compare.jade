@@ -1,0 +1,124 @@
+extends admin_layout
+
+block content
+	section.content
+		.row
+			.col-md-6
+				.box.box-solid
+					.box-header.with-border
+						i.fa.fa-text-width
+						h3.box-title Original - Description
+					.box-body
+						dl.dl-horizontal
+							dt Title: 
+							dd #{old.thesis}   
+							dt Subtitle: 
+							dd #{old.subtitle}
+							dt Year: 
+							dd #{old.year}
+							dt Tags: 
+							dd
+								for tag in old.tags
+									if tag != ''
+										span #{tag} 
+										| | 
+							dt Description: 
+							dd #{old.description}
+							dt Advisers: 
+							for adviser in old.advisers
+								if adviser != ''
+									dd #{adviser}
+							dt Researchers: 
+							for member in old.members
+								if member != ''
+									dd #{member}
+			.col-md-6
+				.box.box-solid
+					.box-header.with-border
+						i.fa.fa-text-width
+						h3.box-title Edit - Description
+					.box-body
+						dl.dl-horizontal
+							dt Title: 
+							dd #{edit.thesis}   
+							dt Subtitle: 
+							dd #{edit.subtitle}
+							dt Year: 
+							dd #{edit.year}
+							dt Tags: 
+							dd
+								for tag in edit.tags
+									if tag != ''
+										span #{tag} 
+										| | 
+							dt Description: 
+							dd #{edit.description}
+							dt Advisers: 
+							for adviser in edit.advisers
+								if adviser != ''
+									dd #{adviser}
+							dt Researchers: 
+							for member in edit.members
+								if member != ''
+									dd #{member}
+		.row
+			.col-md-6
+				.box.box-solid
+					.box-header.with-border
+						h3.box-title Original - Images
+					.box-body
+						#carousel-original.carousel.slide(data-ride="carousel")
+							ol.carousel-indicators
+								- var counter = 0
+								for image in old.images
+									if image !== ''
+										li(data-target='#carousel-original', data-slide-to='#{counter}', class=(counter === 0 ? 'active' : ''))
+										- counter++
+							.carousel-inner
+										- var counter = 0
+										for image in old.images
+											if image !== ''
+												.item(class=(counter === 0 ? 'active' : ''))
+													img.img-responsive(src='#{image}', alt='Thesis image')
+												- counter++
+							a.left.carousel-control(href="#carousel-original", data-slide="prev")
+								span.fa.fa-angle-left
+							a.right.carousel-control(href="#carousel-original", data-slide="next")
+								span.fa.fa-angle-right
+			.col-md-6
+				.box.box-solid
+					.box-header.with-border
+						h3.box-title Edit - Images
+					.box-body
+						#carousel-edited.carousel.slide(data-ride="carousel")
+							ol.carousel-indicators
+								- var counter = 0
+								for image in edit.images
+									if image !== ''
+										li(data-target='#carousel-edited', data-slide-to='#{counter}', class=(counter === 0 ? 'active' : ''))
+										- counter++
+							.carousel-inner
+										- var counter = 0
+										for image in edit.images
+											if image !== ''
+												.item(class=(counter === 0 ? 'active' : ''))
+													img.img-responsive(src='#{image}', alt='Thesis image')
+												- counter++
+							a.left.carousel-control(href="#carousel-edited", data-slide="prev")
+								span.fa.fa-angle-left
+							a.right.carousel-control(href="#carousel-edited", data-slide="next")
+								span.fa.fa-angle-right
+
+		.row
+			.col-md-6
+				.box.box-solid
+					.box-header.with-border
+						h3.box-title Original - File Uploaded
+					.box-body
+						.fileviewer(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/" + old.fileHandle)
+			.col-md-6
+				.box.box-solid
+					.box-header.with-border
+						h3.box-title Edit - File Uploaded
+					.box-body
+						.fileviewer(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/"+ edit.fileHandle)

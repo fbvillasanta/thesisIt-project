@@ -5,6 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var async = require('async');
 var User = require('../models/user');
 passport.use(new LocalStrategy({passReqToCallback:true},function(req, username, password, done) {
+	var username = username.toLowerCase();
 	User.findOne({ username: username }, function(err, user) {
 		if (err) return done(err);
 		if (!user) return done(null, false, req.flash('error_msg', 'Unknown username.'));
