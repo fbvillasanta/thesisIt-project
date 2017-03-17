@@ -1,20 +1,20 @@
 var express = require('express');
 var path = require('path');
-
 var async = require('async');
 var crypto = require('crypto');
 var router = express.Router();
-
 var nodemailer = require('nodemailer');
 
 var User = require('../models/user');
+
+var emailaddress = '';
+var password = '';
 
 router.use(function(req, res, next){
     if(!req.isAuthenticated()){
         next();
         return;
     }
-
 });
 
 
@@ -53,13 +53,13 @@ router.post('/', function(req, res, next) {
             var smtpTransport = nodemailer.createTransport('SMTP', {
                 service: 'Gmail',
                 auth: {
-                    user: 'ironman.programmer@gmail.com',
-                    pass: 'try'
+                    user: emailaddress,
+                    pass: password
                 }
             });
             var mailOptions = {
                 to: user.email,
-                from: 'ironman.programmer@gmail.com',
+                from: 'Thesis IT <'+emailaddress+'>',
                 subject: 'Thesis IT Password Reset',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -113,13 +113,13 @@ router.post('/reset/:token', function(req, res) {
             var smtpTransport = nodemailer.createTransport('SMTP', {
                 service: 'Gmail',
                 auth: {
-                    user: 'ironman.programmer@gmail.com',
-                    pass: 'try'
+                    user: emailaddress,
+                    pass: password
                 }
             });
             var mailOptions = {
                 to: user.email,
-                from: 'ironman.programmer@gmail.com',
+                from: 'Thesis IT <'+emailaddress+'>',
                 subject: 'Your password has been changed',
                 text: 'Hello, '+ user.username+'!\n\n' +
                 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
