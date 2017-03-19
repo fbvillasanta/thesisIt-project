@@ -45,19 +45,23 @@ block content
                     | 
                 h3 File & Links
                 ul.fh5co-social-icons
-                    if entry.fileHandle != ""
-                        li
-                            a#fileLink(href='https://process.filestackapi.com/output=f:png,s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
-                                i.icon-file
-                    if entry.youtube != ""
-                        li
-                            a(href='#{entry.youtube}', target='_blank')
-                                i.icon-youtube
-                    for image in entry.images
-                      if image != ''
-                        li
-                            a(href='#{image}', target='_blank')
-                                i.icon-camera
+                  if entry.fileHandle != ""
+                      li
+                          a#fileLink(href='https://process.filestackapi.com/output=f:png,s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
+                              i.icon-file
+                  if entry.youtube != ""
+                      li
+                          a(href='#{entry.youtube}', target='_blank')
+                              i.icon-youtube
+                  for image in entry.images
+                    if image != ''
+                      li
+                          a(href='#{image}', target='_blank')
+                              i.icon-camera
+                  .fb-like(data-href="https://thesis-it.herokuapp.com/collection/"+entry._id data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false")
+                  span        
+                  .fb-share-button(data-href="https://thesis-it.herokuapp.com/collection/"+entry._id data-layout="button_count" data-size="large" data-mobile-iframe="true")
+                    a.fb-xfbml-parse-ignore( target="_window" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fthesis-it.herokuapp.com%2Fcollection%2F"+entry._id+"&amp;src=sdkpreparse") Share
                 br
             .col-md-6.col-md-pull-6
                 #myCarousel.carousel.slide(data-ride='carousel')
@@ -114,6 +118,12 @@ block content
                     img(src='/images/person1.jpg', alt='')
                     h3 #{member}
                     strong.role Researcher
+
+      #fh5co-about
+        .container
+          .row.row-pb-md
+            .col-md-offset-2.col-md-8.col-sm-12.container-fluid
+              .fb-comments(data-href="http://thesis-it.herokuapp.com/collection/"+entry._id, data-numposts="5", data-width='100%', data-colorscheme='dark')
 
       if success_msg != ""
         script(type='text/javascript').

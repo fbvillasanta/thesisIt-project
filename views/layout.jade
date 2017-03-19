@@ -7,11 +7,11 @@ html
 		meta(name='viewport', content='width=device-width, initial-scale=1')
 		link(rel='icon' type='image/png' sizes='32x32' href='/images/thesisit.ico')
 		// Facebook and Twitter integration
-		meta(property='og:title', content='')
-		meta(property='og:image', content='')
-		meta(property='og:url', content='')
-		meta(property='og:site_name', content='')
-		meta(property='og:description', content='')
+		meta(property='og:title', content='Thesis IT')
+		meta(property='og:image', content='https://www.thesis-it.herokuapp.com/images/logo.ico')
+		meta(property='og:url', content='https://www.thesis-it.herokuapp.com/')
+		meta(property='og:site_name', content='Thesis IT')
+		meta(property='og:description', content='Collection of design projects from PUP CpE department')
 		meta(name='twitter:title', content='')
 		meta(name='twitter:image', content='')
 		meta(name='twitter:url', content='')
@@ -40,6 +40,16 @@ html
 		script(type="text/javascript" src="//api.filestackapi.com/filestack.js")
 		//script(src="//static.filestackapi.com/v3/filestack.js")
 	body
+		#fb-root
+		script(type='text/javascript').
+			(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=APP_ID";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
 		.fh5co-loader
 		.modal.fade#myModal
 			.modal-dialog.modal-lg
@@ -76,7 +86,7 @@ html
 												a(href='/auth/connect/facebook') Connect to Facebook
 										else
 											li
-												a(href='auth/unlink/facebook') Unlink Facebook account
+												a(href='/auth/unlink/facebook') Unlink Facebook account
 										if user.type === "admin"
 											li
 												a(href='/admin') Admin Dashboard
