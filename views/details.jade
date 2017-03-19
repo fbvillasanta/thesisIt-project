@@ -46,8 +46,13 @@ block content
                 h3 File & Links
                 ul.fh5co-social-icons
                   if entry.fileHandle != ""
+                    if entry.fileType == 'application/pdf'
                       li
-                          a#fileLink(href='https://process.filestackapi.com/output=f:png,s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
+                          a#fileLink(href='https://process.filestackapi.com/output=s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
+                              i.icon-file
+                    else
+                      li
+                          a#fileLink(href='https://process.filestackapi.com/output=f:pdf,s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
                               i.icon-file
                   if entry.youtube != ""
                       li

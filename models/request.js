@@ -21,6 +21,7 @@ var RequestSchema = mongoose.Schema({
 		advisers: Array,
 		fileURL: String,
 		fileHandle: String,
+		fileType: String,
 		images: Array,
 		youtube: String
 	},

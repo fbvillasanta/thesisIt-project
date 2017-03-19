@@ -16,6 +16,7 @@ var ThesisSchema = mongoose.Schema({
     advisers: Array,
     fileURL: String,
     fileHandle: String,
+    fileType: String,
     images: Array,
     youtube: String,
     added: Date,

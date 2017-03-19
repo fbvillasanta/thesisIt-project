@@ -131,6 +131,7 @@ $(document).ready(function(){
 	if (window.location.pathname === '/collection/new') {
 		var myDate = new Date();
 		var currentyear = myDate.getFullYear();
+		var mimeType = '';
 
 		var form = $("#example-advanced-form").show();
 		form.steps({
@@ -208,13 +209,16 @@ $(document).ready(function(){
 		    function(Blob){
 		      console.log(JSON.stringify(Blob));
 		      _this.data("doc-url", Blob.url);
+		      _this.data("doc-mimetype", Blob.mimetype);
 		      //$('[type="filepicker-preview"]').data('fp-ur', Blob.url);
 		      // Generate file handle
 					var lastIndex = Blob.url.lastIndexOf('/');
 					if(lastIndex != -1){
+						mimeType = Blob.mimetype;
 						var fileHandle = Blob.url.substring(lastIndex+1, Blob.url.length);
-						$('#fileUploaded').html("<a id='fileLink' href='#' data-doc-handle='"+fileHandle+"' onclick='viewFile()'>View File</a>");
+						$('#fileUploaded').html("<a id='fileLink' href='https://process.filestackapi.com/output=s:true/"+Blob.url+"' data-doc-mimetype='"+mimeType+"' data-doc-handle='"+fileHandle+"' target='_window'>View File</a>");
 					} else {
+						mimeType = '';
 						var fileHandle = '';
 						$('#fileUploaded').html("<span>No file uploaded.</span>");
 					}
@@ -244,6 +248,7 @@ $(document).ready(function(){
 			var adviser1 = document.querySelector('[name="adviser1"]').value;
 			var adviser2 = document.querySelector('[name="adviser2"]').value;
 			var fileURL = $('.filepicker').data('doc-url');
+			var fileType = $('.filepicker').data('doc-mimetype');
 			var image1 = document.querySelector('[name="image1"]').value;
 			var image2 = document.querySelector('[name="image2"]').value;
 			var image3 = document.querySelector('[name="image3"]').value;
@@ -277,6 +282,7 @@ $(document).ready(function(){
 				"adviser2" : adviser2,
 				"fileURL" : fileURL,
 				"fileHandle" : fileHandle,
+				"fileType" : fileType,
 				"image1" : image1,
 				"image2" : image2,
 				"image3" : image3,

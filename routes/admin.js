@@ -83,6 +83,7 @@ router.post('/new', function(req, res, next){
             ],
             fileURL :       req.body.fileURL,
             fileHandle :    req.body.fileHandle,
+            fileType :      req.body.fileType,
             images: [
                             image1,
                             image2,
@@ -236,6 +237,7 @@ router.put('/:thesisId', function(req,res, next) {
             ],
             fileURL :       req.body.fileURL,
             fileHandle :    req.body.fileHandle,
+            fileType :      req.body.fileType, 
             images: [
                             image1,
                             image2,

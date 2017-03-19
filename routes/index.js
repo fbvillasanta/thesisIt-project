@@ -141,6 +141,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 					advisers : result[0].details.advisers,
 					fileURL : result[0].details.fileURL,
 					fileHandle : result[0].details.fileHandle,
+					fileType : result[0].details.fileType,
 					images : result[0].details.images,
 					youtube : result[0].details.youtube,
 					added : result[0].createdAt,
@@ -223,6 +224,7 @@ router.put('/admin/edit/:itemid', function(req, res, next){
 				advisers : entry.details.advisers,
 				fileURL : entry.details.fileURL,
 				fileHandle : entry.details.fileHandle,
+				fileType : entry.details.fileType,
 				images : entry.details.images,
 				youtube : entry.details.youtube,
 				updated : entry.updatedAt
