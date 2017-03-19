@@ -27,23 +27,16 @@ const router = express.Router();
 
 var app = express();
 
-var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
-
+var mdbUrl = require('./config/database.js');
 var db = require('./db'); //mongoose is in db.js
-db.connect(mdbUrl, function(err) {
+
+db.connect(mdbUrl.url, function(err) {
 	if (err) {
 		console.log('Unable to connect to mongoose');
 		process.exit(1);
 	}
 	else {
 		console.log("Connected to DB!");
-
-		//set database
-		//db = database;
-		//app.use(function(req,res,next){
-		//	req.db = db;
-		//	next();
-		//});
 
 		// view engine setup
 		app.set('views', path.join(__dirname, 'views'));

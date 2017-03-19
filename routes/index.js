@@ -9,12 +9,13 @@ var LocalStrategy = require('passport-local').Strategy;
 var nodemailer = require('nodemailer');
 
 var db = require('../db');
+var emailCredentials = require('../config/email');
 var Thesis = require('../models/thesis');
 var User = require('../models/user');
 var Request = require('../models/request');
 
-var emailaddress = '';
-var password = '';
+var emailaddress = emailCredentials.email;
+var password = emailCredentials.password;
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(methodOverride(function(req, res){

@@ -5,10 +5,11 @@ var crypto = require('crypto');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 
+var emailCredentials = require('../config/email');
 var User = require('../models/user');
 
-var emailaddress = '';
-var password = '';
+var emailaddress = emailCredentials.email;
+var password = emailCredentials.password;
 
 router.use(function(req, res, next){
     if(!req.isAuthenticated()){

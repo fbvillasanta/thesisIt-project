@@ -22,16 +22,20 @@ block content
 									if tag != ''
 										span #{tag} 
 										| | 
+							br
 							dt Description: 
 							dd #{old.description}
+							br
 							dt Advisers: 
 							for adviser in old.advisers
 								if adviser != ''
 									dd #{adviser}
+							br
 							dt Researchers: 
 							for member in old.members
 								if member != ''
 									dd #{member}
+							br
 			.col-md-6
 				.box.box-solid
 					.box-header.with-border
@@ -40,27 +44,38 @@ block content
 					.box-body
 						dl.dl-horizontal
 							dt Title: 
-							dd #{edit.thesis}   
+							dd(style=(edit.thesis != old.thesis ? 'color:#f35f55' : '')) #{edit.thesis}   
 							dt Subtitle: 
-							dd #{edit.subtitle}
+							dd(style=(edit.subtitle != old.subtitle ? 'color:#f35f55' : '')) #{edit.subtitle}
 							dt Year: 
-							dd #{edit.year}
+							dd(style=(edit.year != old.year ? 'color:#f35f55' : '')) #{edit.year}
 							dt Tags: 
-							dd
+							dd(style=(edit.tags != old.tags ? 'color:#f35f55' : ''))
 								for tag in edit.tags
 									if tag != ''
 										span #{tag} 
 										| | 
+							br
 							dt Description: 
-							dd #{edit.description}
+							dd(style=(edit.description != old.description ? 'color:#f35f55' : '')) #{edit.description}
 							dt Advisers: 
+							if edit.advisers != old.advisers
+								- var style = true
+							else
+								- var style = false
 							for adviser in edit.advisers
 								if adviser != ''
-									dd #{adviser}
+									dd(style=(style ? 'color:#f35f55' : '')) #{adviser}
+							br
 							dt Researchers: 
+							if edit.members != old.members
+								- var style = true
+							else
+								- var style = false
 							for member in edit.members
 								if member != ''
-									dd #{member}
+									dd(style=(style ? 'color:#f35f55' : '')) #{member}
+							br
 		.row
 			.col-md-6
 				.box.box-solid
@@ -109,16 +124,16 @@ block content
 							a.right.carousel-control(href="#carousel-edited", data-slide="next")
 								span.fa.fa-angle-right
 
-		.row
-			.col-md-6
-				.box.box-solid
-					.box-header.with-border
-						h3.box-title Original - File Uploaded
-					.box-body
-						.fileviewer(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/" + old.fileHandle)
-			.col-md-6
-				.box.box-solid
-					.box-header.with-border
-						h3.box-title Edit - File Uploaded
-					.box-body
-						.fileviewer(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/"+ edit.fileHandle)
+		//- .row
+		//- 	.col-md-6
+		//- 		.box.box-solid
+		//- 			.box-header.with-border
+		//- 				h3.box-title Original - File Uploaded
+		//- 			.box-body
+		//- 				.fileviewer(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/" + old.fileHandle)
+		//- 	.col-md-6
+		//- 		.box.box-solid
+		//- 			.box-header.with-border
+		//- 				h3.box-title Edit - File Uploaded
+		//- 			.box-body
+		//- 				.fileviewer(type="filepicker-preview" style="width:100%; height:600px" data-fp-url="https://www.filestackapi.com/api/file/"+ edit.fileHandle)

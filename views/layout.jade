@@ -71,6 +71,12 @@ html
 								li.has-dropdown
 									a(href='#') Account
 									ul.dropdown
+										if !user.facebook.token
+											li
+												a(href='/auth/connect/facebook') Connect to Facebook
+										else
+											li
+												a(href='auth/unlink/facebook') Unlink Facebook account
 										if user.type === "admin"
 											li
 												a(href='/admin') Admin Dashboard

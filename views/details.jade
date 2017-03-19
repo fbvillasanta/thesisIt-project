@@ -47,7 +47,7 @@ block content
                 ul.fh5co-social-icons
                     if entry.fileHandle != ""
                         li
-                            a#fileLink(href='#' data-doc-handle='#{entry.fileHandle}' onclick='viewFile()')
+                            a#fileLink(href='https://process.filestackapi.com/output=f:png,s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
                                 i.icon-file
                     if entry.youtube != ""
                         li

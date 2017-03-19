@@ -1807,6 +1807,9 @@ p > span {
   background-color: #0C9CEE !important;
 }
 
+.changed {
+  font-color: #f35f55 !important;
+}
 
 
 /*#search > .input-group > span > input.btn {
