@@ -18,6 +18,21 @@ html
 		//if lt IE 9
 			script(src='/javascripts/respond.min.js')
 	body
+		.modal.fade#terms
+			.modal-dialog.modal-lg
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+						h4.modal-title Terms and Conditions
+					.modal-body
+						p By signing up, the end user agrees to the following:
+						ul
+							li The website is free and does not require any payment upon registration.
+							li Any data the end user provided upon registration will be confidential.
+							li All files viewed, uploaded, or downloaded are covered by copyright and trademark.
+							li The company is not responsible for end users violating any copyright infringement.
+					.modal-footer
+						button.btn.btn-default(type='button', data-dismiss='modal') Close
 		.form
 			ul.tab-group
 				li.tab.testlogin(class=(title === "Login" ? 'is-active' : ''))
@@ -70,9 +85,7 @@ html
 						p.forgot
 							a(href='/forgot') Forgot Password?
 						button.button.button-block(type='submit' value='login' name='submit') Log In
-					a.button.button-block(type='button' href="/auth/facebook")
-						i.fa.fa-facebook
-						| Sign in using Facebook
+						
 				#signup
 					h1 Be part of 
 						span ThesisIT 
@@ -104,6 +117,8 @@ html
 							label Retype your Password
 								span.req *
 							input(type='password' name='confirm' required autocomplete='off')
+						p By signing up, the End User agrees to the 
+							a#showTerms(href='#') Terms & Conditions
 						button.button.button-block(name='submit' type='submit' value='signup') Get Started
 
 		// jQuery
@@ -122,6 +137,12 @@ html
 			script(type='text/javascript').
 				$('.tab.testsignup').addClass('active');
 				$('.tab.testlogin').removeClass('active');
+				$('#showTerms').on('click', function () {
+					$('#terms').modal('show');
+					var height = $(window).height();
+					$(this).find('.modal-body').css('max-height', height);
+				});
+
 			style(type='text/css').
 				.tab-content > #login {
 					display: none;
