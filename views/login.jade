@@ -8,8 +8,9 @@ html
 		link(rel='icon' type='image/png' sizes='32x32' href='/images/thesisit.ico')
 		
 		link(href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700', rel='stylesheet', type='text/css')
-
-		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		// Icomoon Icon Fonts
+		link(rel='stylesheet', href='/stylesheets/icomoon.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css')
 		link(rel='stylesheet', href='/stylesheets/login.css')
 		// Theme style
@@ -82,7 +83,12 @@ html
 							label Password
 								span.req *
 							input(type='password' name='password' required autocomplete='off')
-						p.forgot
+						p.pull-left.forgot
+							| Or login using: &emsp;
+							a(href='/auth/facebook')
+								i.icon-facebook(style='font-size:25px')
+								| acebook
+						p.forgot 
 							a(href='/forgot') Forgot Password?
 						button.button.button-block(type='submit' value='login' name='submit') Log In
 						
