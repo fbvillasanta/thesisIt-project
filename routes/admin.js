@@ -64,6 +64,7 @@ router.post('/new', function(req, res, next){
         // render error message
         return res.send({ message: 'Please fill up the required fields.' });
     } else {
+      if (req.user.type === "user"){
         var dataToSave = {
             thesis:         thesis,
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
@@ -103,8 +104,54 @@ router.post('/new', function(req, res, next){
                 return res.send({ message : err });
             }
             console.log('Entry added successfully!');
-            res.status(200).send({ message: 'Success!' });
+            res.status(200).send({ message: 'Request for adding entry sent! Waiting for approval.' });
         });
+      }
+
+      if (req.user.type === "admin"){
+        console.log("User type = admin")
+        var date = Date.now();
+        var dataToSave = {
+            thesis:         thesis,
+            subtitle:       req.body.subtitle && req.body.subtitle.trim(),
+            description:    description,
+            year:           req.body.year,
+            tags:           JSON.parse(req.body.tags),
+            members: [
+                            member1,
+                            member2,
+                            req.body.member3 && req.body.member3.trim(),
+                            req.body.member4 && req.body.member4.trim(),
+                            req.body.member5 && req.body.member5.trim()
+            ],
+            advisers: [
+                            adviser1,
+                            adviser2
+            ],
+            fileURL :       req.body.fileURL,
+            fileHandle :    req.body.fileHandle,
+            fileType :      req.body.fileType,
+            images: [
+                            image1,
+                            image2,
+                            image3
+            ],
+            youtube:            req.body.youtube && req.body.youtube.trim(),
+            added:          date,
+            updated:        date,
+            uploadedBy:     req.user.username
+        };
+        console.log(dataToSave);
+        var thesisnew = new Thesis(dataToSave);
+        thesisnew.save(function(err, entry){
+          if(err) {
+              console.log('Error adding entry!');
+              return res.send({ message : err });
+          }
+          console.log('Entry added successfully!');
+          res.status(200).send({ message: 'Entry added successfully!' });
+        });
+      }
     }
 
 });

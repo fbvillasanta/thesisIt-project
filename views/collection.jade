@@ -20,13 +20,13 @@ block content
 							p
 								| This is basically a compilation of awesome ideas that may change the world.
 							br
-							form#search(action='/collection', method='post')
+							form#searchForm(action='#')
 								.input-group#searchGroup
 									select.selectpicker.form-control#searchfilter(data-live-search='true', title='Seach by: ')
 										option(value='thesis') Thesis title
 										option(value='tags') Thesis tag
 										option(value='year') Year
-									input.form-control#searchbox(type='text', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
+									input.form-control#searchbox(style='background-color:white' type='text', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
 									.span.input-group-btn
 										input.btn.btn-danger#searchbtn(type='button' value='Search!')
 					.row

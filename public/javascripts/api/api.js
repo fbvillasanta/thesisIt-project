@@ -1,4 +1,4 @@
-filepicker.setKey("API_ID");
+filepicker.setKey("API_KEY");
 
 function viewFile(){
   var link = $('#fileLink').attr('data-doc-handle');
@@ -39,6 +39,9 @@ $(document).ready(function(){
 	// }
 
 	if (window.location.pathname === '/collection') {
+		$('#searchForm').submit(function(e){
+			e.preventDefault;
+		})
 		fetch('api/v1/Thesis?sort=_id').then(function(res) {
       res.json().then(function(entries) {
         console.log('entries', entries);
@@ -302,7 +305,7 @@ $(document).ready(function(){
 			  $('.filepicker').data('doc-url', '');
 			  $("#tags").tagsinput('destroy');
 			  $("#tags").tagsinput('refresh');
-			  $('#addAlertBox').html("<div class='alert alert-success alert-dismissable'><i class='icon-check' style='font-size:15px; text-align:center'></i> <strong>Request for adding entry sent! Waiting for approval.</strong></div>");
+			  $('#addAlertBox').html("<div class='alert alert-success alert-dismissable'><i class='icon-check' style='font-size:15px; text-align:center'></i> <strong>"+res.message+"</strong></div>");
 	    }).fail(function(res){
 	      alert(res.message);
 	      $('#addAlertBox').html("<div class='alert alert-danger alert-dismissable'><i class='icon-cross2' style='font-size:15px'></i> <strong>Error sending request to add entry! "+res.message+"</strong></div>");
