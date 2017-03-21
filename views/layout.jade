@@ -44,7 +44,7 @@ html
 		script(type='text/javascript').
 			window.fbAsyncInit = function() {
 			FB.init({
-				appId      : '1143242272453125',
+				appId      : 'API_KEY',
 				xfbml      : true,
 				version    : 'v2.8'
 			});
@@ -54,7 +54,7 @@ html
 				var js, fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) return;
 				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1143242272453125";
+				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=APP_ID";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 
@@ -105,6 +105,7 @@ html
 			block content
 
 		block footer
+
 			footer#fh5co-footer(role='contentinfo')
 				.container
 					.row.copyright
@@ -122,6 +123,9 @@ html
 		.gototop.js-top
 			a.js-gotop(href='#')
 				i.icon-arrow-up
+			br
+			.fb-messengermessageus(messenger_app_id='1128604287286223', page_id='799924560165535', color='blue', size='xlarge')
+			
 
 		// jQuery
 		script(src='/javascripts/jquery-3.2.0.min.js')

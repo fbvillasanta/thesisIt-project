@@ -1,4 +1,4 @@
-filepicker.setKey("AQlYJjvnqT3WSQsuaW9l5z");
+filepicker.setKey("API_ID");
 
 function viewFile(){
   var link = $('#fileLink').attr('data-doc-handle');

@@ -98,6 +98,12 @@ db.connect(mdbUrl.url, function(err) {
 		});
 		app.use('/forgot',forgot);
 		app.use('/auth', auth);
+		app.get('/webhook', function(req, res) {
+			if(req.query['hub.verify_token'] === 'API_MESSENGER_TOKEN') {
+				res.send(req.query['hub.challenge'])
+			}
+			res.send('No entry')
+		})
 		app.use(function(req, res, next){
 			if(req.isAuthenticated()){
 				next();
