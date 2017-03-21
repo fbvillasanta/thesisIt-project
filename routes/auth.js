@@ -63,7 +63,7 @@ passport.use(new FacebookStrategy(fbStrategy, function(req, token, refreshToken,
         //   if (err)
         //     return done(err);
             
-        //   return done(null, newUser);
+          return done(null, false, req.flash('error_msg', 'No Thesis IT account linked to your Facebook account. Please link your local account first.'));
         // });
       }
     });
@@ -215,7 +215,8 @@ router.get('/facebook', passport.authenticate('facebook', { scope : 'email' }));
 router.get('/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect : '/',
-        failureRedirect : '/'
+        failureRedirect : '/login',
+        failureFlash : true
     }));
 
 router.get('/connect/facebook', passport.authorize('facebook', { scope : 'email' }));
