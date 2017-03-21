@@ -113,10 +113,6 @@ html
                       a.btn.btn-primary.btn-flat(href='/') Return to Website
                     .pull-right
                       a.btn.btn-danger.btn-flat(href='/auth/logout') Sign out
-              // Control Sidebar Toggle Button
-              li
-                a(href='#', data-toggle='control-sidebar')
-                  i.fa.fa-gears
       // Left side column. contains the logo and sidebar
       aside.main-sidebar
         section.sidebar
@@ -136,7 +132,7 @@ html
                 i.fa.fa-commenting
                 span Requests
                 span.pull-right-container
-                  span#requestContainer.label.label-success.pull-right 17
+                //-   span#requestContainer.label.label-success.pull-right 17
                   //- i.fa.fa-angle-left.pull-right
               ul.treeview-menu
                 li(class=(title === "Add" ? 'active' : ''))
@@ -144,7 +140,7 @@ html
                     i.fa.fa-circle-o 
                     span Add
                     span.pull-right-container
-                      span.label.label-warning.pull-right 5
+                      //- span.label.label-warning.pull-right 5
                 li(class=(title === "Edit" ? 'active' : ''))
                   a(href='/admin/edit')
                     i.fa.fa-circle-o
@@ -156,7 +152,7 @@ html
                     i.fa.fa-circle-o
                     span Delete
                     span.pull-right-container
-                      span.label.label-warning.pull-right 12
+                      //- span.label.label-warning.pull-right 12
           // /.sidebar-menu
         // /.sidebar
       // Content Wrapper. Contains page content
@@ -191,57 +187,7 @@ html
             a(href='/') Thesis It v2.0
             | .
           |  All rights reserved.
-        // Control Sidebar
-        aside.control-sidebar.control-sidebar-dark
-          // Create the tabs
-          ul.nav.nav-tabs.nav-justified.control-sidebar-tabs
-            li.active
-              a(href='#control-sidebar-home-tab', data-toggle='tab')
-                i.fa.fa-home
-            li
-              a(href='#control-sidebar-settings-tab', data-toggle='tab')
-                i.fa.fa-gears
-          // Tab panes
-          .tab-content
-            // Home tab content
-            #control-sidebar-home-tab.tab-pane.active
-              h3.control-sidebar-heading Recent Activity
-              ul.control-sidebar-menu
-                li
-                  a(href='javascript:;')
-                    i.menu-icon.fa.fa-birthday-cake.bg-red
-                    .menu-info
-                      h4.control-sidebar-subheading Langdon's Birthday
-                      p Will be 23 on April 24th
-              // /.control-sidebar-menu
-              h3.control-sidebar-heading Tasks Progress
-              ul.control-sidebar-menu
-                li
-                  a(href='javascript:;')
-                    h4.control-sidebar-subheading
-                      | Custom Template Design
-                      span.pull-right-container
-                        span.label.label-danger.pull-right 70%
-                    .progress.progress-xxs
-                      .progress-bar.progress-bar-danger(style='width: 70%')
-              // /.control-sidebar-menu
-            // /.tab-pane
-            // Stats tab content
-            #control-sidebar-stats-tab.tab-pane Stats Tab Content
-            // /.tab-pane
-            // Settings tab content
-            #control-sidebar-settings-tab.tab-pane
-              form(method='post')
-                h3.control-sidebar-heading General Settings
-                .form-group
-                  label.control-sidebar-subheading
-                    | Report panel usage
-                    input.pull-right(type='checkbox', checked='')
-                  p
-                    | Some information about this general settings option
-                // /.form-group
-            // /.tab-pane
-        // /.control-sidebar
+
         //
           Add the sidebar's background. This div must be placed
           immediately after the control sidebar
@@ -249,14 +195,14 @@ html
     // ./wrapper
     // REQUIRED JS SCRIPTS
     // jQuery 2.2.3
-    script(src='/javascripts/jquery-3.1.1.js')
+    script(src='/javascripts/jquery-3.2.0.min.js')
     // Bootstrap 3.3.6
     script(src='/javascripts/bootstrap.min.js')
     // AdminLTE App
     script(src='/javascripts/app.js')
     // DataTables
     script(src='/javascripts/dataTables/jquery.dataTables.min.js')
-    script(src='/javascripts/dataTables/dataTables.bootstrap.js')
+    script(src='/javascripts/dataTables/dataTables.bootstrap.min.js')
     // SlimScroll
     script(src='/javascripts/slimScroll/jquery.slimscroll.js')
     // FastClick
