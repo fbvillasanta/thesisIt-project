@@ -1,4 +1,4 @@
-filepicker.setKey("API_KEY");
+filepicker.setKey("AQlYJjvnqT3WSQsuaW9l5z");
 
 function viewFile(){
   var link = $('#fileLink').attr('data-doc-handle');
@@ -44,11 +44,12 @@ $(document).ready(function(){
         console.log('entries', entries);
         var tbody = document.getElementById('thesis-body');
         entries.forEach(function(entries) {
-          var tagString = '';
+        	var tagString = '';
         	entries.tags.forEach(function(tag){
         		tagString += '<span class="label label-default">'+tag+'</span> ';
         	});
-          tbody.insertAdjacentHTML('beforeend','<div class="col-md-3 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">'+moment(entries.added).format("YYYY-MM-DD")+'</span><h3><a href="/collection/' + entries._id + '">'+entries.thesis+'</a></h3><p>Tags: '+tagString+'</p><p>'+entries.description+'</p></div></div>' );
+          tbody.insertAdjacentHTML('beforeend', '<div class="col-md-3 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">'+entries.added.substring(0, 10)+'</span><h3><a href="/collection/' + entries._id + '">'+entries.thesis+'</a></h3><p>Tags: '+tagString+'</p><p>'+entries.description+'</p></div></div>' );
+
         });
       })
     });
@@ -78,7 +79,7 @@ $(document).ready(function(){
 	              	entries.tags.forEach(function(tag){
 	              		tagString += '<span class="label label-default">'+tag+'</span> ';
 	              	});
-	                tbody.insertAdjacentHTML('beforeend','<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + moment(entries.added).format("YYYY-MM-DD") + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>Tags: '+tagString+'</p><p>' + entries.description + '</p></div></div>');
+	                tbody.insertAdjacentHTML('beforeend', '<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + entries.added.substring(0, 10) + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>Tags: '+tagString+'</p><p>' + entries.description + '</p></div></div>');
 	              });
 	            } else {
 	              $('#thesis-body').html('<div class="col-md-8 col-md-offset-2" style="text-align:center"><h1>SEARCH SHOWS 0 RESULTS.</h1></div>');
@@ -99,7 +100,7 @@ $(document).ready(function(){
 	              	entries.tags.forEach(function(tag){
 	              		tagString += '<span class="label label-default">'+tag+'</span> ';
 	              	});
-	                tbody.insertAdjacentHTML('beforeend','<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + moment(entries.added).format("YYYY-MM-DD") + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>Tags: '+tagString+'</p><p>' + entries.description + '</p></div></div>');
+	                tbody.insertAdjacentHTML('beforeend', '<div class="col-md-4 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">' + entries.added.substring(0, 10) + '</span><h3><a href="/collection/' + entries._id + '">' + entries.thesis + '</a></h3><p>Tags: '+tagString+'</p><p>' + entries.description + '</p></div></div>');
 	              });
 	            } else {
 	              $('#thesis-body').html('<div class="col-md-8 col-md-offset-2" style="text-align:center"><h1>SEARCH SHOWS 0 RESULTS.</h1></div>');
@@ -109,7 +110,7 @@ $(document).ready(function(){
 			  }
 
 		  } else {
-		    fetch('api/v1/Thesis?sort=_id').then(function(res) {
+		    fetch('api/v1/Thesis?sort=added').then(function(res) {
 	        res.json().then(function(entries) {
             console.log('entries', entries);
             var tbody = document.getElementById('thesis-body');
@@ -119,8 +120,7 @@ $(document).ready(function(){
             	entries.tags.forEach(function(tag){
             		tagString += '<span class="label label-default">'+tag+'</span> ';
             	});
-              tbody.insertAdjacentHTML('beforeend','<div class="col-md-3 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">'+moment(entries.added).format("YYYY-MM-DD")+'</span><h3><a href="/collection/' + entries._id + '">'+entries.thesis+'</a></h3><p>Tags: '+tagString+'</p><p>'+entries.description+'</p></div></div>' );
-
+              tbody.insertAdjacentHTML('beforeend', '<div class="col-md-3 col-sm-4 animate-box fadeInUp animated-fast" data-animate-effect="fadeInUp"><div class="fh5co-post"><span class="fh5co-date">'+entries.added.substring(0, 10)+'</span><h3><a href="/collection/' + entries._id + '">'+entries.thesis+'</a></h3><p>Tags: '+tagString+'</p><p>'+entries.description+'</p></div></div>');
             });
 	        })
 		    });
