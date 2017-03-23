@@ -99,9 +99,8 @@ html
 					form(action='/auth/register' method='post')
 						.field-wrap
 							label Username
-								span.req * (atleast 8 alpha characters long)
+								span.req * (atleast 8 alpha characters)
 							input(type='text' name='username' required autocomplete='off' pattern='[A-Za-z]{8,}' value=(data ? '#{data.username}' : ''))
-
 						.top-row
 							.field-wrap
 								label First Name
@@ -112,17 +111,26 @@ html
 									span.req *
 								input(type='text' name='lname' required autocomplete='off' value=(data ? '#{data.lname}' : ''))
 						.field-wrap
-							label Email Adress
+							label Email Address
 								span.req *
 							input(type='email' name='email' required autocomplete='off' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$' value=(data ? '#{data.email}' : ''))
 						.field-wrap
-							label Set a Password
-								span.req *
-							input(type='password' name='password' required autocomplete='off')
-						.field-wrap
-							label Retype your Password
-								span.req *
-							input(type='password' name='confirm' required autocomplete='off')
+							select.form-control(name='department')
+								option(value="cpe") Computer Engineering
+								option(value="ce") Civil Engineering
+								option(value="ee") Electrical Engineering
+								option(value="ece") Electronics Engineering
+								option(value="ie") Industrial Engineering
+								option(value="me") Mechanical Engineering
+						.top-row
+							.field-wrap
+								label Set a Password
+									span.req *
+								input(type='password' name='password' required autocomplete='off')
+							.field-wrap
+								label Retype your Password
+									span.req *
+								input(type='password' name='confirm' required autocomplete='off')
 						p By signing up, the End User agrees to the 
 							a#showTerms(href='#') Terms & Conditions
 						button.button.button-block(name='submit' type='submit' value='signup') Get Started
