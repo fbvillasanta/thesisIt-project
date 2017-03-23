@@ -3,6 +3,21 @@ extends admin_layout
 block content
 	section.content
 		.row
+			.col-md-2
+				a.btn.btn-app.bg-olive(href='/admin/edit')
+					i.fa.fa-reply
+					| Edit Requests
+			.col-md-offset-2.col-md-4
+				a.btn.btn-app.bg-navy.disabled
+					i.fa.fa-user
+					| Editor: #{username}
+				a.btn.btn-app.bg-olive#saveEdit(href='/admin/edit/'+ itemid)
+					i.fa.fa-save
+					| Save Edit
+				a.btn.btn-app.bg-orange#deleteEdit(href='/admin/edit/'+ itemid)
+					i.fa.fa-times
+					| Delete
+		.row
 			.col-md-6
 				.box.box-solid
 					.box-header.with-border
@@ -58,6 +73,7 @@ block content
 							br
 							dt Description: 
 							dd(style=(edit.description != old.description ? 'color:#f35f55' : '')) #{edit.description}
+							br
 							dt Advisers: 
 							if edit.advisers != old.advisers
 								- var style = true
@@ -123,6 +139,40 @@ block content
 								span.fa.fa-angle-left
 							a.right.carousel-control(href="#carousel-edited", data-slide="next")
 								span.fa.fa-angle-right
+
+block scripts
+	script(type='text/javascript').
+		$('#saveEdit').on('click', function(e){
+			e.preventDefault();
+			var href = document.getElementById('saveEdit').getAttribute('href');
+			console.log(href);
+			$.ajax({
+				url: href,
+				type:'PUT',
+				dataType: 'json',
+				data: { "location" : "compare"}
+			}).done(function(res){
+				alert(res.message);
+				setTimeout(function() { window.location.href = '/admin/edit'; }, 5000);
+			}).fail(function(res){
+				alert(error_msg);
+			});
+		});
+
+		$('#deleteEdit').on('click', function(e){
+			e.preventDefault();
+			alert('Save Edit clicked');
+			var href = document.getElementById('deleteEdit').getAttribute('href');
+			console.log(href);
+			//- $.ajax({
+			//-   url: href,
+			//-   type:'DELETE'
+			//- }).done(function(res){
+			//-   alert(res.message);
+			//- }).fail(function(res){
+			//-   alert(res.message);
+			//- });
+		});
 
 		//- .row
 		//- 	.col-md-6

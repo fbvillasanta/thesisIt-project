@@ -7,6 +7,7 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var nodemailer = require('nodemailer');
+var getrequest = require('request');
 
 var db = require('../db');
 var emailCredentials = require('../config/email');
@@ -84,13 +85,15 @@ router.get('/admin/edit/compare/:itemid', function(req, res, next){
 		var itemid = req.params.itemid;
 		var editVal;
 		var origVal;
-		Request.findOne({'_id': ObjectId(itemid)}, 'details').exec(function(e, entry){
+		var username;
+		Request.findOne({'_id': ObjectId(itemid)}, 'details username').exec(function(e, entry){
 			if(e){
 				req.flash('error_msg', 'Could not find request.');
 				console.log('Request not found');
 				next();
 			}
 			editVal = entry.details;
+			username = entry.username;
 			console.log('requestfind: ' + editVal);
 			Thesis.findOne({'_id': ObjectId(entry.details.id)}).exec(function(e, result){
 				if(e){
@@ -101,7 +104,7 @@ router.get('/admin/edit/compare/:itemid', function(req, res, next){
 				origVal = result;
 				console.log('thesisfind: ' + origVal);
 
-				res.render('admin/edit_compare', {title: 'Edit', old: origVal, edit: editVal});
+				res.render('admin/edit_compare', {title: 'Edit', old: origVal, edit: editVal, username: username, itemid: itemid});
 			})
 		})
 		
@@ -212,7 +215,11 @@ router.put('/admin/edit/:itemid', function(req, res, next){
 	var requestId = req.params.itemid;
 	Request.findOne({'_id':ObjectId(requestId)}, 'username details updatedAt', function(err, entry){
 		if (err) {
-			res.send("There was a problem in finding that particular request: " + err);
+			if (req.body.location === "compare"){
+				res.send({ message : 'There was a problem in finding that particular request: ' + err});
+			} else {
+				res.send("There was a problem in finding that particular request: " + err);
+			}
 		} else {
 			var dataToSave = {
 				thesis : entry.details.thesis,
@@ -231,7 +238,11 @@ router.put('/admin/edit/:itemid', function(req, res, next){
 			};
 			Thesis.findByIdAndUpdate(ObjectId(entry.details.id), dataToSave, function (err, result) {
 				if(err) {
-					res.send('There was a problem in updating that thesis entry: ' + err);
+					if (req.body.location === "compare"){
+						res.send({ message : 'There was a problem in updating that thesis entry: ' + err});
+					} else {
+						res.send('There was a problem in updating that thesis entry: ' + err);
+					}
 				} else {
 					Request.findOneAndRemove({'_id': ObjectId(requestId)}).exec();
 
@@ -255,17 +266,25 @@ router.put('/admin/edit/:itemid', function(req, res, next){
 						transporter.sendMail(mailOptions, function(error, info) {
 							if(error){
 								console.log(error);
-								req.flash('error_msg','Something went wrong in sending email to user.');
+								if (req.body.location === "compare") {
+									res.send({ message : 'Something went wrong in sending email to user.'});
+								} else {
+									req.flash('error_msg','Something went wrong in sending email to user.');
+								}
 							} else {
 								console.log('Message Sent: '+info.response);
 							}
 						});
 					});
-
-					req.flash('success_msg', 'Thesis entry was successfully updated.');
-					res.redirect('/admin/edit');
+					
+					if (req.body.location === "compare") {
+						res.send({ message : 'Thesis entry was successfully upadated.'});
+					} else {
+						req.flash('success_msg', 'Thesis entry was successfully updated.');
+						res.redirect('/admin/edit');
+					}
 				}
-            });
+      });
 		}
 	})
 });
