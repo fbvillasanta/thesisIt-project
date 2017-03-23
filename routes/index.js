@@ -365,13 +365,21 @@ router.delete('/admin/delete/:itemid', function(req, res, next){
 	var itemid = req.params.itemid;
 	Request.remove({'_id': itemid}).exec(function(e, entry){
 		if(e){
-			req.flash('error_msg', 'Request delete failed.');
 			console.log('request not deleted')
-			res.redirect('/admin/delete');
+			if (req.body.location === "compare") {
+				res.send({ message : 'Request delete failed. Error: '+err});
+			} else {
+				req.flash('error_msg', 'Request delete failed.');
+				res.redirect('/admin/delete');
+			}
 		} else {
-			req.flash('success_msg', 'Request deleted successfully.');
 			console.log('success');
-			res.redirect('/admin/delete');
+			if (req.body.location === "compare") {
+				res.send({ message : 'Request deleted successfully.'});
+			} else {
+				req.flash('success_msg', 'Request deleted successfully.');
+				res.redirect('/admin/delete');
+			}
 		}
 	});
 });

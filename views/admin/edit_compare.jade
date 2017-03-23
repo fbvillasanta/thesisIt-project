@@ -14,9 +14,9 @@ block content
 				a.btn.btn-app.bg-olive#saveEdit(href='/admin/edit/'+ itemid)
 					i.fa.fa-save
 					| Save Edit
-				a.btn.btn-app.bg-orange#deleteEdit(href='/admin/edit/'+ itemid)
+				a.btn.btn-app.bg-orange#deleteEdit(href='/admin/delete/'+ itemid)
 					i.fa.fa-times
-					| Delete
+					| Delete Request
 		.row
 			.col-md-6
 				.box.box-solid
@@ -153,25 +153,27 @@ block scripts
 				data: { "location" : "compare"}
 			}).done(function(res){
 				alert(res.message);
-				setTimeout(function() { window.location.href = '/admin/edit'; }, 5000);
+				setTimeout(function() { window.location.href = '/admin/edit'; }, 2000);
 			}).fail(function(res){
-				alert(error_msg);
+				alert(res.message);
 			});
 		});
 
 		$('#deleteEdit').on('click', function(e){
 			e.preventDefault();
-			alert('Save Edit clicked');
 			var href = document.getElementById('deleteEdit').getAttribute('href');
 			console.log(href);
-			//- $.ajax({
-			//-   url: href,
-			//-   type:'DELETE'
-			//- }).done(function(res){
-			//-   alert(res.message);
-			//- }).fail(function(res){
-			//-   alert(res.message);
-			//- });
+			$.ajax({
+			  url: href,
+			  type:'DELETE',
+			  dataType: 'json',
+			  data: { "location" : "compare" }
+			}).done(function(res){
+			  alert(res.message);
+			  setTimeout(function() { window.location.href = '/admin/edit'; }, 2000);
+			}).fail(function(res){
+			  alert(res.message);
+			});
 		});
 
 		//- .row
