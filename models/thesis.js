@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 
 var ThesisSchema = mongoose.Schema({
+    department : {
+        type: String,
+        required: true,
+        enum: ['cpe', 'ce', 'ee', 'ece', 'ie', 'me']
+    },
     thesis: {
         type: String,
         index: true

@@ -7,8 +7,18 @@ var RequestSchema = mongoose.Schema({
 		index: true,
 		required: true
 	},
+	department : {
+		type: String,
+		required: true,
+		enum: ['cpe', 'ce', 'ee', 'ece', 'ie', 'me']
+	},
 	details: {
 		id: String,
+		department : {
+			type: String,
+			required: true,
+			enum: ['cpe', 'ce', 'ee', 'ece', 'ie', 'me']
+		},
 		thesis: String,
 		subtitle: String,
 		description: String,
