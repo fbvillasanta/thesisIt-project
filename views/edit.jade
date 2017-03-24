@@ -108,6 +108,7 @@ block content
                 .row.form-group
                   .col-md-12
                     h2 Terms and Conditions:
+                    input(name='department', value='#{entry.department}', type='hidden')
                   .col-md-offset-2.col-md-9
                     label(for='acceptTerms-2')
                       span By submitting, you certify that the information provided are true and correct. Also, you approve viewing and distribution of the file uploaded.
@@ -233,6 +234,7 @@ block scripts
         var image2 = document.querySelector('[name="image2"]').value;
         var image3 = document.querySelector('[name="image3"]').value;
         var youtube = document.querySelector('[name="youtube"]').value;
+        var department = document.querySelector('[name="department"]').value;
 
         if(fileURL === undefined){
           fileURL = '';
@@ -247,6 +249,7 @@ block scripts
         }
 
         var data = {
+          "department" : department,
           "thesis" : thesis,
           "subtitle" : subtitle,
           "description" : description,

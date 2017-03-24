@@ -262,14 +262,16 @@ router.put('/:thesisId', function(req,res, next) {
     var member2 = req.body.member2 && req.body.member2.trim();
     var adviser1 = req.body.adviser1 && req.body.adviser1.trim();
     var adviser2 = req.body.adviser2 && req.body.adviser2.trim();
+    var department = req.body.department && req.body.department.trim();
 
-    if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
+    if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2=="" || department==""){
         // render error message
         return res.send({ message: 'Please fill up the required fields.' });
     } else {
-      if (req.user.type === "user"){
+      if (req.user.type === "user" || req.user.department != department){
         var dataToSave = {
             id:             ObjectId(thesisId),
+            department:     department.toLowerCase(),
             thesis:         thesis,
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
             description:    description,
@@ -299,6 +301,7 @@ router.put('/:thesisId', function(req,res, next) {
         console.log(dataToSave);
         var thesisnew = new Request({
             username : req.user.username,
+            department : req.user.department,
             details : dataToSave,
             type : 'edit'
         });
@@ -312,7 +315,7 @@ router.put('/:thesisId', function(req,res, next) {
         });
       }
 
-      if (req.user.type === "admin"){
+      if (req.user.type === "admin" && req.user.department === department){
         var date = Date.now();
         var dataToSave = {
             thesis:         thesis,
