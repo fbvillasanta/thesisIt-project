@@ -368,37 +368,59 @@ router.delete('/:thesisId',function(req,res,next) {
         if (err) {
             res.send({'message' : "There was a problem deleting an entry to the database: " + err});
         } else {
-          Request.find({'details.id': thesisId, 'type' : 'delete'}, function(err, exist){
-            if(exist.length && !err){
-              res.send({'message' : 'Delete request for that entry already exists.'});
-              console.log('Exist')
-            } else if(!exist.length && !err){
-              var data = new Request({
-                username : req.user.username,
-                details: {
-                  id : ObjectId(thesisId),
-                  thesis : entry.thesis,
-                  subtitle : entry.subtitle,
-                  description : entry.description,
-                  year : entry.year,
-                  tags : entry.tags,
-                  members : entry.members,
-                  advisers : entry.advisers,
-                  fileURL : entry.fileURL,
-                  fileHandle : entry.fileHandle,
-                  images : entry.images,
-                  youtube : entry.youtube
-                },
-                type : 'delete'
-              });
-              data.save();
-              console.log('Request for delete sent.');
-              res.status(200).send({'message' : 'Request for delete was sent to admin. An email will be sent to you when your request is approved.'});
-              console.log(entry);
-            } else {
-                res.send({'message': 'Thesis entry was not found.'});
-            }
-          });
+          if(req.user.type === "user" || req.user.department != entry.department){
+            Request.find({'details.id': thesisId, 'type' : 'delete'}, function(err, exist){
+              if(exist.length && !err){
+                res.send({'message' : 'Delete request for that entry already exists.'});
+                console.log('Exist')
+              } else if(!exist.length && !err){
+                var data = new Request({
+                  username : req.user.username,
+                  department : req.user.department,
+                  details: {
+                    id : ObjectId(thesisId),
+                    department : entry.department,
+                    thesis : entry.thesis,
+                    subtitle : entry.subtitle,
+                    description : entry.description,
+                    year : entry.year,
+                    tags : entry.tags,
+                    members : entry.members,
+                    advisers : entry.advisers,
+                    fileURL : entry.fileURL,
+                    fileHandle : entry.fileHandle,
+                    images : entry.images,
+                    youtube : entry.youtube
+                  },
+                  type : 'delete'
+                });
+                data.save();
+                console.log('Request for delete sent.');
+                res.status(200).send({'message' : 'Request for delete was sent to admin. An email will be sent to you when your request is approved.'});
+                console.log(entry);
+
+              } else {
+                  res.send({'message': 'Thesis entry was not found.'});
+              }
+            });
+          }
+
+          if(req.user.type === "admin" && req.user.department === entry.department){
+            Thesis.remove({'_id': ObjectId(thesisId)}, function(e, result){
+              if(e){
+                req.flash('error_msg', 'Thesis entry delete failed.');
+                return res.send({
+                  'message': 'Thesis entry delete failed.',
+                  'redirect' : false
+                });
+              }
+            }).exec();
+            Request.remove({ 'details.id' : ObjectId(thesisId)}).exec();
+            res.send({
+              'message' : 'Thesis entry deleted successfully!',
+              'redirect' : true
+            });
+          }
         }
 
     });

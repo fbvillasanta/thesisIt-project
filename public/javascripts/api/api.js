@@ -19,6 +19,11 @@ $(document).ready(function(){
 	      type:'DELETE'
 	    }).done(function(res){
 	      alert(res.message);
+	      if(res.redirect){
+	      	setTimeout(function() {
+            window.location.href = '/collection';
+          }, 1000);
+	      } 
 	    }).fail(function(res){
 	      alert(res.message);
 	    });
