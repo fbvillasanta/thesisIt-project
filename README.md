@@ -3,17 +3,22 @@
 ## Details
 * Website: [Thesis IT v4](https://thesis-it.herokuapp.com). (If not working try this: [Thesis IT test site](https://thesis-really-it.herokuapp.com) instead)
 * Facebook page: [Thesis IT](https://www.facebook.com/ThesisReallyIt)
-* A Node.JS CRUD web application of Student Theses repository upgraded with ```Form Wizard```, ```Tags```, ```Search by Tags & Year```, ```Passport Facebook```, ```Facebook Plugins```, ```File Upload```, ```division by Department```, and ```updated Admin capabilities```.
+* A Node.JS CRUD web application of Student Theses repository upgraded with `Form Wizard`, `Tags`, `Search by Tags & Year`, `Passport Facebook`, `Facebook Plugins`, `File Upload`, `division by Department`, and `updated Admin capabilities`.
 
 ## Versions
 * Github Repo:
-- [Thesis IT v1](https://github.com/fbvillasanta/coen3463-m3t5)
-- [Thesis IT v2](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-4)
-- [Thesis IT v3](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-5)
+| Branch | Version |
+| ------ | ------- |
+| master | [Thesis IT v1](https://github.com/fbvillasanta/coen3463-m3t5) |
+| module-4 | [Thesis IT v2](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-4) |
+| module-5 | [Thesis IT v3](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-5) |
+
 * Websites:
-- [Thesis IT v1](https://coen3463-m3t5.herokuapp.com) without login. 
-- [Thesis IT v2](https://coen3463-m4t5.herokuapp.com) with login, registration, admin dashboard.
-- [Thesis IT v3](https://coen3463-m5t5.herokuapp.com) with search by thesis title, and uses mongoose restify.
+| Version | Update |
+| ------- | ------ |
+| [Thesis IT v1](https://coen3463-m3t5.herokuapp.com) | without login but with ADD, EDIT, DELETE, and READ entry capabilities |
+| [Thesis IT v2](https://coen3463-m4t5.herokuapp.com) | with login, registration, admin dashboard |
+| [Thesis IT v3](https://coen3463-m5t5.herokuapp.com) | with search by thesis title, and uses mongoose restify |
 
 ## Prerequisites
 * [Node.js](https://nodejs.org/en/) installed.
@@ -77,9 +82,9 @@ FB.init({
 filepicker.setKey("REPLACE THIS WITH YOUR OWN KEY");
 ```
 * Open another terminal or cmd and run 'www' file inside the bin directory in 3 ways:
-* 1. ``` node ./bin/www ```
-* 2. ``` npm start ```
-* 3. ``` nodemon ```
+ 1. ``` $ node ./bin/www ```
+ 2. ``` $ npm start ```
+ 3. ``` $ nodemon ```
 
 * Open a browser and visit ```localhost:3000```.
 * Signup to create an account.
