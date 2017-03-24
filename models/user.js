@@ -21,6 +21,11 @@ var UserSchema = mongoose.Schema({
 		required: true,
 		unique: [true, 'Email already in use.']
 	},
+	department : {
+		type: String,
+		required: true,
+		enum: ['cpe', 'ce', 'ee', 'ece', 'ie', 'me']
+	},
 	password: {
 		type: String,
 		required: true

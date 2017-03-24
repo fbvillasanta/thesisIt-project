@@ -138,6 +138,7 @@ router.post('/register', function(req, res, next){
 		var fname = req.body.fname && req.body.fname.trim();
 		var lname = req.body.lname && req.body.lname.trim();
 		var email = req.body.email && req.body.email.trim();
+		var department = req.body.department && req.body.department.trim();
 		var password = req.body.password;
 		var confirm = req.body.confirm;
 
@@ -161,6 +162,11 @@ router.post('/register', function(req, res, next){
 
 		var errors = req.validationErrors();
 
+		department = department.toLowerCase();
+		// if(department != "cpe" || department != "ce" || department != "ee" || department != "ece" || department != "ie" || department != "me"){
+		// 	errors.push('Department is invalid.');
+		// }
+
 		if(errors){
 			res.render('login',{
 				title: 'Login',
@@ -179,6 +185,7 @@ router.post('/register', function(req, res, next){
 				firstname: fname,
 				lastname: lname,
 				email: email.toLowerCase(),
+				department : department.toLowerCase(),
 				password: password
 			});
 
