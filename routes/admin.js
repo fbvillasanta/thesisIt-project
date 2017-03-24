@@ -26,7 +26,7 @@ router.get('/', function(req, res, next){
     if (count == 0) {
         console.log("Collection is empty.");
     } else {
-        collection.find().sort({added: -1}).exec(function(err, entry){
+        collection.find({department: req.user.department}).sort({added: -1}).exec(function(err, entry){
             console.log("Thesis entries loaded.");
             res.render('collection', { title: 'Collection', entries: entry, moment: moment });
         });
