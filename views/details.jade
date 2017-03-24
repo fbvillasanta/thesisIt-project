@@ -19,21 +19,26 @@ block content
                 if entry.subtitle != ""
                     h3 #{entry.subtitle}
               
-                form(action='/collection/' + entry._id, method='post')
-                  a.btn.btn-primary(href='/collection/#{entry._id}/edit') Edit
-                  a.btn.btn-danger#deleteItem(href='/collection/' + entry._id)
-                      | Delete
+                if entry.department === user.department
+                  form(action='/collection/' + entry._id, method='post')
+                    a.btn.btn-primary(href='/collection/#{entry._id}/edit') Edit
+                    a.btn.btn-danger#deleteItem(href='/collection/' + entry._id) Delete
+
+          - var deptList = { 'cpe': 'Computer Engineering', 'ce': 'Civil Engineering', 'ece': 'Electronics Engineering', 'ee': 'Electrical Engineering', 'ie': 'Industrial Engineering', 'me': 'Mechanical Engineering' }
           .row.row-pb-md.animate-box
             .col-md-6.col-md-push-6
               .desc
                 h3 Entry History
-                p
+                p#detailsDate
                   | Added:  
                   span #{moment(entry.added).format('YYYY-MM-DD')}
                   |    |  Updated:  
                   span #{moment(entry.updated).format('YYYY-MM-DD')}
-                  |    |  Uploaded by:  
+                p
+                  | Uploaded by:  
                   span #{entry.uploadedBy}
+                  |    |  Department:  
+                  span #{deptList[entry.department]}
                 h3 Description
                 p
                   | #{entry.description}
@@ -45,7 +50,7 @@ block content
                     | 
                 h3 File & Links
                 ul.fh5co-social-icons
-                  if entry.fileHandle != ""
+                  if entry.fileHandle != "" && entry.department === user.department
                     if entry.fileType == 'application/pdf'
                       li
                           a#fileLink(href='https://process.filestackapi.com/output=s:true/'+entry.fileURL, data-doc-handle='#{entry.fileHandle}' target='_blank')
