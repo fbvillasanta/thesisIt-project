@@ -135,6 +135,7 @@ router.post('/admin/add/:itemid', function(req, res, next){
 				console.log(result);
 				var data = new Thesis({
 					_id : ObjectId(itemid),
+					department: result[0].details.department,
 					thesis : result[0].details.thesis,
 					subtitle : result[0].details.subtitle,
 					description : result[0].details.description,

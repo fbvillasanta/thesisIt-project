@@ -66,6 +66,7 @@ router.post('/new', function(req, res, next){
     } else {
       if (req.user.type === "user"){
         var dataToSave = {
+            department:     req.user.department,
             thesis:         thesis,
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
             description:    description,
@@ -95,6 +96,7 @@ router.post('/new', function(req, res, next){
         console.log(dataToSave);
         var thesisnew = new Request({
             username : req.user.username,
+            department : req.user.department,
             details : dataToSave,
             type : 'add'
         });
@@ -112,6 +114,7 @@ router.post('/new', function(req, res, next){
         console.log("User type = admin")
         var date = Date.now();
         var dataToSave = {
+            department:     req.user.department,
             thesis:         thesis,
             subtitle:       req.body.subtitle && req.body.subtitle.trim(),
             description:    description,
