@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/admin', function(req, res, next){
 	if(req.user.type == 'admin'){
-		User.find().sort({_id: -1}).exec(function(e, entry){
+		User.find({department: req.user.department}).sort({_id: -1}).exec(function(e, entry){
 			res.render('admin/admin_users', {title: 'Users', entries: entry});
 		});
 	} else {
@@ -52,7 +52,7 @@ router.get('/admin', function(req, res, next){
 
 router.get('/admin/collections', function(req, res, next){
 	if(req.user.type == 'admin'){
-		Thesis.find().sort({_id: -1}).exec(function(e, entry){
+		Thesis.find({department: req.user.department}).sort({_id: -1}).exec(function(e, entry){
 			res.render('admin/admin_users', {title: 'Collection', entries: entry});
 		});
 	} else {
@@ -62,7 +62,7 @@ router.get('/admin/collections', function(req, res, next){
 
 router.get('/admin/add', function(req, res, next){
 	if(req.user.type == 'admin'){
-		Request.find({type: 'add'}).sort({_id: -1}).exec(function(e, entry){
+		Request.find({type: 'add', 'details.department': req.user.department}).sort({_id: -1}).exec(function(e, entry){
 			res.render('admin/admin_users', {title: 'Add', entries: entry});
 		});
 	} else {
@@ -72,7 +72,7 @@ router.get('/admin/add', function(req, res, next){
 
 router.get('/admin/edit', function(req, res, next){
 	if(req.user.type == 'admin'){
-		Request.find({type: 'edit'}).sort({_id: -1}).exec(function(e, entry){
+		Request.find({type: 'edit', 'details.department': req.user.department}).sort({_id: -1}).exec(function(e, entry){
 			res.render('admin/admin_users', {title: 'Edit', entries: entry});
 		});
 	} else {
@@ -92,20 +92,26 @@ router.get('/admin/edit/compare/:itemid', function(req, res, next){
 				console.log('Request not found');
 				next();
 			}
-			editVal = entry.details;
-			username = entry.username;
-			console.log('requestfind: ' + editVal);
-			Thesis.findOne({'_id': ObjectId(entry.details.id)}).exec(function(e, result){
-				if(e){
-					req.flash('error_msg', 'Could not find thesis entry.');
-					console.log('Thesis entry not found');
-					next();
-				}
-				origVal = result;
-				console.log('thesisfind: ' + origVal);
 
-				res.render('admin/edit_compare', {title: 'Edit', old: origVal, edit: editVal, username: username, itemid: itemid});
-			})
+			if(req.user.department === entry.details.department){
+				editVal = entry.details;
+				username = entry.username;
+				console.log('requestfind: ' + editVal);
+				Thesis.findOne({'_id': ObjectId(entry.details.id)}).exec(function(e, result){
+					if(e){
+						req.flash('error_msg', 'Could not find thesis entry.');
+						console.log('Thesis entry not found');
+						next();
+					}
+					origVal = result;
+					console.log('thesisfind: ' + origVal);
+
+					res.render('admin/edit_compare', {title: 'Edit', old: origVal, edit: editVal, username: username, itemid: itemid});
+				})
+			} else {
+				res.redirect('/admin/edit')
+				req.flash('error_msg', 'Access denied!')
+			}
 		})
 		
 	} else {
@@ -115,7 +121,7 @@ router.get('/admin/edit/compare/:itemid', function(req, res, next){
 
 router.get('/admin/delete', function(req, res, next){
 	if(req.user.type == 'admin'){
-		Request.find({type: 'delete'}).sort({_id: -1}).exec(function(e, entry){
+		Request.find({type: 'delete', department: req.user.department}).sort({_id: -1}).exec(function(e, entry){
 			res.render('admin/admin_users', {title: 'Delete', entries: entry});
 		});
 	} else {
