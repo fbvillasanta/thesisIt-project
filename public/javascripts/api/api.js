@@ -47,7 +47,8 @@ $(document).ready(function(){
 		$('#searchForm').submit(function(e){
 			e.preventDefault;
 		})
-		fetch('api/v1/Thesis?sort=_id').then(function(res) {
+		var department = document.querySelector('[name="department"]').value;
+		fetch('api/v1/Thesis?sort=added&&query={"department":"'+department+'"}').then(function(res) {
       res.json().then(function(entries) {
         console.log('entries', entries);
         var tbody = document.getElementById('thesis-body');
@@ -62,7 +63,7 @@ $(document).ready(function(){
       })
     });
 
-    fetch('api/v1/Thesis/count').then(function(res) {
+    fetch('api/v1/Thesis/count?query={"department":"'+department+'"}').then(function(res) {
       res.json().then(function(count) {
         $('#collectiontitle').html("Total: <span><u>" + count.count+ "</u></span>  entries");
       });
@@ -76,7 +77,7 @@ $(document).ready(function(){
 		  console.log(inputbox);
 		  if(inputbox != ""){
 		  	if(selectfilter == "thesis" || selectfilter == "tags"){
-			    fetch('api/v1/Thesis?query={"'+selectfilter+'":"~('+inputbox+')"}').then(function (res) {
+			    fetch('api/v1/Thesis?query={"department":"'+department+'","'+selectfilter+'":"~('+inputbox+')"}').then(function (res) {
 		        res.json().then(function (entries) {
 	            console.log('entries', entries);
 	            var tbody = document.getElementById('thesis-body');
@@ -97,7 +98,7 @@ $(document).ready(function(){
 			   }
 
 			  if(selectfilter == "year"){
-			  	fetch('api/v1/Thesis?query={"year":'+inputbox+'}').then(function(res){
+			  	fetch('api/v1/Thesis?query={"department":"'+department+'","year":'+inputbox+'}').then(function(res){
 			  		res.json().then(function (entries) {
 			  			console.log('entries', entries);
 			  			var tbody = document.getElementById('thesis-body');
@@ -118,7 +119,7 @@ $(document).ready(function(){
 			  }
 
 		  } else {
-		    fetch('api/v1/Thesis?sort=added').then(function(res) {
+		    fetch('api/v1/Thesis?sort=added&&query={"department":"'+department+'"}').then(function(res) {
 	        res.json().then(function(entries) {
             console.log('entries', entries);
             var tbody = document.getElementById('thesis-body');

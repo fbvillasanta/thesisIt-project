@@ -21,6 +21,7 @@ block content
 								| This is basically a compilation of awesome ideas that may change the world.
 							br
 							form#searchForm(action='#')
+								input#dept(type='hidden' value='#{entries.department}' name='department')
 								.input-group#searchGroup
 									select.selectpicker.form-control#searchfilter(data-live-search='true', title='Seach by: ')
 										option(value='thesis') Thesis title
