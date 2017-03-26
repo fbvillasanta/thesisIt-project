@@ -7,18 +7,14 @@
 
 ## Versions
 * Github Repo:
-```
-	> master   [Thesis IT v1](https://github.com/fbvillasanta/coen3463-m3t5)
-	> module-4 [Thesis IT v2](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-4)
-	> module-5 [Thesis IT v3](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-5)
-```
+	* master   [Thesis IT v1](https://github.com/fbvillasanta/coen3463-m3t5)
+	* module-4 [Thesis IT v2](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-4)
+	* module-5 [Thesis IT v3](https://github.com/fbvillasanta/coen3463-m3t5/tree/module-5)
 
 * Websites:
-```
-	> [Thesis IT v1](https://coen3463-m3t5.herokuapp.com) without login but with ADD, EDIT, DELETE, and READ entry capabilities.
-	> [Thesis IT v2](https://coen3463-m4t5.herokuapp.com) with login, registration, admin dashboard.
-	> [Thesis IT v3](https://coen3463-m5t5.herokuapp.com) with search by thesis title, and uses mongoose restify
-```
+	* [Thesis IT v1](https://coen3463-m3t5.herokuapp.com) without login but with ADD, EDIT, DELETE, and READ entry capabilities.
+	* [Thesis IT v2](https://coen3463-m4t5.herokuapp.com) with login, registration, admin dashboard.
+	* [Thesis IT v3](https://coen3463-m5t5.herokuapp.com) with search by thesis title, and uses mongoose restify
 
 ## Prerequisites
 * [Node.js](https://nodejs.org/en/) installed.
