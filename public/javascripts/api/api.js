@@ -77,7 +77,7 @@ $(document).ready(function(){
 		  console.log(inputbox);
 		  if(inputbox != ""){
 		  	if(selectfilter == "thesis" || selectfilter == "tags"){
-			    fetch('api/v1/Thesis?query={"department":"'+department+'","'+selectfilter+'":"~('+inputbox+')"}').then(function (res) {
+			    fetch('api/v1/Thesis?sort=added&&query={"department":"'+department+'","'+selectfilter+'":"~('+inputbox+')"}').then(function (res) {
 		        res.json().then(function (entries) {
 	            console.log('entries', entries);
 	            var tbody = document.getElementById('thesis-body');
@@ -98,7 +98,7 @@ $(document).ready(function(){
 			   }
 
 			  if(selectfilter == "year"){
-			  	fetch('api/v1/Thesis?query={"department":"'+department+'","year":'+inputbox+'}').then(function(res){
+			  	fetch('api/v1/Thesis?sort=added&&query={"department":"'+department+'","year":'+inputbox+'}').then(function(res){
 			  		res.json().then(function (entries) {
 			  			console.log('entries', entries);
 			  			var tbody = document.getElementById('thesis-body');
